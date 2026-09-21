@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Памятка Сотрудника УК</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #14161B;
+    --panel: #1C1F26;
+    --panel-2: #21242C;
+    --line: #2C303A;
+    --text: #E8E9ED;
+    --muted: #8A8F99;
+    --accent: #E2A33D;
+    --accent-soft: rgba(226,163,61,0.12);
+    --red: #C97D6E;
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  :root[data-theme="light"] {
+    --bg: #F4F0E6;
+    --panel: #FFFFFF;
+    --panel-2: #F1ECDE;
+    --line: #DED6C1;
+    --text: #26221A;
+    --muted: #7A7261;
+    --accent: #B4802E;
+    --accent-soft: rgba(180,128,46,0.14);
+    --red: #B25A47;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  html { scroll-padding-top: env(safe-area-inset-top, 0px); }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Manrope', 'Segoe UI', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    position: relative;
+  }
+
+  /* ---------- Decorative background shapes ---------- */
+  .bg-decor {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .bg-decor .blob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: 0.5;
+  }
+  .bg-decor .blob-1 {
+    width: 480px; height: 480px;
+    top: -180px; left: -120px;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+    opacity: 0.16;
+  }
+  .bg-decor .blob-2 {
+    width: 420px; height: 420px;
+    top: 220px; right: -160px;
+    background: radial-gradient(circle, var(--red) 0%, transparent 70%);
+    opacity: 0.12;
+  }
+  .bg-decor .blob-3 {
+    width: 380px; height: 380px;
+    bottom: -160px; left: 30%;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+    opacity: 0.1;
+  }
+  .bg-decor .ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 1.5px solid var(--line);
+    opacity: 0.5;
+  }
+  .bg-decor .ring-1 { width: 220px; height: 220px; top: 60px; right: 8%; }
+  .bg-decor .ring-2 { width: 90px; height: 90px; top: 140px; right: calc(8% + 90px); border-color: var(--accent); opacity: 0.35; }
+  .bg-decor .dots {
+    position: absolute;
+    width: 120px; height: 120px;
+    left: 6%; bottom: 12%;
+    background-image: radial-gradient(var(--line) 1.5px, transparent 1.5px);
+    background-size: 18px 18px;
+    opacity: 0.6;
+  }
+  @media (max-width: 720px) {
+    .bg-decor .ring-1, .bg-decor .ring-2, .bg-decor .dots { display: none; }
+  }
+
+  header { border-bottom: 1px solid var(--line); }
+  .header-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 26px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+  }
+  h1 { font-size: 22px; font-weight: 800; margin: 0; letter-spacing: -0.01em; }
+
+  .theme-btn {
+    flex: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    color: var(--text);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .theme-btn:hover { border-color: var(--accent); }
+  .theme-btn svg { width: 19px; height: 19px; }
+  .theme-btn .icon-moon { display: block; }
+  .theme-btn .icon-sun { display: none; }
+  :root[data-theme="light"] .theme-btn .icon-moon { display: none; }
+  :root[data-theme="light"] .theme-btn .icon-sun { display: block; }
+
+  main { max-width: 880px; margin: 0 auto; padding: 40px 20px 80px; }
+
+  /* ---------- Top nav ---------- */
+  .top-nav {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 36px 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+  }
+  .nav-btn {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    color: var(--text);
+    font-family: 'Manrope', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    padding: 13px 30px;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .nav-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .nav-btn:active { transform: translateY(1px); }
+
+  .nav-ornament {
+    max-width: 200px;
+    margin: 18px auto 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--accent);
+    opacity: 0.6;
+  }
+  .nav-ornament .orn-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--line));
+  }
+  .nav-ornament .orn-line:last-child {
+    background: linear-gradient(90deg, var(--line), transparent);
+  }
+
+  /* ---------- Footer ---------- */
+  .site-footer {
+    margin-top: 60px;
+    padding: 22px 20px 40px;
+  }
+  .footer-inner {
+    max-width: 880px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    color: var(--muted);
+    font-size: 13px;
+  }
+  .footer-inner b { color: var(--text); font-weight: 700; }
+
+  /* ---------- Modal ---------- */
+  .modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(10,10,10,0.6);
+    z-index: 100;
+    padding: 60px 20px 40px;
+    align-items: flex-start;
+    justify-content: center;
+    overflow-y: auto;
+  }
+  .modal-overlay.show { display: flex; }
+  .modal-panel {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    max-width: 880px;
+    width: 100%;
+    box-shadow: 0 24px 60px rgba(0,0,0,0.4);
+    animation: modalIn 0.18s ease;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: translateY(10px) scale(0.99); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .modal-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 22px 24px;
+    border-bottom: 1px solid var(--line);
+  }
+  .modal-close {
+    flex: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 15px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .modal-close:hover { border-color: var(--red); color: var(--red); }
+  .modal-body { padding: 0; }
+
+  /* ---------- Lecture / Exam header row (used inside modal-header) ---------- */
+  .lec-icon {
+    flex: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .lec-icon svg { width: 20px; height: 20px; }
+  .lec-heading { flex: 1; min-width: 0; }
+  .lec-heading h2 { font-size: 18px; font-weight: 800; margin: 0 0 2px; }
+  .lec-heading p { margin: 0; font-size: 13px; color: var(--muted); }
+
+  .expand-all-btn {
+    flex: none;
+    background: none;
+    border: 1px solid var(--line);
+    color: var(--muted);
+    font-family: 'Manrope', sans-serif;
+    font-size: 12.5px;
+    font-weight: 700;
+    padding: 8px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  .expand-all-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .expand-all-btn:active { transform: translateY(1px); }
+  @media (max-width: 480px) { .expand-all-btn { display: none; } }
+
+  .lecture-body {
+    padding: 4px 24px 26px;
+    animation: fadeIn 0.25s ease;
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---------- Sub-sections ---------- */
+  details.sub {
+    border-bottom: 1px solid var(--line);
+  }
+  details.sub:last-child { border-bottom: none; }
+  details.sub > summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 16px 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14.5px;
+    font-weight: 700;
+  }
+  details.sub > summary::-webkit-details-marker { display: none; }
+  .sub-num {
+    flex: none;
+    width: 24px;
+    height: 24px;
+    border-radius: 6px;
+    background: var(--panel-2);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sub-title { flex: 1; }
+  .sub-chev {
+    flex: none;
+    width: 16px;
+    height: 16px;
+    color: var(--muted);
+    transition: transform 0.2s ease;
+  }
+  details.sub[open] > summary .sub-chev { transform: rotate(180deg); }
+
+  .sub-content {
+    padding: 2px 4px 18px 38px;
+    animation: fadeIn 0.2s ease;
+  }
+  .sub-content p {
+    margin: 0 0 10px;
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--muted);
+  }
+  .sub-content ul {
+    margin: 0 0 12px;
+    padding-left: 18px;
+    color: var(--muted);
+    font-size: 13.8px;
+    line-height: 1.65;
+  }
+  .sub-content li { margin-bottom: 5px; }
+  .sub-content li b, .sub-content p b { color: var(--text); font-weight: 600; }
+  .sub-content h4 {
+    font-size: 12.5px;
+    text-transform: none;
+    color: var(--text);
+    margin: 14px 0 6px;
+    font-weight: 700;
+  }
+
+  .tag {
+    display: inline-block;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 11.5px;
+    font-weight: 700;
+    padding: 1px 7px;
+    border-radius: 5px;
+    margin-left: 6px;
+  }
+
+  .callout {
+    background: var(--panel-2);
+    border-left: 3px solid var(--accent);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 13.5px;
+    color: var(--text);
+    margin: 10px 0 14px;
+  }
+  .callout b { color: var(--accent); }
+
+  .quote {
+    background: var(--panel-2);
+    border-left: 3px solid var(--red);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 13.3px;
+    font-style: italic;
+    color: var(--muted);
+    margin: 10px 0 14px;
+  }
+
+  .regimes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+  @media (max-width: 560px) { .regimes { grid-template-columns: 1fr; } }
+  .regime-card {
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .regime-card .r-name { font-weight: 700; margin-bottom: 3px; font-size: 13.8px; color: var(--text); }
+  .regime-card .r-desc { color: var(--muted); font-size: 13px; line-height: 1.5; }
+
+  .chain {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 2.2;
+    background: var(--panel-2);
+    border-radius: 8px;
+    padding: 12px 16px;
+  }
+  .chain b { color: var(--text); }
+
+  .dept-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  @media (max-width: 560px) { .dept-grid { grid-template-columns: 1fr; } }
+  .dept-card {
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .dept-card .d-name { font-weight: 700; font-size: 13.8px; color: var(--accent); margin-bottom: 6px; }
+  .dept-card ul { margin: 0; padding-left: 16px; font-size: 13px; color: var(--muted); line-height: 1.55; }
+
+  .flags-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  @media (max-width: 560px) { .flags-grid { grid-template-columns: 1fr; } }
+  .flag-card {
+    border-radius: 8px;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+  }
+  .flag-card.flag-good { background: rgba(111,169,122,0.1); border-color: rgba(111,169,122,0.4); }
+  .flag-card.flag-bad { background: rgba(201,125,110,0.1); border-color: rgba(201,125,110,0.4); }
+  .flag-title { font-weight: 700; font-size: 13.5px; margin-bottom: 8px; color: var(--text); }
+  .flag-card ul { margin: 0; padding-left: 16px; font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* ---------- Exam ---------- */
+  .exam-body { padding: 4px 24px 26px; }
+
+  [contenteditable]:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<div class="bg-decor" aria-hidden="true">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+  <div class="ring ring-1"></div>
+  <div class="ring ring-2"></div>
+  <div class="dots"></div>
+</div>
+
+<header>
+  <div class="header-inner">
+    <h1>Памятка Сотрудника УК</h1>
+    <button type="button" class="theme-btn" id="themeBtn" title="Сменить тему" aria-label="Сменить тему">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36A5.4 5.4 0 0 1 12 3Z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
+    </button>
+  </div>
+</header>
+
+<div class="top-nav">
+  <button type="button" class="nav-btn" id="navLectureBtn">Лекция</button>
+  <button type="button" class="nav-btn" id="navExamBtn">Экзамен</button>
+  <button type="button" class="nav-btn" id="navInterviewBtn">Собеседование</button>
+</div>
+
+<div class="nav-ornament" aria-hidden="true">
+  <span class="orn-line"></span>
+  <svg viewBox="0 0 16 16" width="10" height="10"><path d="M8 0 L16 8 L8 16 L0 8 Z" fill="currentColor"/></svg>
+  <span class="orn-line"></span>
+</div>
+
+<div class="modal-overlay" id="lectureModal">
+  <div class="modal-panel">
+    <div class="modal-header">
+      <span class="lec-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5V6a2 2 0 0 1 2-2h14v13H6.5a2.5 2.5 0 0 0-2.5 2.5Z"/></svg>
+      </span>
+      <span class="lec-heading">
+        <h2>Лекция</h2>
+        <p>Режимы территорий, полномочия ФСО, управления и субординация</p>
+      </span>
+      <button type="button" class="expand-all-btn" id="expandAllBtn">Развернуть всё</button>
+      <button type="button" class="modal-close" data-modal-close aria-label="Закрыть">✕</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="lecture-body">
+
+
+      <details class="sub" open>
+        <summary><span class="sub-num">1</span><span class="sub-title">Режимы территорий</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <div class="regimes">
+            <div class="regime-card"><div class="r-name">⚪ Охраняемая</div><div class="r-desc">Проверяется законное основание нахождения</div></div>
+            <div class="regime-card"><div class="r-name">🟡 Закрытая</div><div class="r-desc">Доступ только установленным категориям лиц</div></div>
+            <div class="regime-card"><div class="r-name">🔴 Режимная</div><div class="r-desc">Усиленный контроль, возможен досмотр</div></div>
+            <div class="regime-card"><div class="r-name">⚫ Особого статуса</div><div class="r-desc">Наиболее строгий режим безопасности</div></div>
+          </div>
+          <div class="callout"><b>Мнемосхема:</b> Охраняемая → основание нахождения · Закрытая → право доступа · Режимная → право доступа + возможный досмотр · Особого статуса → максимально строгий режим.</div>
+          <p>В предусмотренных случаях территория может быть временно закрыта для проведения мероприятий государственной важности.</p>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">2</span><span class="sub-title">Охраняемые территории</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <p>Гражданин может находиться на охраняемой территории при наличии законного основания. Примеры:</p>
+          <ul>
+            <li>получение государственной услуги</li>
+            <li>обращение в государственный орган</li>
+            <li>обращение за помощью при угрозе жизни или безопасности</li>
+            <li>ожидание адвоката</li>
+            <li>иные предусмотренные законом основания</li>
+          </ul>
+          <p>Сотрудник вправе потребовать подтвердить право доступа документом, удостоверением или пропуском.</p>
+          <div class="callout">Если основание не подтверждено — вход может быть запрещён, либо предъявлено требование покинуть территорию. При нарушении порядка применяются предусмотренные законом меры.</div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">3</span><span class="sub-title">Закрытые территории</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <p>Доступ разрешён только лицам, относящимся к установленным категориям:</p>
+          <ul>
+            <li>определённые высшие должностные лица</li>
+            <li>сотрудники отдельных государственных органов</li>
+            <li>сотрудники организации — владельца территории</li>
+            <li>иные лица, прямо предусмотренные правилами</li>
+          </ul>
+          <h4>Приглашённые лица</h4>
+          <div class="chain">Уполномоченное лицо приглашает → обеспечивается сопровождение → посещение территории → сопровождение до выхода</div>
+          <div class="callout">Обычный проход на закрытую территорию сам по себе не означает автоматического обыска или досмотра — такие меры применяются только при предусмотренных законом основаниях.</div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">4</span><span class="sub-title">Режимные объекты</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <p>Повышенный контроль доступа. При проходе может проводиться личный досмотр лиц без права на беспрепятственный доступ.</p>
+          <h4>Цель досмотра — обнаружение:</h4>
+          <ul>
+            <li>оружия</li>
+            <li>взрывчатых веществ</li>
+            <li>запрещённых веществ</li>
+            <li>иных предметов, представляющих угрозу безопасности</li>
+          </ul>
+          <h4>Примеры режимных объектов</h4>
+          <ul>
+            <li>территории подразделений ФСБ за КПП</li>
+            <li>территории воинских частей за КПП</li>
+            <li>территории федеральных учреждений исполнения наказаний</li>
+          </ul>
+          <div class="callout"><b>Главное различие:</b> Охраняемая — основание нахождения · Закрытая — право доступа · Режимная — право доступа + досмотр · Особого статуса — самый строгий порядок.</div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">5</span><span class="sub-title">Полномочия сотрудников ФСО</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <div class="chain">Попытка прохода → проверка документов / пропуска → право доступа подтверждено? → <b>да</b> — допуск в установленном порядке; <b>нет</b> — отказ в доступе / требование покинуть зону</div>
+          <p style="margin-top:12px">При отказе от предусмотренного досмотра лицо может быть не допущено на объект или мероприятие.</p>
+          <p>В целях безопасности охраняемого лица сотрудники вправе применять предусмотренные законом меры по временному ограничению прохода, проезда, остановки, стоянки и доступа в отдельные части охранной зоны.</p>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">6</span><span class="sub-title">Задержание</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <p>Применяется только при наличии предусмотренного законом основания:</p>
+          <ul>
+            <li>Нападение на охраняемое лицо или объект <span class="tag">ст 30.1.1</span></li>
+            <li>Непосредственная подготовка опасного нападения <span class="tag">ст 30.1.2</span></li>
+            <li>Преступление или правонарушение на охраняемом объекте/мероприятии — для пресечения, установления личности либо передачи компетентному органу <span class="tag">ст 30.1.3</span></li>
+            <li>Активное сопротивление законному требованию покинуть зону, создающее реальную угрозу безопасности <span class="tag">ст 30.1.4</span></li>
+            <li>Иные основания, прямо предусмотренные законодательством <span class="tag">ст 30.1.5</span></li>
+          </ul>
+          <div class="callout"><b>Главное правило:</b> задержание не может применяться произвольно — перед его применением должно существовать конкретное предусмотренное законом основание.</div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">7</span><span class="sub-title">Соблюдение субординации</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <h4>1. Уважительное обращение</h4>
+          <p>Недопустимы грубость, оскорбления, провокации, демонстративное неуважение, переход на личные конфликты.</p>
+          <div class="quote">Ст. 11 п. 6 Внутреннего Устава — «В служебном общении запрещаются оскорбления, угрозы, унижение, фамильярность и иное поведение, нарушающее служебную этику».</div>
+          <h4>2. Соблюдение служебной иерархии</h4>
+          <div class="chain">Сотрудник / курсант → непосредственный руководитель → следующий уровень → вышестоящее руководство</div>
+          <p style="margin-top:10px">Не следует без необходимости пропускать непосредственного руководителя.</p>
+          <h4>3. Исполнение законных распоряжений</h4>
+          <div class="chain">Спокойно уточнить задачу → получить разъяснения → выполнить законное распоряжение</div>
+          <h4>4. Недопустимость публичного выяснения отношений</h4>
+          <ul>
+            <li>сохранять спокойствие, не повышать голос</li>
+            <li>не переходить на личности</li>
+            <li>обратиться к непосредственному руководителю</li>
+            <li>использовать установленный порядок рассмотрения вопроса</li>
+          </ul>
+          <h4>5. Форма общения с руководителем</h4>
+          <ul>
+            <li>соблюдать установленную форму обращения</li>
+            <li>кратко и понятно излагать суть вопроса</li>
+            <li>не перебивать</li>
+            <li>дождаться разрешения продолжить разговор, если это предусмотрено</li>
+            <li>соблюдать деловой стиль общения</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">8</span><span class="sub-title">Иерархия обращений курсанта</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <div class="chain">Возник вопрос → <b>Рядовой сотрудник УК</b> → ответ получен? да — вопрос закрыт; нет → <b>Инструктор</b> → не решён? → <b>Заместитель начальника отдела</b> → не решён? → <b>Начальник отдела</b></div>
+          <div class="callout" style="margin-top:12px">Нужно соблюдать установленную последовательность обращения и не перескакивать через уровни без необходимости.</div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">9</span><span class="sub-title">Служебный транспорт</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <ul>
+            <li>Запрещено использовать транспорт Правительства в личных целях (казино, магазины, «Ключик» и другие личные поездки)</li>
+            <li>Разрешение на использование запрашивается заранее, до получения транспорта</li>
+            <li>Для личного авто: отпуск → разрешение → выезд</li>
+          </ul>
+          <div class="callout">Самовольное использование транспорта — взыскание вплоть до увольнения.</div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">10</span><span class="sub-title">Вертикаль власти ФСО и Правительства</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <div class="chain">Премьер-министр → Вице-премьер-министр → Директор ФСО → Заместители Директора (4) → Начальники управлений → Заместители начальников управлений (по 3 на управление) → Старшие офицеры / офицеры → Академия ФСО</div>
+          <h4>Премьер-министр</h4>
+          <ul>
+            <li>определяет основные направления деятельности Правительства</li>
+            <li>принимает ключевые государственные решения</li>
+            <li>имеет право отдавать распоряжения руководству ФСО в пределах полномочий</li>
+          </ul>
+          <p><b>Важно:</b> обычный сотрудник не получает распоряжения от Премьер-министра напрямую — приказы идут через установленную вертикаль.</p>
+          <h4>Вице-премьер-министр</h4>
+          <ul>
+            <li>содействует Премьер-министру в управлении государством</li>
+            <li>контролирует выполнение поручений Правительства</li>
+            <li>взаимодействует с руководством ФСО по вопросам безопасности</li>
+          </ul>
+          <h4>Директор ФСО</h4>
+          <ul>
+            <li>осуществляет общее руководство ФСО, распределяет обязанности между заместителями</li>
+            <li>контролирует работу управлений и дисциплину</li>
+            <li>утверждает внутренние решения и распоряжения</li>
+            <li>организует взаимодействие ФСО с другими госструктурами</li>
+          </ul>
+          <h4>Заместители Директора ФСО (4 человека)</h4>
+          <ul>
+            <li>контролируют работу своего управления и передают распоряжения Директора</li>
+            <li>координируют работу начальника управления, докладывают о результатах</li>
+            <li>не заменяют начальника управления — осуществляют общий контроль</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">11</span><span class="sub-title">Управления ФСО</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <div class="dept-grid">
+            <div class="dept-card">
+              <div class="d-name">УК — Управление кадров</div>
+              <ul>
+                <li>собеседования, оформление сотрудников</li>
+                <li>ведение кадрового состава, аттестации</li>
+                <li>подготовка кадрового резерва</li>
+                <li>контроль прохождения Академии ФСО</li>
+              </ul>
+            </div>
+            <div class="dept-card">
+              <div class="d-name">УСН — спецназначение</div>
+              <ul>
+                <li>безопасность охраняемых лиц и объектов</li>
+                <li>участие в спецмероприятиях и операциях</li>
+                <li>реагирование на угрозы</li>
+              </ul>
+            </div>
+            <div class="dept-card">
+              <div class="d-name">УЛО — личная охрана</div>
+              <ul>
+                <li>непосредственная защита охраняемых лиц</li>
+                <li>сопровождение, проверка маршрутов</li>
+                <li>безопасность транспорта</li>
+              </ul>
+            </div>
+            <div class="dept-card">
+              <div class="d-name">УВК — внутренний контроль</div>
+              <ul>
+                <li>контроль дисциплины, проверки</li>
+                <li>выявление нарушений</li>
+                <li>контроль исполнения приказов</li>
+              </ul>
+            </div>
+          </div>
+          <div class="callout" style="margin-top:12px">В каждом из 4 управлений — по 3 заместителя начальника, итого 12 заместителей начальников управлений.</div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">12</span><span class="sub-title">Офицеры и Академия ФСО</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <h4>Старший офицер</h4>
+          <ul>
+            <li>выполнение поручений руководства, контроль задач</li>
+            <li>помощь младшим сотрудникам, доклад руководству</li>
+          </ul>
+          <h4>Офицер</h4>
+          <ul>
+            <li>выполняет законные приказы, соблюдает субординацию и регламент</li>
+            <li>своевременно докладывает руководству, не превышает полномочия</li>
+          </ul>
+          <h4>Академия ФСО — курсанты изучают</h4>
+          <ul>
+            <li>структуру ФСО и субординацию</li>
+            <li>обязанности сотрудников и правила обращения к руководству</li>
+            <li>дисциплину и законодательную базу РО</li>
+            <li>основы RP и порядок несения службы</li>
+            <li>основные полномочия ФСО</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">13</span><span class="sub-title">Что нужно запомнить курсанту</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <ul>
+            <li>Соблюдай вертикаль подчинения, знай своего непосредственного руководителя</li>
+            <li>Не отдавай распоряжения сотрудникам, которые тебе не подчиняются</li>
+            <li>Не игнорируй распоряжения вышестоящего руководства</li>
+            <li>Все важные вопросы передавай по установленной цепочке</li>
+            <li>Соблюдай субординацию при обращении к руководству</li>
+            <li>Не разглашай служебную информацию</li>
+            <li>За свои действия сотрудник несёт персональную ответственность</li>
+          </ul>
+          <div class="callout"><b>Исключения из цепочки:</b> прямое распоряжение вышестоящего руководства, чрезвычайная ситуация, необходимость немедленного доклада, отсутствие непосредственного руководителя.</div>
+        </div>
+      </details>
+
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="examModal">
+  <div class="modal-panel">
+    <div class="modal-header">
+      <span class="lec-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+      </span>
+      <span class="lec-heading">
+        <h2>Экзамен</h2>
+        <p>Проверь себя по материалу лекции</p>
+      </span>
+      <button type="button" class="expand-all-btn" id="expandAllExamBtn">Развернуть всё</button>
+      <button type="button" class="modal-close" data-modal-close aria-label="Закрыть">✕</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="exam-body">
+
+
+      <details class="sub" open>
+        <summary><span class="sub-num">1</span><span class="sub-title">На какие категории делятся территории?</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <ul>
+            <li><b>Охраняемая территория</b> — гражданин может находиться на ней при наличии законного основания</li>
+            <li><b>Закрытая территория</b> — доступ разрешён только определённым категориям лиц</li>
+            <li><b>Режимный объект</b> — действует повышенный контроль доступа, включая возможность досмотра</li>
+            <li><b>Объект особого статуса</b> — наиболее строгий режим безопасности</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">2</span><span class="sub-title">Что относится к режимным объектам?</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <ul>
+            <li>территории подразделений ФСБ за КПП</li>
+            <li>территории воинских частей за КПП</li>
+            <li>территории федеральных учреждений исполнения наказаний</li>
+          </ul>
+          <div class="callout">Дополнительно спросить: на каком объекте мы находимся в данный момент?</div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">3</span><span class="sub-title">Виды управлений в ФСО</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <ul>
+            <li><b>УК</b> — Управление кадров</li>
+            <li><b>УСН</b> — Управление специального назначения</li>
+            <li><b>УВК</b> — Управление внутреннего контроля</li>
+            <li><b>УЛО</b> — Управление личной охраны</li>
+          </ul>
+          <h4>Дополнительный вопрос: чем занимается отдел (на выбор)</h4>
+          <div class="dept-grid">
+            <div class="dept-card">
+              <div class="d-name">УК</div>
+              <ul>
+                <li>работа с личным составом</li>
+                <li>оформление кадровых процедур</li>
+                <li>подбор и учёт сотрудников</li>
+                <li>вопросы прохождения службы</li>
+                <li>кадровое сопровождение сотрудников</li>
+                <li>работа с документами по личному составу</li>
+              </ul>
+            </div>
+            <div class="dept-card">
+              <div class="d-name">УСН</div>
+              <ul>
+                <li>выполнение специальных операций</li>
+                <li>действия в условиях повышенной угрозы</li>
+                <li>безопасность в наиболее сложных ситуациях</li>
+                <li>силовое противодействие угрозам в пределах полномочий</li>
+                <li>спецзадачи по решению руководства</li>
+              </ul>
+            </div>
+            <div class="dept-card">
+              <div class="d-name">УВК</div>
+              <ul>
+                <li>контроль соблюдения требований сотрудниками</li>
+                <li>проверка действий сотрудников</li>
+                <li>выявление нарушений, внутренние проверки</li>
+                <li>контроль служебной дисциплины</li>
+                <li>предотвращение злоупотреблений</li>
+              </ul>
+            </div>
+            <div class="dept-card">
+              <div class="d-name">УЛО</div>
+              <ul>
+                <li>непосредственная охрана охраняемых лиц</li>
+                <li>сопровождение первых лиц при передвижении</li>
+                <li>безопасность на официальных мероприятиях</li>
+                <li>выявление и предотвращение угроз</li>
+                <li>организация безопасного перемещения</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">4</span><span class="sub-title">Основные обязанности сотрудника</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <ul>
+            <li>Соблюдать Конституцию РО, федеральное законодательство, Устав и законные приказы руководителей</li>
+            <li>Исполнять обязанности только в пределах служебной компетенции</li>
+            <li>Уважать права, свободы, честь и достоинство граждан</li>
+            <li>Отказаться от исполнения заведомо незаконного приказа в установленном порядке</li>
+            <li>Соблюдать режим охраняемой законом тайны</li>
+            <li>Бережно обращаться с государственным имуществом, оружием, спецсредствами, техникой и документами</li>
+            <li>Поддерживать служебную подготовку, исправность экипировки и средств связи</li>
+            <li>Незамедлительно докладывать руководителю об угрозе, происшествии, утрате имущества, нарушении режима</li>
+            <li>Не использовать служебные сведения, оружие, транспорт, имущество и статус в личных целях</li>
+            <li>Соблюдать правила служебной идентификации и видеофиксации, где это установлено законом</li>
+            <li>Соблюдать служебную субординацию и правила служебного общения</li>
+          </ul>
+          <div class="callout">Вопрос считается правильным, если названо 7 и более вариантов.</div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">5</span><span class="sub-title">Что обязан сделать сотрудник для заступления на службу?</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <ul>
+            <li>Привести форму одежды и экипировку в надлежащее состояние</li>
+            <li>Проверить служебное имущество, оружие, спецсредства и средства связи, если они закреплены за сотрудником</li>
+            <li>Ознакомиться с задачей, маршрутом, местом несения службы и порядком взаимодействия</li>
+            <li>Доложить о готовности старшему группы, если это предусмотрено планом или распоряжением</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">6</span><span class="sub-title">Форма доклада несения службы на посту</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <ul>
+            <li>«Докладывает Фамилия Имя, заступил на пост Турникеты»</li>
+            <li>«Докладывает Фамилия Имя, обстановка на посту Турникеты спокойная/напряжённая»</li>
+            <li>«Докладывает Фамилия Имя, обстановка на посту Турникеты спокойная/напряжённая»</li>
+            <li>«Докладывает Фамилия Имя, покинул пост Турникеты»</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">7</span><span class="sub-title">Что является пропускным и внутриобъектовым режимом?</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <ul>
+            <li>Осуществляется на охраняемом объекте, охраняемом мероприятии или в законно установленной охранной зоне</li>
+            <li>Проверка документов, ограничение доступа и досмотровые мероприятия — только в случаях, порядке и пределах, предусмотренных федеральным законодательством</li>
+            <li>Отказ от досмотра, если он является условием доступа, — основание не допустить лицо на объект/мероприятие либо потребовать покинуть охранную зону</li>
+            <li>Обнаружение предмета, создающего угрозу безопасности, подлежит немедленному докладу руководителю и разрешению по федеральному законодательству</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">8</span><span class="sub-title">Что является дисциплинарным проступком?</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <p>Виновное неисполнение или ненадлежащее исполнение служебных обязанностей, нарушение законного приказа либо установленных законом ограничений государственной службы.</p>
+          <p>При определении меры учитываются характер нарушения, форма вины, последствия, должность сотрудника, обстоятельства совершения и предшествующая служба.</p>
+          <h4>Виды дисциплинарных взысканий</h4>
+          <ul>
+            <li>Замечание</li>
+            <li>Выговор</li>
+            <li>Понижение в должности — при наличии законного основания</li>
+            <li>Увольнение</li>
+          </ul>
+          <div class="callout">За одни и те же обстоятельства не допускается неоднократное применение нескольких самостоятельных дисциплинарных взысканий.</div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">9</span><span class="sub-title">Как возможно снять дисциплинарное взыскание?</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <ul>
+            <li>Сотрудник вправе обжаловать взыскание, отказ в досрочном снятии или увольнение вышестоящему руководителю, в прокуратуру в пределах её компетенции или в суд</li>
+            <li>Вышестоящий руководитель вправе оставить решение в силе, изменить его или отменить</li>
+            <li>Отмена незаконного дисциплинарного решения влечёт восстановление служебных прав в объёме, определённом отменяющим решением, если нет самостоятельного законного основания</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">10</span><span class="sub-title">Статья 15.6 — Халатность</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <p><span class="tag">ст 15.6 ч.1</span> Неисполнение или ненадлежащее исполнение должностным лицом обязанностей вследствие недобросовестного или небрежного отношения к службе, если это повлекло крупный ущерб либо существенное нарушение прав.</p>
+          <div class="callout">Наказание: до 3 лет лишения свободы либо штраф от 30 000 до 60 000 рублей.</div>
+          <p><span class="tag">ст 15.6 ч.2</span> То же деяние, повлекшее тяжкий вред здоровью или смерть человека.</p>
+          <div class="callout">Наказание: до 5 лет лишения свободы. Подследственность: Следственный комитет РО.</div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">11</span><span class="sub-title">Что такое административное правонарушение?</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <p>Противоправное и виновное действие или бездействие физического либо юридического лица, за которое Кодексом предусмотрена административная ответственность и которое не образует состава преступления.</p>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">12</span><span class="sub-title">Виды смягчающих обстоятельств</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <ul>
+            <li>раскаяние</li>
+            <li>добровольное прекращение нарушения</li>
+            <li>содействие установлению обстоятельств</li>
+            <li>предотвращение последствий</li>
+            <li>добровольное возмещение вреда</li>
+            <li>иные обстоятельства, существенно уменьшающие вредность деяния</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">13</span><span class="sub-title">Виды отягчающих обстоятельств</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <ul>
+            <li>продолжение нарушения после законного требования прекратить — повторность</li>
+            <li>совершение группой лиц</li>
+            <li>использование должностного положения</li>
+            <li>состояние опьянения, способствовавшее нарушению</li>
+            <li>попытка скрыть доказательства</li>
+            <li>иные обстоятельства, существенно усугубляющие вредность деяния</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">14</span><span class="sub-title">Уклонение от исполнения административного наказания</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <p>Уклонение от исполнения вступившего в силу административного наказания после истечения срока добровольного исполнения — сокрытие от исполнения, воспрепятствование взысканию либо прямой отказ исполнить обязанность при наличии реальной возможности.</p>
+          <div class="callout">Наказание: административный арест на 10 суток. Приоритет розыска — 1 звезда.</div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">15</span><span class="sub-title">Самовольное использование государственного имущества</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <p><span class="tag">ст 12</span> Административный штраф от 20 000 до 50 000 рублей с возмещением причинённого ущерба.</p>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">16</span><span class="sub-title">Пределы компетенции ФСО</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <p><span class="tag">ст 6</span></p>
+          <ul>
+            <li>ФСО РО не является органом общей полицейской юрисдикции</li>
+            <li>Обычное патрулирование, дорожный контроль, расследование преступлений общей подследственности, обычные административные дела, прокурорский надзор и судебные функции не относятся к компетенции ФСО РО</li>
+            <li>Сотрудник ФСО РО вправе пресечь правонарушение и применить меры, если деяние связано с безопасностью охраняемого лица, объекта, мероприятия либо совершается в охранной зоне</li>
+            <li>После устранения угрозы лицо и материалы передаются компетентному органу, если дальнейшее производство не относится к компетенции ФСО РО</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">17</span><span class="sub-title">Лица, подлежащие постоянной государственной охране</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <p><span class="tag">ст 19</span></p>
+          <ul>
+            <li>Премьер-министр РО</li>
+            <li>Вице Премьер-министр РО</li>
+            <li>Председатель Государственной Думы РО</li>
+            <li>Председатель Верховного Суда РО</li>
+            <li>Федеральные министры РО</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">18</span><span class="sub-title">Лица, подлежащие временной государственной охране</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <p><span class="tag">ст 20</span> По мотивированному решению Премьер-министра РО либо Директора ФСО РО может предоставляться:</p>
+          <ul>
+            <li>заместителям федеральных министров</li>
+            <li>заместителям руководителей высших государственных органов</li>
+            <li>судьям, прокурорам, следователям и иным госслужащим при наличии конкретной угрозы в связи со службой</li>
+            <li>членам семьи охраняемого лица при данных о реальной угрозе их безопасности</li>
+            <li>иностранным государственным представителям и иным лицам в связи с официальным мероприятием</li>
+          </ul>
+          <p>Решение должно определять основание, объём и срок мер. Временная охрана прекращается после отпадения основания либо истечения срока.</p>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">19</span><span class="sub-title">Временные ограничения движения и доступа</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <ul>
+            <li>ФСО РО вправе временно ограничить проход, проезд, остановку, стоянку, доступ в помещение или нахождение в части охранной зоны, если это необходимо для предотвращения угрозы либо безопасного перемещения охраняемого лица</li>
+            <li>Ограничение применяется на минимально необходимый срок и прекращается после достижения законной цели</li>
+            <li>Длительное или широкое ограничение дорожного движения — во взаимодействии с ГИБДД</li>
+            <li>Полномочия суда, прокуратуры, Следственного комитета, ФСБ РО и иных органов учитываются при установлении режима доступа; ФСО РО не вправе использовать охранный режим для воспрепятствования их законной деятельности</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">20</span><span class="sub-title">Применение огнестрельного оружия</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <p>Может применяться только при наличии непосредственной угрозы жизни или тяжкого вреда здоровью, в том числе:</p>
+          <ul>
+            <li>для отражения вооружённого или иного опасного нападения на охраняемое лицо</li>
+            <li>для отражения вооружённого нападения на охраняемый объект, если оно создаёт угрозу жизни людей</li>
+            <li>для освобождения захваченного охраняемого лица или заложника</li>
+            <li>для пресечения действий лица, использующего транспорт, оружие, взрывчатое устройство или иной предмет как средство смертельно опасного нападения</li>
+            <li>в иных случаях, прямо предусмотренных федеральным законодательством</li>
+          </ul>
+          <div class="callout">Если обстановка позволяет — предупреждение обязательно. Предупреждение не требуется, если промедление создаёт непосредственную угрозу жизни. Применение прекращается сразу после устранения угрозы.</div>
+        </div>
+      </details>
+
+    </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="interviewModal">
+  <div class="modal-panel">
+    <div class="modal-header">
+      <span class="lec-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.97-4.03 9-9 9-1.5 0-2.9-.37-4.14-1.02L3 21l1.02-3.86A8.96 8.96 0 0 1 3 12c0-4.97 4.03-9 9-9s9 4.03 9 9Z"/></svg>
+      </span>
+      <span class="lec-heading">
+        <h2>Собеседование</h2>
+        <p>Порядок приёма кандидата во фракцию ФСО</p>
+      </span>
+      <button type="button" class="expand-all-btn" id="expandAllInterviewBtn">Развернуть всё</button>
+      <button type="button" class="modal-close" data-modal-close aria-label="Закрыть">✕</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="lecture-body">
+
+      <details class="sub" open>
+        <summary><span class="sub-num">1</span><span class="sub-title">Приветствие и представление</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <ul>
+            <li>Поздороваться с кандидатом</li>
+            <li>Представиться: имя, звание, должность</li>
+            <li>Предоставить служебное удостоверение</li>
+            <li>Уточнить готовность кандидата пройти собеседование</li>
+          </ul>
+          <div class="quote">«Здравствуйте. Я [звание, имя, фамилия], сотрудник Управления кадров ФСО. Сегодня я проведу с вами собеседование для поступления на службу. Готовы начать?»</div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">2</span><span class="sub-title">Проверка документов</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <ul>
+            <li>Паспорт — более 18 лет</li>
+            <li>Лицензии — В/У категории B</li>
+            <li>Мед. карта — здоров по всем параметрам</li>
+            <li>G-фракционное — фоторобот</li>
+            <li>Проверка на текущий уровень розыска</li>
+          </ul>
+          <div class="callout">На момент принятия кандидата во фракцию должны отсутствовать звёзды розыска и судимости!</div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">3</span><span class="sub-title">Общие вопросы кандидату</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <ul>
+            <li>Что такое ФСО?</li>
+            <li>Чем занимается Федеральная служба охраны?</li>
+            <li>Почему вы хотите вступить именно в ФСО?</li>
+            <li>Что, по вашему мнению, должен делать сотрудник ФСО?</li>
+            <li>Какие качества должны быть у сотрудника ФСО?</li>
+            <li>Готовы ли вы соблюдать субординацию?</li>
+            <li>Готовы ли вы выполнять законные приказы руководства?</li>
+            <li>Что будете делать, если не согласны с решением старшего по званию?</li>
+          </ul>
+          <div class="callout">Ожидается понимание того, что спорные вопросы решаются корректно и в установленном порядке, а не через конфликт.</div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">4</span><span class="sub-title">Завершение собеседования и оформление</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <p>После завершения вопросов сотрудник УК должен:</p>
+          <ul>
+            <li>Уточнить, есть ли у кандидата вопросы</li>
+            <li>Сообщить результат собеседования</li>
+            <li>При положительном результате объяснить дальнейшие действия</li>
+          </ul>
+
+          <h4>При положительном результате — в nonRP чат или шёпотом на ухо</h4>
+          <ul>
+            <li><b>/w</b> Id игрока — ссылка на канал Прав-ва</li>
+            <li><b>/w</b> id игрока — Курс ФСО | Имя Фамилия | Статик</li>
+            <li>В nonRP чате: <b>/b</b> (допускается «Курс ФСО | И.Фамилия | Статик»)</li>
+          </ul>
+
+          <h4>Ожидаем «+» в выдаче ролей, после добавляем роли</h4>
+          <ul>
+            <li>ФСО</li>
+            <li>Рядовой ФСО</li>
+            <li>Академия ФСО</li>
+            <li>Правительство</li>
+          </ul>
+
+          <div class="callout">Передаём человеку контракт: G-фракционное → пригласить (просим старший состав, если не позволяет ранг). Сопроводить до получения удостоверения и раздевалки, если кандидат не знает куда идти.</div>
+
+          <div class="quote">«Спасибо за прохождение собеседования. На этом собеседование окончено. Ожидайте дальнейших указаний сотрудника Управления кадров.»</div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">5</span><span class="sub-title">На что обращать внимание</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <div class="flags-grid">
+            <div class="flag-card flag-good">
+              <div class="flag-title">🟢 Положительные признаки</div>
+              <ul>
+                <li>грамотная речь</li>
+                <li>адекватное поведение</li>
+                <li>знание RP-терминов</li>
+                <li>понимание игровой логики</li>
+                <li>соблюдение субординации</li>
+                <li>спокойная реакция на сложные вопросы</li>
+                <li>заинтересованность во вступлении</li>
+              </ul>
+            </div>
+            <div class="flag-card flag-bad">
+              <div class="flag-title">🔴 Причины обратить внимание</div>
+              <ul>
+                <li>агрессивное поведение</li>
+                <li>неадекватные ответы</li>
+                <li>незнание базовых RP-терминов</li>
+                <li>отсутствие понимания субординации</li>
+                <li>конфликтность / неадекватное поведение с сотрудником</li>
+                <li>отношение к службе как к способу получить оружие/полномочия</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">6</span><span class="sub-title">Главный принцип собеседования</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <div class="callout">Сотрудник УК не должен пытаться «завалить» кандидата.</div>
+          <p>Цель собеседования — определить, способен ли человек: понимать RP → соблюдать правила → выполнять обязанности → работать в коллективе → соблюдать дисциплину.</p>
+          <p><b>Кандидат должен оцениваться объективно.</b></p>
+        </div>
+      </details>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20.3 4.8A18.5 18.5 0 0 0 15.9 3.4c-.2.4-.5.9-.6 1.3a17 17 0 0 0-5.1 0c-.2-.4-.4-.9-.6-1.3A18.4 18.4 0 0 0 5.2 4.8C2.7 8.6 2 12.3 2.3 16a18.6 18.6 0 0 0 5.6 2.9c.5-.6.8-1.3 1.1-2a12 12 0 0 1-1.8-.9c.2-.1.3-.2.5-.3a13.2 13.2 0 0 0 11 0c.2.1.3.2.5.3-.6.3-1.2.6-1.8.9.3.7.6 1.4 1.1 2A18.6 18.6 0 0 0 21.7 16c.4-4.3-.6-8-3.4-11.2ZM9 13.7c-.8 0-1.5-.8-1.5-1.7 0-1 .6-1.7 1.5-1.7s1.5.8 1.5 1.7c0 .9-.6 1.7-1.5 1.7Zm6 0c-.8 0-1.5-.8-1.5-1.7 0-1 .6-1.7 1.5-1.7s1.5.8 1.5 1.7c0 .9-.6 1.7-1.5 1.7Z"/></svg>
+    <span>Discord: <b>ilnazzik</b></span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var ctx = null;
+  function playClick() {
+    try {
+      ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+      if (ctx.state === 'suspended') ctx.resume();
+      var now = ctx.currentTime;
+
+      var dur = 0.05;
+      var bufferSize = Math.floor(ctx.sampleRate * dur);
+      var buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+      var data = buffer.getChannelData(0);
+      for (var i = 0; i < bufferSize; i++) {
+        var decay = Math.pow(1 - i / bufferSize, 2.6);
+        data[i] = (Math.random() * 2 - 1) * decay;
+      }
+      var noise = ctx.createBufferSource();
+      noise.buffer = buffer;
+
+      var bandpass = ctx.createBiquadFilter();
+      bandpass.type = 'bandpass';
+      bandpass.frequency.value = 3400;
+      bandpass.Q.value = 0.9;
+
+      var lowpass = ctx.createBiquadFilter();
+      lowpass.type = 'lowpass';
+      lowpass.frequency.value = 6000;
+
+      var noiseGain = ctx.createGain();
+      noiseGain.gain.setValueAtTime(0.14, now);
+      noiseGain.gain.exponentialRampToValueAtTime(0.0005, now + dur);
+
+      noise.connect(bandpass);
+      bandpass.connect(lowpass);
+      lowpass.connect(noiseGain);
+      noiseGain.connect(ctx.destination);
+      noise.start(now);
+      noise.stop(now + dur);
+
+      var osc = ctx.createOscillator();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(1800, now);
+      osc.frequency.exponentialRampToValueAtTime(1400, now + 0.05);
+
+      var oGain = ctx.createGain();
+      oGain.gain.setValueAtTime(0.0001, now);
+      oGain.gain.exponentialRampToValueAtTime(0.05, now + 0.006);
+      oGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.07);
+
+      osc.connect(oGain);
+      oGain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.08);
+    } catch (e) { /* audio not available, ignore */ }
+  }
+
+  // ---- theme toggle ----
+  var THEME_KEY = 'site-theme';
+  function safeGet(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
+  function safeSet(key, val) { try { localStorage.setItem(key, val); } catch (e) {} }
+
+  var savedTheme = safeGet(THEME_KEY);
+  if (savedTheme === 'light' || savedTheme === 'dark') {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  }
+  var themeBtn = document.getElementById('themeBtn');
+  if (themeBtn) {
+    themeBtn.addEventListener('click', function () {
+      var cur = document.documentElement.getAttribute('data-theme');
+      var next = cur === 'light' ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', next);
+      safeSet(THEME_KEY, next);
+      playClick();
+    });
+  }
+
+  // ---- modals ----
+  var modals = {
+    lecture: document.getElementById('lectureModal'),
+    exam: document.getElementById('examModal'),
+    interview: document.getElementById('interviewModal')
+  };
+  function openModal(modal) {
+    if (!modal) return;
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeModal(modal) {
+    if (!modal) return;
+    modal.classList.remove('show');
+    var anyOpen = Object.keys(modals).some(function (k) { return modals[k].classList.contains('show'); });
+    if (!anyOpen) document.body.style.overflow = '';
+  }
+  function closeAllModals() {
+    Object.keys(modals).forEach(function (k) { closeModal(modals[k]); });
+  }
+
+  var navLectureBtn = document.getElementById('navLectureBtn');
+  var navExamBtn = document.getElementById('navExamBtn');
+  var navInterviewBtn = document.getElementById('navInterviewBtn');
+
+  if (navLectureBtn) navLectureBtn.addEventListener('click', function () { openModal(modals.lecture); playClick(); });
+  if (navExamBtn) navExamBtn.addEventListener('click', function () { openModal(modals.exam); playClick(); });
+  if (navInterviewBtn) navInterviewBtn.addEventListener('click', function () { openModal(modals.interview); playClick(); });
+
+  document.querySelectorAll('.modal-close').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      closeModal(btn.closest('.modal-overlay'));
+      playClick();
+    });
+  });
+
+  Object.keys(modals).forEach(function (k) {
+    var overlay = modals[k];
+    if (!overlay) return;
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closeModal(overlay);
+    });
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeAllModals();
+  });
+
+  // ---- expand all: Лекция ----
+  var expandBtn = document.getElementById('expandAllBtn');
+  if (expandBtn && modals.lecture) {
+    expandBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var subs = modals.lecture.querySelectorAll('details.sub');
+      var allOpen = Array.prototype.every.call(subs, function (d) { return d.open; });
+      var makeOpen = !allOpen;
+      subs.forEach(function (d) { d.open = makeOpen; });
+      expandBtn.textContent = makeOpen ? 'Свернуть всё' : 'Развернуть всё';
+      playClick();
+    });
+  }
+
+  // ---- expand all: Экзамен ----
+  var expandExamBtn = document.getElementById('expandAllExamBtn');
+  if (expandExamBtn && modals.exam) {
+    expandExamBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var subs = modals.exam.querySelectorAll('details.sub');
+      var allOpen = Array.prototype.every.call(subs, function (d) { return d.open; });
+      var makeOpen = !allOpen;
+      subs.forEach(function (d) { d.open = makeOpen; });
+      expandExamBtn.textContent = makeOpen ? 'Свернуть всё' : 'Развернуть всё';
+      playClick();
+    });
+  }
+
+  // ---- expand all: Собеседование ----
+  var expandInterviewBtn = document.getElementById('expandAllInterviewBtn');
+  if (expandInterviewBtn && modals.interview) {
+    expandInterviewBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var subs = modals.interview.querySelectorAll('details.sub');
+      var allOpen = Array.prototype.every.call(subs, function (d) { return d.open; });
+      var makeOpen = !allOpen;
+      subs.forEach(function (d) { d.open = makeOpen; });
+      expandInterviewBtn.textContent = makeOpen ? 'Свернуть всё' : 'Развернуть всё';
+      playClick();
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
