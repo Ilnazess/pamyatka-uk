@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Памятка Сотрудника УК</title>
+<title>Памятка Сотрудника УК — ФСО</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -16,11 +16,9 @@
     --text: #E8E9ED;
     --muted: #8A8F99;
     --accent: #E2A33D;
+    --accent-2: #F2C879;
     --accent-soft: rgba(226,163,61,0.12);
     --red: #C97D6E;
-    box-sizing: border-box;
-    padding-top: env(safe-area-inset-top, 0px);
-    padding-bottom: env(safe-area-inset-bottom, 0px);
   }
   :root[data-theme="light"] {
     --bg: #F4F0E6;
@@ -30,6 +28,7 @@
     --text: #26221A;
     --muted: #7A7261;
     --accent: #B4802E;
+    --accent-2: #D9A64A;
     --accent-soft: rgba(180,128,46,0.14);
     --red: #B25A47;
   }
@@ -38,91 +37,48 @@
   html { scroll-padding-top: env(safe-area-inset-top, 0px); }
   body {
     margin: 0;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
     background: var(--bg);
     color: var(--text);
     font-family: 'Manrope', 'Segoe UI', Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     position: relative;
+    overflow-x: hidden;
   }
+  body.modal-open { overflow: hidden; }
 
-  /* ---------- Decorative background shapes ---------- */
-  .bg-decor {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    overflow: hidden;
-    pointer-events: none;
-  }
-  .bg-decor .blob {
-    position: absolute;
-    border-radius: 50%;
-    filter: blur(70px);
-    opacity: 0.5;
-  }
-  .bg-decor .blob-1 {
-    width: 480px; height: 480px;
-    top: -180px; left: -120px;
-    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-    opacity: 0.16;
-  }
-  .bg-decor .blob-2 {
-    width: 420px; height: 420px;
-    top: 220px; right: -160px;
-    background: radial-gradient(circle, var(--red) 0%, transparent 70%);
-    opacity: 0.12;
-  }
-  .bg-decor .blob-3 {
-    width: 380px; height: 380px;
-    bottom: -160px; left: 30%;
-    background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-    opacity: 0.1;
-  }
-  .bg-decor .ring {
-    position: absolute;
-    border-radius: 50%;
-    border: 1.5px solid var(--line);
-    opacity: 0.5;
-  }
+  .bg-decor { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+  .bg-decor .blob { position: absolute; border-radius: 50%; filter: blur(70px); opacity: 0.5; }
+  .bg-decor .blob-1 { width: 480px; height: 480px; top: -180px; left: -120px; background: radial-gradient(circle, var(--accent) 0%, transparent 70%); opacity: 0.16; animation: blobFloat 14s ease-in-out infinite; }
+  .bg-decor .blob-2 { width: 420px; height: 420px; top: 220px; right: -160px; background: radial-gradient(circle, var(--red) 0%, transparent 70%); opacity: 0.12; animation: blobFloat 18s ease-in-out infinite reverse; }
+  .bg-decor .blob-3 { width: 380px; height: 380px; bottom: -160px; left: 30%; background: radial-gradient(circle, var(--accent) 0%, transparent 70%); opacity: 0.1; animation: blobFloat 22s ease-in-out infinite; }
+  @keyframes blobFloat { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(30px,-20px) scale(1.06); } }
+  .bg-decor .ring { position: absolute; border-radius: 50%; border: 1.5px solid var(--line); opacity: 0.5; }
   .bg-decor .ring-1 { width: 220px; height: 220px; top: 60px; right: 8%; }
   .bg-decor .ring-2 { width: 90px; height: 90px; top: 140px; right: calc(8% + 90px); border-color: var(--accent); opacity: 0.35; }
-  .bg-decor .dots {
-    position: absolute;
-    width: 120px; height: 120px;
-    left: 6%; bottom: 12%;
-    background-image: radial-gradient(var(--line) 1.5px, transparent 1.5px);
-    background-size: 18px 18px;
-    opacity: 0.6;
-  }
-  @media (max-width: 720px) {
-    .bg-decor .ring-1, .bg-decor .ring-2, .bg-decor .dots { display: none; }
-  }
+  .bg-decor .dots { position: absolute; width: 120px; height: 120px; left: 6%; bottom: 12%; background-image: radial-gradient(var(--line) 1.5px, transparent 1.5px); background-size: 18px 18px; opacity: 0.6; }
+  .bg-decor .particle { position: absolute; width: 3px; height: 3px; border-radius: 50%; background: var(--accent); opacity: 0.25; animation: floatUp linear infinite; }
+  @keyframes floatUp { 0% { transform: translateY(0); opacity: 0; } 15% { opacity: 0.35; } 85% { opacity: 0.35; } 100% { transform: translateY(-110vh); opacity: 0; } }
+  @media (max-width: 720px) { .bg-decor .ring-1, .bg-decor .ring-2, .bg-decor .dots { display: none; } }
+  @media (prefers-reduced-motion: reduce) { .bg-decor .blob, .bg-decor .particle { animation: none !important; } }
 
-  header { border-bottom: 1px solid var(--line); }
-  .header-inner {
-    max-width: 880px;
-    margin: 0 auto;
-    padding: 26px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 14px;
-  }
-  h1 { font-size: 22px; font-weight: 800; margin: 0; letter-spacing: -0.01em; }
+  header { border-bottom: 1px solid var(--line); position: relative; }
+  header::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: linear-gradient(90deg, transparent 0%, var(--accent) 20%, var(--accent-2) 50%, var(--accent) 80%, transparent 100%); background-size: 200% 100%; opacity: 0.55; animation: headerShine 6s linear infinite; }
+  @keyframes headerShine { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
 
-  .theme-btn {
-    flex: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    background: var(--panel-2);
-    border: 1px solid var(--line);
-    color: var(--text);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .theme-btn:hover { border-color: var(--accent); }
+  .header-inner { max-width: 880px; margin: 0 auto; padding: 24px 20px; display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+  .brand { min-width: 0; }
+  h1 { font-size: 22px; font-weight: 800; margin: 0; letter-spacing: -0.01em; background: linear-gradient(120deg, var(--text) 0%, var(--text) 55%, var(--accent) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  :root:not([data-theme="light"]) h1 { filter: drop-shadow(0 0 14px rgba(226,163,61,0.12)); }
+  .brand-line { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 6px; font-size: 11.5px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .brand-line .sep { color: var(--accent); opacity: 0.7; font-size: 9px; transform: translateY(-1px); }
+  .brand-line .brand-accent { color: var(--accent); }
+  @media (max-width: 560px) { .brand-line { font-size: 10px; gap: 6px; } }
+
+  .theme-btn { flex: none; width: 40px; height: 40px; border-radius: 10px; background: var(--panel-2); border: 1px solid var(--line); color: var(--text); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.25s ease, color 0.2s ease; }
+  .theme-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px) rotate(-8deg); box-shadow: 0 6px 18px rgba(226,163,61,0.25); }
+  .theme-btn:active { transform: translateY(0) rotate(0); }
   .theme-btn svg { width: 19px; height: 19px; }
   .theme-btn .icon-moon { display: block; }
   .theme-btn .icon-sun { display: none; }
@@ -131,316 +87,137 @@
 
   main { max-width: 880px; margin: 0 auto; padding: 40px 20px 80px; }
 
-  /* ---------- Top nav ---------- */
-  .top-nav {
-    max-width: 880px;
-    margin: 0 auto;
-    padding: 36px 20px 0;
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-  }
-  .nav-btn {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    color: var(--text);
-    font-family: 'Manrope', sans-serif;
-    font-size: 15px;
-    font-weight: 800;
-    padding: 13px 30px;
-    border-radius: 10px;
-    cursor: pointer;
-  }
-  .nav-btn:hover { border-color: var(--accent); color: var(--accent); }
-  .nav-btn:active { transform: translateY(1px); }
+  .top-nav { max-width: 880px; margin: 0 auto; padding: 36px 20px 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+  .nav-btn { position: relative; overflow: hidden; background: var(--panel); border: 1px solid var(--line); color: var(--text); font-family: 'Manrope', sans-serif; font-size: 15px; font-weight: 800; padding: 13px 30px; border-radius: 10px; cursor: pointer; transition: transform 0.22s ease, border-color 0.22s ease, color 0.22s ease, box-shadow 0.3s ease, background 0.3s ease; }
+  .nav-btn::before { content: ""; position: absolute; inset: 0; background: linear-gradient(120deg, transparent 0%, rgba(226,163,61,0.18) 50%, transparent 100%); transform: translateX(-120%); transition: transform 0.55s ease; pointer-events: none; }
+  .nav-btn::after { content: ""; position: absolute; left: 50%; bottom: 8px; width: 0; height: 2px; background: var(--accent); border-radius: 2px; transform: translateX(-50%); transition: width 0.3s ease; pointer-events: none; }
+  .nav-btn:hover { transform: translateY(-3px); border-color: var(--accent); color: var(--accent); box-shadow: 0 10px 26px rgba(226,163,61,0.22), 0 0 0 1px rgba(226,163,61,0.15) inset; background: linear-gradient(180deg, var(--panel) 0%, var(--accent-soft) 100%); }
+  .nav-btn:hover::before { transform: translateX(120%); }
+  .nav-btn:hover::after { width: 42%; }
+  .nav-btn:active { transform: translateY(-1px) scale(0.98); }
+  .nav-btn.nav-btn-secondary { font-size: 14px; padding: 11px 24px; color: var(--muted); }
+  .nav-btn.nav-btn-secondary:hover { color: var(--accent); }
 
-  .nav-ornament {
-    max-width: 200px;
-    margin: 18px auto 0;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--accent);
-    opacity: 0.6;
-  }
-  .nav-ornament .orn-line {
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--line));
-  }
-  .nav-ornament .orn-line:last-child {
-    background: linear-gradient(90deg, var(--line), transparent);
-  }
+  .nav-ornament { max-width: 200px; margin: 18px auto 0; display: flex; align-items: center; gap: 10px; color: var(--accent); opacity: 0.6; }
+  .nav-ornament .orn-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--line)); }
+  .nav-ornament .orn-line:last-child { background: linear-gradient(90deg, var(--line), transparent); }
+  .nav-ornament svg { animation: spinSlow 18s linear infinite; }
+  @keyframes spinSlow { to { transform: rotate(360deg); } }
 
-  /* ---------- Footer ---------- */
-  .site-footer {
-    margin-top: 60px;
-    padding: 22px 20px 40px;
-  }
-  .footer-inner {
-    max-width: 880px;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    color: var(--muted);
-    font-size: 13px;
-  }
+  .site-footer { margin-top: 60px; padding: 22px 20px 40px; border-top: 1px solid var(--line); }
+  .footer-inner { max-width: 880px; margin: 0 auto; display: flex; flex-direction: column; align-items: center; gap: 6px; color: var(--muted); font-size: 13px; text-align: center; }
   .footer-inner b { color: var(--text); font-weight: 700; }
+  .footer-brand { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: center; font-size: 11.5px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); font-weight: 600; }
+  .footer-brand .sep { color: var(--accent); opacity: 0.7; font-size: 9px; }
+  .footer-brand .brand-accent { color: var(--accent); }
 
-  /* ---------- Modal ---------- */
-  .modal-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(10,10,10,0.6);
-    z-index: 100;
-    padding: 60px 20px 40px;
-    align-items: flex-start;
-    justify-content: center;
-    overflow-y: auto;
-  }
+  .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(10,10,10,0.6); backdrop-filter: blur(2px); z-index: 100; padding: 60px 20px 40px; align-items: flex-start; justify-content: center; overflow-y: auto; }
   .modal-overlay.show { display: flex; }
-  .modal-panel {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    max-width: 880px;
-    width: 100%;
-    box-shadow: 0 24px 60px rgba(0,0,0,0.4);
-    animation: modalIn 0.18s ease;
-  }
-  @keyframes modalIn {
-    from { opacity: 0; transform: translateY(10px) scale(0.99); }
-    to { opacity: 1; transform: translateY(0) scale(1); }
-  }
-  .modal-header {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    padding: 22px 24px;
-    border-bottom: 1px solid var(--line);
-  }
-  .modal-close {
-    flex: none;
-    width: 36px;
-    height: 36px;
-    border-radius: 9px;
-    background: var(--panel-2);
-    border: 1px solid var(--line);
-    color: var(--muted);
-    font-size: 15px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .modal-close:hover { border-color: var(--red); color: var(--red); }
+  .modal-panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; max-width: 880px; width: 100%; box-shadow: 0 24px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(226,163,61,0.05) inset; animation: modalIn 0.22s ease; }
+  @keyframes modalIn { from { opacity: 0; transform: translateY(12px) scale(0.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+  .modal-header { display: flex; align-items: center; gap: 14px; padding: 22px 24px; border-bottom: 1px solid var(--line); border-top-left-radius: 14px; border-top-right-radius: 14px; background: linear-gradient(180deg, var(--accent-soft) 0%, transparent 100%); }
+  .modal-close { flex: none; width: 36px; height: 36px; border-radius: 9px; background: var(--panel-2); border: 1px solid var(--line); color: var(--muted); font-size: 15px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.25s ease; }
+  .modal-close:hover { border-color: var(--red); color: var(--red); transform: rotate(90deg) scale(1.05); box-shadow: 0 6px 16px rgba(201,125,110,0.25); }
   .modal-body { padding: 0; }
 
-  /* ---------- Lecture / Exam header row (used inside modal-header) ---------- */
-  .lec-icon {
-    flex: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    background: var(--accent-soft);
-    color: var(--accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  .lec-icon { flex: none; width: 40px; height: 40px; border-radius: 10px; background: var(--accent-soft); color: var(--accent); display: flex; align-items: center; justify-content: center; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+  .modal-panel:hover .lec-icon { transform: translateY(-1px) rotate(-4deg); box-shadow: 0 6px 18px rgba(226,163,61,0.2); }
   .lec-icon svg { width: 20px; height: 20px; }
   .lec-heading { flex: 1; min-width: 0; }
   .lec-heading h2 { font-size: 18px; font-weight: 800; margin: 0 0 2px; }
   .lec-heading p { margin: 0; font-size: 13px; color: var(--muted); }
 
-  .expand-all-btn {
-    flex: none;
-    background: none;
-    border: 1px solid var(--line);
-    color: var(--muted);
-    font-family: 'Manrope', sans-serif;
-    font-size: 12.5px;
-    font-weight: 700;
-    padding: 8px 14px;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-  .expand-all-btn:hover { border-color: var(--accent); color: var(--accent); }
-  .expand-all-btn:active { transform: translateY(1px); }
+  .expand-all-btn { flex: none; background: none; border: 1px solid var(--line); color: var(--muted); font-family: 'Manrope', sans-serif; font-size: 12.5px; font-weight: 700; padding: 8px 14px; border-radius: 8px; cursor: pointer; transition: transform 0.2s ease, border-color 0.2s ease, color 0.2s ease, box-shadow 0.25s ease, background 0.25s ease; }
+  .expand-all-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); background: var(--accent-soft); box-shadow: 0 6px 16px rgba(226,163,61,0.18); }
+  .expand-all-btn:active { transform: translateY(0); }
   @media (max-width: 480px) { .expand-all-btn { display: none; } }
 
-  .lecture-body {
-    padding: 4px 24px 26px;
-    animation: fadeIn 0.25s ease;
-  }
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-4px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  .lecture-body { padding: 4px 24px 26px; animation: fadeIn 0.25s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
 
-  /* ---------- Sub-sections ---------- */
-  details.sub {
-    border-bottom: 1px solid var(--line);
-  }
+  details.sub { border-bottom: 1px solid var(--line); position: relative; }
+  details.sub::before { content: ""; position: absolute; left: 0; top: 8px; bottom: 8px; width: 3px; background: var(--accent); border-radius: 3px; opacity: 0; transition: opacity 0.25s ease, transform 0.25s ease; transform: scaleY(0.4); }
+  details.sub[open]::before { opacity: 0.8; transform: scaleY(1); }
   details.sub:last-child { border-bottom: none; }
-  details.sub > summary {
-    list-style: none;
-    cursor: pointer;
-    padding: 16px 4px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 14.5px;
-    font-weight: 700;
-  }
+  details.sub > summary { list-style: none; cursor: pointer; padding: 16px 4px 16px 10px; display: flex; align-items: center; gap: 10px; font-size: 14.5px; font-weight: 700; border-radius: 8px; transition: color 0.2s ease, background 0.2s ease; }
+  details.sub > summary:hover { color: var(--accent); background: var(--accent-soft); }
   details.sub > summary::-webkit-details-marker { display: none; }
-  .sub-num {
-    flex: none;
-    width: 24px;
-    height: 24px;
-    border-radius: 6px;
-    background: var(--panel-2);
-    color: var(--accent);
-    font-size: 12px;
-    font-weight: 800;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  .sub-num { flex: none; width: 24px; height: 24px; border-radius: 6px; background: var(--panel-2); color: var(--accent); font-size: 12px; font-weight: 800; display: flex; align-items: center; justify-content: center; transition: transform 0.25s ease, box-shadow 0.25s ease; }
+  details.sub > summary:hover .sub-num { transform: scale(1.08); box-shadow: 0 0 0 3px var(--accent-soft); }
   .sub-title { flex: 1; }
-  .sub-chev {
-    flex: none;
-    width: 16px;
-    height: 16px;
-    color: var(--muted);
-    transition: transform 0.2s ease;
-  }
-  details.sub[open] > summary .sub-chev { transform: rotate(180deg); }
+  .sub-chev { flex: none; width: 16px; height: 16px; color: var(--muted); transition: transform 0.25s ease, color 0.25s ease; }
+  details.sub[open] > summary .sub-chev { transform: rotate(180deg); color: var(--accent); }
 
-  .sub-content {
-    padding: 2px 4px 18px 38px;
-    animation: fadeIn 0.2s ease;
-  }
-  .sub-content p {
-    margin: 0 0 10px;
-    font-size: 14px;
-    line-height: 1.65;
-    color: var(--muted);
-  }
-  .sub-content ul {
-    margin: 0 0 12px;
-    padding-left: 18px;
-    color: var(--muted);
-    font-size: 13.8px;
-    line-height: 1.65;
-  }
+  .sub-content { padding: 2px 4px 18px 38px; animation: fadeIn 0.2s ease; }
+  .sub-content p { margin: 0 0 10px; font-size: 14px; line-height: 1.65; color: var(--muted); }
+  .sub-content ul { margin: 0 0 12px; padding-left: 18px; color: var(--muted); font-size: 13.8px; line-height: 1.65; }
   .sub-content li { margin-bottom: 5px; }
   .sub-content li b, .sub-content p b { color: var(--text); font-weight: 600; }
-  .sub-content h4 {
-    font-size: 12.5px;
-    text-transform: none;
-    color: var(--text);
-    margin: 14px 0 6px;
-    font-weight: 700;
-  }
+  .sub-content h4 { font-size: 12.5px; text-transform: none; color: var(--text); margin: 14px 0 6px; font-weight: 700; }
 
-  .tag {
-    display: inline-block;
-    background: var(--accent-soft);
-    color: var(--accent);
-    font-size: 11.5px;
-    font-weight: 700;
-    padding: 1px 7px;
-    border-radius: 5px;
-    margin-left: 6px;
-  }
+  .tag { display: inline-block; background: var(--accent-soft); color: var(--accent); font-size: 11.5px; font-weight: 700; padding: 1px 7px; border-radius: 5px; margin-left: 6px; }
+  .tag-red { background: rgba(201,125,110,0.15); color: var(--red); }
 
-  .callout {
-    background: var(--panel-2);
-    border-left: 3px solid var(--accent);
-    border-radius: 6px;
-    padding: 10px 14px;
-    font-size: 13.5px;
-    color: var(--text);
-    margin: 10px 0 14px;
-  }
+  .callout { background: var(--panel-2); border-left: 3px solid var(--accent); border-radius: 6px; padding: 10px 14px; font-size: 13.5px; color: var(--text); margin: 10px 0 14px; }
   .callout b { color: var(--accent); }
+  .quote { background: var(--panel-2); border-left: 3px solid var(--red); border-radius: 6px; padding: 10px 14px; font-size: 13.3px; font-style: italic; color: var(--muted); margin: 10px 0 14px; }
 
-  .quote {
-    background: var(--panel-2);
-    border-left: 3px solid var(--red);
-    border-radius: 6px;
-    padding: 10px 14px;
-    font-size: 13.3px;
-    font-style: italic;
-    color: var(--muted);
-    margin: 10px 0 14px;
-  }
-
-  .regimes {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-    margin-bottom: 8px;
-  }
+  .regimes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 8px; }
   @media (max-width: 560px) { .regimes { grid-template-columns: 1fr; } }
-  .regime-card {
-    background: var(--panel-2);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 12px 14px;
-  }
+  .regime-card { background: var(--panel-2); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.25s ease; }
+  .regime-card:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: 0 8px 20px rgba(226,163,61,0.15); }
   .regime-card .r-name { font-weight: 700; margin-bottom: 3px; font-size: 13.8px; color: var(--text); }
   .regime-card .r-desc { color: var(--muted); font-size: 13px; line-height: 1.5; }
 
-  .chain {
-    font-size: 13.5px;
-    color: var(--muted);
-    line-height: 2.2;
-    background: var(--panel-2);
-    border-radius: 8px;
-    padding: 12px 16px;
-  }
+  .chain { font-size: 13.5px; color: var(--muted); line-height: 2.2; background: var(--panel-2); border-radius: 8px; padding: 12px 16px; }
   .chain b { color: var(--text); }
 
-  .dept-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
+  .dept-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
   @media (max-width: 560px) { .dept-grid { grid-template-columns: 1fr; } }
-  .dept-card {
-    background: var(--panel-2);
-    border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 12px 14px;
-  }
+  .dept-card { background: var(--panel-2); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.25s ease; }
+  .dept-card:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: 0 8px 20px rgba(226,163,61,0.15); }
   .dept-card .d-name { font-weight: 700; font-size: 13.8px; color: var(--accent); margin-bottom: 6px; }
   .dept-card ul { margin: 0; padding-left: 16px; font-size: 13px; color: var(--muted); line-height: 1.55; }
 
-  .flags-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
-  }
+  .flags-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
   @media (max-width: 560px) { .flags-grid { grid-template-columns: 1fr; } }
-  .flag-card {
-    border-radius: 8px;
-    padding: 12px 14px;
-    border: 1px solid var(--line);
-  }
+  .flag-card { border-radius: 8px; padding: 12px 14px; border: 1px solid var(--line); transition: transform 0.22s ease, box-shadow 0.25s ease; }
+  .flag-card:hover { transform: translateY(-2px); }
   .flag-card.flag-good { background: rgba(111,169,122,0.1); border-color: rgba(111,169,122,0.4); }
+  .flag-card.flag-good:hover { box-shadow: 0 8px 20px rgba(111,169,122,0.2); }
   .flag-card.flag-bad { background: rgba(201,125,110,0.1); border-color: rgba(201,125,110,0.4); }
+  .flag-card.flag-bad:hover { box-shadow: 0 8px 20px rgba(201,125,110,0.2); }
   .flag-title { font-weight: 700; font-size: 13.5px; margin-bottom: 8px; color: var(--text); }
   .flag-card ul { margin: 0; padding-left: 16px; font-size: 13px; color: var(--muted); line-height: 1.6; }
 
-  /* ---------- Exam ---------- */
   .exam-body { padding: 4px 24px 26px; }
 
-  [contenteditable]:focus-visible, summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+  .cmd { display: block; background: var(--panel-2); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; font-family: 'JetBrains Mono', 'Consolas', 'Courier New', monospace; font-size: 13px; color: var(--accent); margin: 8px 0 12px; white-space: pre-wrap; word-break: break-word; }
+  .cmd-block { background: var(--panel-2); border: 1px solid var(--line); border-left: 3px solid var(--accent); border-radius: 8px; padding: 12px 16px; font-family: 'JetBrains Mono', 'Consolas', 'Courier New', monospace; font-size: 12.8px; color: var(--text); margin: 10px 0 14px; white-space: pre-wrap; word-break: break-word; line-height: 1.65; }
+  .cmd-block .cmd-key { color: var(--accent); font-weight: 700; }
+
+  .divider { display: flex; align-items: center; gap: 10px; margin: 18px 0; color: var(--line); font-size: 11px; letter-spacing: 0.15em; }
+  .divider::before, .divider::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  .divider span { color: var(--muted); white-space: nowrap; }
+
+  .step-list { counter-reset: step; list-style: none; padding-left: 0; margin: 0 0 12px; }
+  .step-list li { counter-increment: step; position: relative; padding-left: 34px; margin-bottom: 10px; font-size: 13.8px; color: var(--muted); line-height: 1.6; }
+  .step-list li::before { content: counter(step); position: absolute; left: 0; top: 0; width: 22px; height: 22px; border-radius: 6px; background: var(--accent-soft); color: var(--accent); font-weight: 800; font-size: 12px; display: flex; align-items: center; justify-content: center; }
+  .step-list li b { color: var(--text); }
+
+  .law-item { padding: 10px 12px; border-radius: 8px; background: var(--panel-2); border: 1px solid var(--line); margin: 0 0 10px; }
+  .law-item .law-num { display: inline-block; font-weight: 800; color: var(--accent); margin-right: 6px; }
+  .law-item .law-pen { display: block; margin-top: 4px; font-size: 12.5px; color: var(--red); font-weight: 700; }
+  .law-item .law-note { display: block; margin-top: 6px; font-size: 12.8px; color: var(--muted); font-style: italic; }
+  .law-item .law-exc { display: block; margin-top: 6px; font-size: 12.8px; color: var(--muted); }
+  .law-item .law-exc b { color: var(--accent); }
+
+  #toTop { position: fixed; right: 20px; bottom: 24px; width: 44px; height: 44px; border-radius: 12px; background: var(--panel); border: 1px solid var(--line); color: var(--accent); font-size: 20px; font-weight: 800; cursor: pointer; display: none; z-index: 90; align-items: center; justify-content: center; transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.25s ease, background 0.25s ease; }
+  #toTop.show { display: flex; }
+  #toTop:hover { border-color: var(--accent); transform: translateY(-3px); background: var(--accent-soft); box-shadow: 0 10px 26px rgba(226,163,61,0.25); }
+  #toTop:active { transform: translateY(-1px); }
+
+  [contenteditable]:focus-visible, summary:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
 </style>
 </head>
 <body>
@@ -452,11 +229,25 @@
   <div class="ring ring-1"></div>
   <div class="ring ring-2"></div>
   <div class="dots"></div>
+  <span class="particle" style="left: 12%; animation-duration: 16s; animation-delay: 0s;"></span>
+  <span class="particle" style="left: 28%; animation-duration: 20s; animation-delay: 3s;"></span>
+  <span class="particle" style="left: 47%; animation-duration: 18s; animation-delay: 6s;"></span>
+  <span class="particle" style="left: 66%; animation-duration: 22s; animation-delay: 2s;"></span>
+  <span class="particle" style="left: 84%; animation-duration: 17s; animation-delay: 8s;"></span>
 </div>
 
 <header>
   <div class="header-inner">
-    <h1>Памятка Сотрудника УК</h1>
+    <div class="brand">
+      <h1>Памятка Сотрудника УК</h1>
+      <div class="brand-line">
+        <span class="brand-accent">Россия Онлайн</span>
+        <span class="sep">◆</span>
+        <span>Кутузовский</span>
+        <span class="sep">◆</span>
+        <span class="brand-accent">Федеральная Служба Охраны</span>
+      </div>
+    </div>
     <button type="button" class="theme-btn" id="themeBtn" title="Сменить тему" aria-label="Сменить тему">
       <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36A5.4 5.4 0 0 1 12 3Z"/></svg>
       <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
@@ -470,12 +261,18 @@
   <button type="button" class="nav-btn" id="navInterviewBtn">Собеседование</button>
 </div>
 
+<div class="top-nav" style="padding-top: 10px;">
+  <button type="button" class="nav-btn nav-btn-secondary" id="navWaveBtn">Гос. волна</button>
+  <button type="button" class="nav-btn nav-btn-secondary" id="navLawsBtn">Основные статьи</button>
+</div>
+
 <div class="nav-ornament" aria-hidden="true">
   <span class="orn-line"></span>
   <svg viewBox="0 0 16 16" width="10" height="10"><path d="M8 0 L16 8 L8 16 L0 8 Z" fill="currentColor"/></svg>
   <span class="orn-line"></span>
 </div>
 
+<!-- ===================== LECTURE ===================== -->
 <div class="modal-overlay" id="lectureModal">
   <div class="modal-panel">
     <div class="modal-header">
@@ -492,7 +289,6 @@
 
     <div class="modal-body">
       <div class="lecture-body">
-
 
       <details class="sub" open>
         <summary><span class="sub-num">1</span><span class="sub-title">Режимы территорий</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
@@ -754,6 +550,7 @@
   </div>
 </div>
 
+<!-- ===================== EXAM ===================== -->
 <div class="modal-overlay" id="examModal">
   <div class="modal-panel">
     <div class="modal-header">
@@ -770,7 +567,6 @@
 
     <div class="modal-body">
       <div class="exam-body">
-
 
       <details class="sub" open>
         <summary><span class="sub-num">1</span><span class="sub-title">На какие категории делятся территории?</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
@@ -1069,6 +865,7 @@
   </div>
 </div>
 
+<!-- ===================== INTERVIEW ===================== -->
 <div class="modal-overlay" id="interviewModal">
   <div class="modal-panel">
     <div class="modal-header">
@@ -1206,12 +1003,513 @@
   </div>
 </div>
 
+<!-- ===================== GOV WAVE ===================== -->
+<div class="modal-overlay" id="waveModal">
+  <div class="modal-panel">
+    <div class="modal-header">
+      <span class="lec-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4.9 19.1a10 10 0 0 1 0-14.2"/>
+          <path d="M7.8 16.2a6 6 0 0 1 0-8.4"/>
+          <path d="M16.2 7.8a6 6 0 0 1 0 8.4"/>
+          <path d="M19.1 4.9a10 10 0 0 1 0 14.2"/>
+          <circle cx="12" cy="12" r="2"/>
+        </svg>
+      </span>
+      <span class="lec-heading">
+        <h2>Гос. волна</h2>
+        <p>Порядок занятия государственной волны и объявление о наборе</p>
+      </span>
+      <button type="button" class="expand-all-btn" id="expandAllWaveBtn">Развернуть всё</button>
+      <button type="button" class="modal-close" data-modal-close aria-label="Закрыть">✕</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="lecture-body">
+
+      <details class="sub" open>
+        <summary><span class="sub-num">1</span><span class="sub-title">Перед занятием гос. волны</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <p>Перед тем как занять государственную волну, необходимо обязательно уточнить, свободно ли нужное время.</p>
+          <p>В чат <b>/dep</b> отправляется сообщение:</p>
+          <div class="cmd-block"><span class="cmd-key">/dep всем:</span> Свободна ли гос.волна на хх:хх?</div>
+          <p><b>Пример:</b></p>
+          <div class="cmd-block"><span class="cmd-key">/dep всем:</span> Свободна ли гос.волна на хх:хх?</div>
+          <p>После отправки сообщения необходимо подождать ответа от других государственных организаций.</p>
+          <div class="divider"><span>━━━━━━━━━━━━━━━━━━━━━━</span></div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">2</span><span class="sub-title">Если никто не ответил</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <p>Если после запроса никто не занял указанное время, необходимо зафиксировать занятие волны.</p>
+          <p>В <b>/dep</b> отправляется:</p>
+          <div class="cmd-block"><span class="cmd-key">/dep всем:</span> Занял гос.волну на хх:хх</div>
+          <p>После этого время считается занятым вашей организацией.</p>
+          <div class="callout"><b>Важно:</b> не занимайте волну молча. Сначала обязательно сделайте запрос в /dep.</div>
+          <div class="divider"><span>━━━━━━━━━━━━━━━━━━━━━━</span></div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">3</span><span class="sub-title">Если время уже занято</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <p>Если другая организация уже заняла необходимое время:</p>
+          <ul>
+            <li>Время занято.</li>
+            <li>Необходимо выбрать другое свободное время и повторно сделать запрос в /dep.</li>
+          </ul>
+          <div class="callout">Не допускается проведение собеседования на уже занятой государственной волне без согласования.</div>
+          <div class="divider"><span>━━━━━━━━━━━━━━━━━━━━━━</span></div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">4</span><span class="sub-title">Пример полной последовательности</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <ol class="step-list">
+            <li><b>Шаг 1 — запрос:</b>
+              <div class="cmd-block"><span class="cmd-key">/dep всем:</span> Свободна ли гос.волна на хх:хх?</div>
+            </li>
+            <li><b>Шаг 2 — ожидание ответа:</b> ожидаем, пока представители других организаций сообщат о занятии времени.</li>
+            <li><b>Шаг 3 — если никто не занял:</b>
+              <div class="cmd-block"><span class="cmd-key">/dep всем:</span> Занял гос.волну на хх:хх.</div>
+            </li>
+            <li><b>Шаг 4 — проведение:</b> после занятия волны публикуется объявление о наборе и проводится собеседование.</li>
+          </ol>
+          <div class="divider"><span>━━━━━━━━━━━━━━━━━━━━━━</span></div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">5</span><span class="sub-title">Объявление о наборе</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <p>Публикуется в <b>/gnews</b> после занятия волны:</p>
+          <div class="cmd-block"><span class="cmd-key">/gnews</span> Ведётся набор граждан на службу в Федеральную службу охраны. Мы предлагаем: стабильную заработную плату, карьерный рост, премии за активную службу, обеспечение всем необходимым для выполнения служебных обязанностей.
+Требования к кандидатам: наличие мед. справки, лицензий, отсутствие судимостей, ответственность и адекватность.
+Мы ценим дисциплину, преданность и готовность защищать интересы государства.
+По вопросам трудоустройства обращайтесь в холл Правительства.</div>
+          <div class="callout"><b>Совет:</b> публикуйте объявление сразу после того, как зафиксировали занятие волны через /dep — так кандидаты придут точно к назначенному времени.</div>
+        </div>
+      </details>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== LAWS ===================== -->
+<div class="modal-overlay" id="lawsModal">
+  <div class="modal-panel">
+    <div class="modal-header">
+      <span class="lec-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 3v18"/>
+          <path d="M5 7h14"/>
+          <path d="M5 7l-3 6a3 3 0 0 0 6 0Z"/>
+          <path d="M19 7l-3 6a3 3 0 0 0 6 0Z"/>
+          <path d="M8 21h8"/>
+        </svg>
+      </span>
+      <span class="lec-heading">
+        <h2>Основные статьи</h2>
+        <p>Общее положение государственных структур и внутренние регламенты</p>
+      </span>
+      <button type="button" class="expand-all-btn" id="expandAllLawsBtn">Развернуть всё</button>
+      <button type="button" class="modal-close" data-modal-close aria-label="Закрыть">✕</button>
+    </div>
+
+    <div class="modal-body">
+      <div class="lecture-body">
+
+      <details class="sub" open>
+        <summary><span class="sub-num">1</span><span class="sub-title">Общее положение</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <div class="law-item">
+            <span class="law-num">1.1</span> Сотрудником государственных структур считается игрок, использующий что-либо с фракционного склада, гардероба, автопарка и/или выполняющий свои обязанности вне зависимости от использования функционала (министры, адвокаты и т.п.).
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.1.1</span> Сотрудникам гос. структур запрещены любые криминальные действия без написанной и одобренной РП ситуации на форуме.
+            <span class="law-pen">WARN / Ban / HardBan 3-15 дней</span>
+            <span class="law-note">Пояснение: РП ситуация должна содержать полную завязку и знакомство с криминальным миром.</span>
+            <span class="law-exc"><b>Исключение:</b> р. 11, п. 4.</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.1.2</span> Сумма взятки не должна превышать 100.000 (исключительно деньгами); для крупных сумм — криминальная РП ситуация.
+            <span class="law-pen">WARN</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.2</span> Запрещено продавать / сливать гос. имущество / казну.
+            <span class="law-pen">Demorgan 45-90 минут / Ban 3-30 дней / HardBan 7-30 / PermBan + аннулирование сделки / обнуление персонажа</span>
+            <span class="law-exc"><b>Исключение:</b> одобренная РП ситуация на форуме; одобрение главного куратора; гос. трейд, одобренный администрацией.</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.2.1</span> Запрещено продавать или оставлять себе предметы, полученные после криминальных событий.
+            <span class="law-pen">Demorgan 35-90 минут / Ban 3-15 дней / HardBan до изъятия</span>
+            <span class="law-note">Все предметы после перестрелки/операции должны быть на склад / утилизированы.</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.2.2</span> Сотрудникам гос. структур разрешено хранить предметы других гос. структур только на складе своей фракции, в транспорте своей фракции и/или в своём инвентаре.
+            <span class="law-pen">Demorgan 35-90 минут / Ban 3-30 дней + Изъятие / HardBan до изъятия</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.3</span> Запрещено изъятие адвокатских / обычных лицензий без весомой IC причины.
+            <span class="law-pen">WARN / Ban 3-15 дней</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.4</span> Запрещено намеренно затягивать процесс задержания.
+            <span class="law-pen">Demorgan 60 минут / WARN</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.5</span> Запрещено принимать во фракцию игроков с активным ЧС государственных организаций.
+            <span class="law-pen">Demorgan 90 минут / WARN</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.6</span> Изъятие нелегальных предметов производится исключительно через функционал сервера.
+            <span class="law-pen">Demorgan 60 минут / WARN</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.7</span> Максимально допустимый срок посадки в КПЗ за 1 звезду — до 10 минут.
+            <span class="law-pen">HardBan 5-10 дней</span>
+            <span class="law-exc"><b>Исключение:</b> решение суда; постановление; теракт; оскорбление гос. сотрудников во время процессуальных действий.</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.8</span> Все права и статьи, которые нарушил игрок, должны быть озвучены в голосовой чат.
+            <span class="law-pen">Demorgan 50 минут / WARN / Ban 3-7 дней</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.9</span> При просьбе вызова адвоката от задержанного необходимо реализовать его право на защиту.
+            <span class="law-pen">WARN</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.10</span> Запрещено первым оскорблять, провоцировать, использовать унизительные анимации и грубо выражаться в присутствии/на задержанного или посторонних граждан.
+            <span class="law-pen">Demorgan 100 минут / WARN / HardBan 5 дней</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.10.1</span> В значимых для RP зелёных зонах запрещена модель поведения, не соответствующая модели поведения государственного сотрудника.
+            <span class="law-pen">WARN / Ban 2-5 дней / HardBan 5 дней</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.11</span> Запрещена выдача/изъятие военных билетов без весомой IC причины.
+            <span class="law-pen">HardBan 15-30 дней / HardBan до изъятия / PermBan</span>
+            <span class="law-exc"><b>Исключение:</b> одобрение главного куратора.</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.12</span> Премирование гос. фракций и их участников — только через функционал финансирования.
+            <span class="law-pen">Выговор лидеру</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.13</span> Сотрудникам гос. организации запрещено повышать более чем на 1 ранг в сутки.
+            <span class="law-pen">WARN / Ban 3 дня / Выговор лидеру + понижение игрока до прежнего ранга</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.14</span> Сотрудник гос. организации может быть арестован/посажен в КПЗ только при выявлении нарушения от прокурора, принявшего вызов на задержание.
+            <span class="law-pen">Ban 7-15 дней / HardBan 7-10 дней</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.15</span> Запрещено повышать игрока без отчёта о проделанной работе.
+            <span class="law-pen">Ban 3-15 дней / HardBan 5-10 дней / Выговор лидеру + понижение игрока до прежнего ранга</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.16</span> Снятие функционального розыска возможно лишь сотрудником, которым он был выдан.
+            <span class="law-pen">Warn / Ban / HardBan 3-15 дней</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.17</span> Запрещено изымать предметы у игрока (из ТС, рюкзаков, инвентаря) без причин.
+            <span class="law-pen">HardBan 15-30 дней / PermBan + Обнуление аккаунта</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.18</span> Игрокам гос. структур запрещено использование вещей вне фракционного гардероба и нарушение общего внешнего вида.
+            <span class="law-pen">Demorgan 60-90 минут / WARN</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.18.1</span> Частные адвокаты обязаны соблюдать официально-деловой стиль (см. п. 1.18).
+            <span class="law-pen">Demorgan 35-90 минут / WARN</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.19</span> Запрещено использование фракционного склада вне фракционных мероприятий/процессов.
+            <span class="law-pen">Ban 10-30 дней / HardBan 15-30 дней</span>
+            <span class="law-exc"><b>Исключение:</b> игроки под прикрытием / внедрении.</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.20</span> Запрещено намеренное злоупотребление функционалом государственных структур.
+            <span class="law-pen">WARN / Ban 7-15 дней / HardBan 10-30 дней / PermBan</span>
+            <span class="law-note">Под злоупотребление попадает: задержание за маску; выдача 5 звёзд/розыска за мелкое нарушение; необоснованная выдача судимости; задержание в Больнице за функциональный розыск; добавление звёзд за функциональный розыск; намеренный срыв игрового процесса; задержание сотрудников гос. структур во время их задержаний.</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.21</span> Номер опознавательного знака гос. фракций приравнивается к статическому ID (#1234).
+            <span class="law-pen">Demorgan 60 минут</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.21.1</span> Сотрудники гос. структур обязаны носить и предоставлять удостоверение при запросе игроков в любой форме.
+            <span class="law-pen">Demorgan 60 минут</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.21.2</span> Сотрудники гос. структур обязаны функционально (в планшете) находиться в том отделе, в котором фактически находятся.
+            <span class="law-pen">Demorgan 45 минут</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.22</span> Запрещено действовать вопреки решениям постановлений, исков, прокурора и суда.
+            <span class="law-pen">Ban 5-15 дней / HardBan 5-15 дней</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">1.22.1</span> Прокурорам и судьям запрещено выносить заведомо неверные, нарушающие РП логику и/или правила проекта решения.
+            <span class="law-pen">WARN / Ban 7-15 дней / HardBan 10-30 дней / PermBan</span>
+          </div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">2</span><span class="sub-title">Взаимодействие государственных организаций</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <div class="law-item"><span class="law-num">2.1</span> Следственный комитет руководит предварительным расследованием уголовных дел и вправе давать обязательные к исполнению поручения МВД в пределах расследуемого дела.</div>
+          <div class="law-item"><span class="law-num">2.2</span> МВД обеспечивает охрану общественного порядка, оказывает содействие СК и ФСБ при проведении спецмероприятий.</div>
+          <div class="law-item"><span class="law-num">2.3</span> ГИБДД контролирует БДД и передаёт материалы в МВД, СК или ФСБ по компетенции.</div>
+          <div class="law-item"><span class="law-num">2.4</span> ФСБ координирует мероприятия по борьбе с нарушениями федерального уровня и преступлениями против госбезопасности.</div>
+          <div class="law-item"><span class="law-num">2.5</span> Армия привлекается к обеспечению безопасности государства в случаях, предусмотренных законодательством, либо по решению Правительства / Премьер-министра.</div>
+          <div class="law-item"><span class="law-num">2.6</span> Правительство осуществляет общее руководство исполнительной властью, не вмешиваясь в расследование уголовных дел и оперативную деятельность.</div>
+          <div class="law-item"><span class="law-num">2.7</span> Любые внутренние инструкции, регламенты, отделы, услуги должны быть утверждены Правительством и/или куратором фракции. <span class="law-pen">Выговор лидеру</span></div>
+          <div class="law-item"><span class="law-num">2.8</span> Перевод должен быть одобрен со стороны двух лидеров либо их заместителей. <span class="law-pen">WARN / Выговор лидеру + увольнение игрока</span></div>
+          <div class="law-item"><span class="law-num">2.9</span> Запрещено намеренно повышать игроков с целью дальнейшего перевода в другую фракцию. <span class="law-pen">WARN / Выговор лидеру + понижение игрока на 1 ранг</span></div>
+          <div class="law-item"><span class="law-num">2.10</span> Запрещено при переводе устанавливать ранг выше, чем он был в предыдущей фракции. <span class="law-pen">WARN / Выговор лидеру + понижение игрока</span></div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">3</span><span class="sub-title">Правительство</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <div class="law-item">
+            <span class="law-num">3.1</span> Правительство — высший коллегиальный исполнительный орган государственного управления и государственной власти.
+            <span class="law-pen">Demorgan 15-90 минут / WARN / Выговор лидеру / Снятие</span>
+          </div>
+          <h4>Задачи и обязанности Правительства:</h4>
+          <ul>
+            <li>Проводить проверки государственных организаций (не более 1 в неделю на одну организацию).</li>
+            <li>Разрабатывать и обеспечивать актуальность законодательной базы.</li>
+            <li>Расходовать бюджет государственной казны только в интересах государства.</li>
+            <li>Вправе урезать премии гос. структурам при веской IC причине.</li>
+            <li>Запрещено игнорировать правонарушения со стороны сотрудников гос. структур.</li>
+            <li>Любое постановление / указ должно быть выложено на форум.</li>
+            <li>Сотрудники прокуратуры и власть Правительства уполномочены снимать ошибочно выданный розыск.</li>
+            <li>Выдача адвокатских лицензий, поддержание общедоступности прав задержанного.</li>
+          </ul>
+          <div class="law-item"><span class="law-num">3.2</span> Цена регистрации предприятий не может превышать 250.000 игровой валюты. <span class="law-pen">Выговор лидеру</span></div>
+          <div class="law-item"><span class="law-num">3.3</span> Запрещена выдача адвокатских лицензий выше функциональной стоимости. <span class="law-pen">Demorgan 100 минут</span></div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">4</span><span class="sub-title">ФСБ</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <div class="law-item"><span class="law-num">4.1</span> Сотрудники ФСБ подчиняются министру юстиции и Премьер-министру.</div>
+          <div class="law-item">
+            <span class="law-num">4.2</span> ФСБ — федеральная правоохранительная структура, орган внутренней разведки, контрразведки и антитеррористической деятельности.
+            <span class="law-pen">Demorgan 10-90 минут / WARN / Выговор</span>
+          </div>
+          <h4>Задачи и обязанности ФСБ:</h4>
+          <ul>
+            <li>Слежка за исполнением и обработкой вызовов от обычных игроков в МВД/ГИБДД.</li>
+            <li>Формирование кейс-файлов.</li>
+            <li>Реагирование на нарушения федерального характера.</li>
+            <li>Отработка по региональным нарушениям при запросе от старшего состава МВД/ГИБДД.</li>
+            <li>Выявление коррупционных преступлений в государственных органах.</li>
+            <li>Проведение специальных операций.</li>
+          </ul>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">5</span><span class="sub-title">МВД</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <div class="law-item"><span class="law-num">5.1</span> Сотрудники МВД подчиняются более старшему составу МВД, министерству внутренних дел и Премьер-министру.</div>
+          <div class="law-item">
+            <span class="law-num">5.2</span> МВД — региональная правоохранительная структура, обеспечивающая порядок и безопасность на территории муниципалитетов.
+            <span class="law-pen">Demorgan 15-90 минут / Выговор лидеру</span>
+          </div>
+          <h4>Задачи и обязанности МВД:</h4>
+          <ul>
+            <li>Охрана общественного порядка.</li>
+            <li>Патрулирование.</li>
+            <li>Реагирование на вызовы.</li>
+            <li>Задержание преступников.</li>
+            <li>Проведение оперативно-розыскных мероприятий.</li>
+            <li>Исполнение поручений Следственного комитета.</li>
+            <li>Конвоирование задержанных.</li>
+            <li>Охрана мест происшествий.</li>
+          </ul>
+          <div class="law-item"><span class="law-num">5.3</span> Сотрудникам МВД необходимо обрабатывать обращения граждан не позднее 48 часов с момента подачи. <span class="law-pen">Выговор лидеру</span></div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">6</span><span class="sub-title">Армия</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <div class="law-item">
+            <span class="law-num">6.1</span> Основные задачи армии:
+            <span class="law-note">Защита военных объектов · охрана складов вооружения · военная подготовка · задачи в условиях ЧС/военного положения · обеспечение гос. мероприятий по распоряжению Правительства или Премьер-министра · помощь силовым структурам.</span>
+          </div>
+          <div class="law-item">
+            <span class="law-num">6.2</span> Армия вправе задерживать граждан за противоправные действия только на территории Форта или около него, а также при нарушениях в отношении сотрудников армии — с передачей ФСБ/МВД.
+            <span class="law-pen">Demorgan 50-90 минут / WARN</span>
+          </div>
+          <div class="law-item"><span class="law-num">6.3</span> Территория армии начинается после КПП; до КПП территория свободна для посещения граждан.</div>
+          <div class="law-item"><span class="law-num">6.4</span> Сотрудники армии подчиняются министерству обороны, старшему составу армии и Премьер-министру.</div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">7</span><span class="sub-title">Общее положение силовых структур</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <div class="law-item"><span class="law-num">7.1</span> Сотрудниками силовых структур являются все сотрудники ГИБДД, МВД, армии, ФСБ.</div>
+          <div class="law-item"><span class="law-num">7.2</span> Запрещено задерживать игрока, который был убит в процессе задержания и находится в больнице. <span class="law-pen">WARN</span></div>
+          <div class="law-item">
+            <span class="law-num">7.3</span> Обязаны патрулировать, проводить задержание/выезжать на вызовы только на фракционном транспорте.
+            <span class="law-pen">Demorgan 45 минут</span>
+            <span class="law-exc"><b>Исключение:</b> следователи и переговорщики (см. примечание).</span>
+          </div>
+          <div class="law-item"><span class="law-num">7.3.1</span> Запрещено выезжать на ограбления в составе менее 2-х человек. <span class="law-pen">Demorgan 45 минут</span></div>
+          <div class="law-item">
+            <span class="law-num">7.4</span> При задержании / розыске дистанционно / аресте / изъятии лицензий / обыске / ордере / работе по похищениям и ограблениям обязательно иметь видеозапись всего процесса и хранить её 48 часов.
+            <span class="law-pen">Demorgan 100 минут / WARN / Ban 10-15 дней / HardBan 15-30 дней / PermBan + Обнуление аккаунта</span>
+          </div>
+          <div class="law-item"><span class="law-num">7.5</span> Запрещено находиться на территории криминальной организации. <span class="law-pen">Demorgan 90 минут / WARN</span></div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">8</span><span class="sub-title">Судебная власть</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <div class="law-item"><span class="law-num">8.1</span> Лидер судебной ветви может назначаться главным следящим за государственными структурами.</div>
+          <div class="law-item"><span class="law-num">8.2</span> Председатель верховного суда исполняет обязанности главного судебного органа, имеет все функции для выдачи наказаний всем игрокам, включая лидеров фракций.</div>
+          <div class="law-item"><span class="law-num">8.2.1</span> Председатель верховного суда может назначить не более 3 верховных судей.</div>
+          <div class="law-item"><span class="law-num">8.3</span> Решение председателя верховного суда можно обжаловать через IC иск (рассматривают кураторы Правительства или гл. следящий).</div>
+          <div class="law-item"><span class="law-num">8.4</span> Снятие председателя верховного суда — через кейс-файл (одобряет гл. следящий).</div>
+          <div class="law-item"><span class="law-num">8.4.1</span> За неверные решения судья получает 1 штрафной балл.</div>
+          <div class="law-item"><span class="law-num">8.4.2</span> При достижении 5 штрафных баллов верховного судью снимают с должности.</div>
+          <div class="law-item"><span class="law-num">8.4.3</span> Председатель верховного суда может быть снят по решению лидера Правительства при одобрении главного куратора.</div>
+          <div class="law-item"><span class="law-num">8.4.4</span> Штрафной балл снимается гл. следящим за гос. структурами, ЗГА или ГА, не чаще 1 балла раз в 5 дней.</div>
+          <div class="law-item"><span class="law-num">8.5</span> По решению верховного судьи лидер государственной организации может быть снят. <span class="law-pen">WARN / Выговор</span></div>
+          <div class="law-item"><span class="law-num">8.6</span> Все судебные процессы происходят в здании Правительства.</div>
+          <div class="law-item"><span class="law-num">8.7</span> Судебному подразделению необходимо начать принятие обращений граждан не позднее 48 часов с момента обращения. <span class="law-pen">Выговор</span></div>
+          <div class="law-item"><span class="law-num">8.7.1</span> Принятие мер/расследование — не позднее 48 часов с момента обработки иска. <span class="law-pen">Выговор</span></div>
+          <div class="law-item"><span class="law-num">8.7.2</span> Ходатайства и иные обращения к суду — не позднее 48 часов с момента подачи. <span class="law-pen">Предупреждение / Выговор</span></div>
+          <div class="law-item"><span class="law-num">8.7.3</span> На исполнение судебных актов — до 72 часов (в зависимости от ситуации и решения). <span class="law-pen">Выговор</span></div>
+          <div class="law-item"><span class="law-num">8.7.4</span> При вынесении итога по иску суд должен дать мотивированное и развёрнутое решение в течение 48 часов. <span class="law-pen">Выговор</span></div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">9</span><span class="sub-title">Следственный комитет</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <div class="law-item"><span class="law-num">9.1</span> Лидер Следственного комитета назначается администрацией сервера.</div>
+          <div class="law-item">
+            <span class="law-num">9.2</span> Основные задачи:
+            <span class="law-note">Расследование уголовных преступлений · возбуждение уголовных дел · следственные действия · сбор и закрепление доказательств · предъявление обвинения · передача дела в суд.</span>
+          </div>
+          <div class="law-item"><span class="law-num">9.3</span> Следователь вправе проводить следственные действия только при наличии законных оснований. <span class="law-pen">WARN / Ban 3-7 дней</span></div>
+          <div class="law-item"><span class="law-num">9.4</span> Запрещается возбуждать уголовные дела, предъявлять обвинения или применять меры принуждения без достаточных доказательств.</div>
+          <div class="law-item"><span class="law-num">9.5</span> Лидер Следственного комитета имеет бальную штрафную систему (см. раздел о судьях).</div>
+          <div class="law-item"><span class="law-num">9.6</span> Сотрудники СК обязаны взаимодействовать с МВД, ГИБДД, прокуратурой и иными гос. организациями только после запроса.</div>
+          <div class="law-item"><span class="law-num">9.7</span> Запрещено участвовать в патрулировании и рейдах вне компетенции (кроме совместных мероприятий). <span class="law-pen">Demorgan 100 минут / Ban 5-7 дней</span></div>
+          <div class="law-item"><span class="law-num">9.8</span> Любое процессуальное решение должно быть объективным и беспристрастным. Запрещено злоупотребление полномочиями, фабрикация доказательств, давление на участников процесса.</div>
+          <div class="law-item"><span class="law-num">9.9</span> СК обязан принять в работу поступающие документы в течение 24-х часов. <span class="law-pen">Выговор лидеру</span></div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">10</span><span class="sub-title">ГИБДД</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <div class="law-item">
+            <span class="law-num">10.1</span> Основные задачи и обязанности ГИБДД:
+            <span class="law-note">Контроль ПДД · оформление ДТП · регулирование дорожного движения · проверка документов водителей · профилактические мероприятия · розыск ТС по ориентировкам · сопровождение организованных колонн.</span>
+          </div>
+          <div class="law-item"><span class="law-num">10.2</span> Сотрудники ГИБДД подчиняются старшему составу ГИБДД, руководящему составу МВД и Правительству.</div>
+          <div class="law-item"><span class="law-num">10.3</span> Инспектор ГИБДД обязан действовать вежливо, беспристрастно и в рамках полномочий.</div>
+          <div class="law-item"><span class="law-num">10.4</span> Сотрудник вправе остановить ТС при наличии законных оснований либо в рамках спецмероприятий или ориентировок. <span class="law-pen">Demorgan 60-100 минут</span></div>
+          <div class="law-item"><span class="law-num">10.5</span> Разрешено задерживать игроков при выявленных признаках преступлений и передавать в компетентные органы. <span class="law-pen">Demorgan 45 минут</span></div>
+          <div class="law-item"><span class="law-num">10.6</span> Запрещается использовать служебный транспорт и полномочия в личных целях, инициировать необоснованные проверки. <span class="law-pen">Demorgan 60-100 минут</span></div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">11</span><span class="sub-title">Вести Москвы</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <div class="law-item"><span class="law-num">11.1</span> Вести Москвы — свободное новостное агентство, подчиняющееся Правительству и министерству культуры.</div>
+          <div class="law-item"><span class="law-num">11.2</span> Сотрудники обязаны проверять, редактировать и обрабатывать функциональные объявления граждан. <span class="law-pen">Беседа / Выговор лидеру</span></div>
+          <div class="law-item"><span class="law-num">11.3</span> Запрещена подача объявлений/новостей в обход функционала проекта. <span class="law-pen">WARN</span></div>
+          <div class="law-item"><span class="law-num">11.4</span> Запрещена подача объявлений (adv) / новостей (wnews) без всеобщего характера для всех игроков сервера. <span class="law-pen">Demorgan 15-35 минут</span></div>
+          <div class="law-item"><span class="law-num">11.5</span> Подача объявлений/новостей не должна содержать оскорблений или нарушать правила проекта.</div>
+          <div class="law-item"><span class="law-num">11.6</span> Сотрудники могут задерживать только на территории зелёной зоны Вести Москвы для передачи силовой структуре. <span class="law-pen">Demorgan 60-100 минут / WARN</span></div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">12</span><span class="sub-title">ФСО</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <div class="law-item"><span class="law-num">12.1</span> ФСО — структура, осуществляющая обеспечение безопасности и государственной охраны высших должностных лиц, подчиняющаяся Правительству.</div>
+          <div class="law-item">
+            <span class="law-num">12.2</span> Задачи и обязанности ФСО:
+            <span class="law-note">Обеспечение личной безопасности охраняемых лиц · охрана государственных объектов особой важности · безопасность при официальных мероприятиях · сопровождение охраняемых лиц · взаимодействие с ФСБ, МВД, ГИБДД, СК и Армией.</span>
+          </div>
+          <div class="law-item"><span class="law-num">12.3</span> Запрещено игнорирование запросов на сопровождение. <span class="law-pen">Demorgan 15-60 минут</span></div>
+          <div class="law-item"><span class="law-num">12.4</span> Максимально допустимое количество машин при сопровождении — 10, минимальное — 2. <span class="law-pen">Demorgan 15-35 минут</span></div>
+          <div class="law-item"><span class="law-num">12.5</span> Руководящему составу Правительства в рамках рабочих обязанностей/выездов запрещено выезжать без сопровождения ФСО. <span class="law-pen">Demorgan 20-45 минут</span></div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">13</span><span class="sub-title">Правила проведения РП допроса</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <div class="law-item"><span class="law-num">13.1</span> РП допрос должен иметь веские IC основания. <span class="law-pen">WARN</span></div>
+          <div class="law-item"><span class="law-num">13.1.1</span> Допрос можно проводить только в присутствии следователя. <span class="law-pen">WARN / Ban 2-5 дней</span></div>
+          <div class="law-item"><span class="law-num">13.2</span> Допрашиваемому запрещено нарушать правила PG. <span class="law-pen">Demorgan 35-100 минут / Ban 2-5 дней</span></div>
+          <div class="law-item"><span class="law-num">13.3</span> Допрашиваемый не обязан чётко отвечать на вопросы о ранге/влиянии в криминальной организации.</div>
+          <div class="law-item"><span class="law-num">13.3.1</span> Сотрудникам гос. фракций запрещено задавать некорректные вопросы в /do. <span class="law-pen">WARN</span></div>
+          <div class="law-item"><span class="law-num">13.4</span> Допрос не должен нести грубый насильственный характер; запрещено наносить телесные повреждения. <span class="law-pen">WARN</span></div>
+          <div class="law-item"><span class="law-num">13.4.1</span> Допрос без РП ситуации (без применения силы) — только в допросной или интерьере фракции допрашивающего. <span class="law-pen">WARN</span></div>
+          <div class="law-item"><span class="law-num">13.4.2</span> Допрос с одобренной РП ситуацией (с применением силы) — вне зелёных зон и вне интерьера фракции допрашиваемого. <span class="law-pen">WARN</span></div>
+          <div class="law-item"><span class="law-num">13.5</span> Допрос не должен длиться более 60 минут. <span class="law-pen">Demorgan 35-90 минут всем участникам со стороны гос. фракции</span></div>
+          <div class="law-item"><span class="law-num">13.6</span> Запрещено намеренно затягивать RP допрос. <span class="law-pen">WARN</span></div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">14</span><span class="sub-title">Правила обыска багажников транспортных средств</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <div class="law-item"><span class="law-num">14.1</span> Выдача ордера на обыск любого ТС настраивается лидером фракции.</div>
+          <div class="law-item">
+            <span class="law-num">14.1.1</span> Ордер может быть выдан на основе: массовых беспорядков, увеличения оборота незаконного оружия, военного положения, решения суда, решения прокурора, рейда и т.п.
+          </div>
+          <div class="law-item"><span class="law-num">14.1.2</span> Ордер можно использовать лишь на те ТС, которые фигурируют в кейс-файле / делопроизводстве / иске / нарушении.</div>
+          <div class="law-item"><span class="law-num">14.2</span> При обычном патрулировании обыск ТС можно произвести исключительно за нарушение УК.</div>
+          <div class="law-item"><span class="law-num">14.3</span> При ограблении бизнеса/банка/дома гос. структуры вправе осмотреть все близстоящие ТС.</div>
+          <div class="law-item"><span class="law-num">14.4</span> При использовании ордера обязательно иметь видеоматериал и хранить его 48 часов (р. 7, п. 4).</div>
+        </div>
+      </details>
+
+      </div>
+    </div>
+  </div>
+</div>
+
 <footer class="site-footer">
   <div class="footer-inner">
-    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20.3 4.8A18.5 18.5 0 0 0 15.9 3.4c-.2.4-.5.9-.6 1.3a17 17 0 0 0-5.1 0c-.2-.4-.4-.9-.6-1.3A18.4 18.4 0 0 0 5.2 4.8C2.7 8.6 2 12.3 2.3 16a18.6 18.6 0 0 0 5.6 2.9c.5-.6.8-1.3 1.1-2a12 12 0 0 1-1.8-.9c.2-.1.3-.2.5-.3a13.2 13.2 0 0 0 11 0c.2.1.3.2.5.3-.6.3-1.2.6-1.8.9.3.7.6 1.4 1.1 2A18.6 18.6 0 0 0 21.7 16c.4-4.3-.6-8-3.4-11.2ZM9 13.7c-.8 0-1.5-.8-1.5-1.7 0-1 .6-1.7 1.5-1.7s1.5.8 1.5 1.7c0 .9-.6 1.7-1.5 1.7Zm6 0c-.8 0-1.5-.8-1.5-1.7 0-1 .6-1.7 1.5-1.7s1.5.8 1.5 1.7c0 .9-.6 1.7-1.5 1.7Z"/></svg>
-    <span>Discord: <b>ilnazzik</b></span>
+    <div class="footer-brand">
+      <span class="brand-accent">Россия Онлайн</span>
+      <span class="sep">◆</span>
+      <span>Кутузовский</span>
+      <span class="sep">◆</span>
+      <span class="brand-accent">Федеральная Служба Охраны</span>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M20.3 4.8A18.5 18.5 0 0 0 15.9 3.4c-.2.4-.5.9-.6 1.3a17 17 0 0 0-5.1 0c-.2-.4-.4-.9-.6-1.3A18.4 18.4 0 0 0 5.2 4.8C2.7 8.6 2 12.3 2.3 16a18.6 18.6 0 0 0 5.6 2.9c.5-.6.8-1.3 1.1-2a12 12 0 0 1-1.8-.9c.2-.1.3-.2.5-.3a13.2 13.2 0 0 0 11 0c.2.1.3.2.5.3-.6.3-1.2.6-1.8.9.3.7.6 1.4 1.1 2A18.6 18.6 0 0 0 21.7 16c.4-4.3-.6-8-3.4-11.2ZM9 13.7c-.8 0-1.5-.8-1.5-1.7 0-1 .6-1.7 1.5-1.7s1.5.8 1.5 1.7c0 .9-.6 1.7-1.5 1.7Zm6 0c-.8 0-1.5-.8-1.5-1.7 0-1 .6-1.7 1.5-1.7s1.5.8 1.5 1.7c0 .9-.6 1.7-1.5 1.7Z"/></svg>
+      <span>Discord: <b>ilnazzik</b></span>
+    </div>
   </div>
 </footer>
+
+<button id="toTop" aria-label="Наверх" title="Наверх">↑</button>
 
 <script>
 (function () {
@@ -1221,56 +1519,47 @@
       ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
       if (ctx.state === 'suspended') ctx.resume();
       var now = ctx.currentTime;
+      var dur = 0.14;
 
-      var dur = 0.05;
-      var bufferSize = Math.floor(ctx.sampleRate * dur);
-      var buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
-      var data = buffer.getChannelData(0);
-      for (var i = 0; i < bufferSize; i++) {
-        var decay = Math.pow(1 - i / bufferSize, 2.6);
-        data[i] = (Math.random() * 2 - 1) * decay;
-      }
-      var noise = ctx.createBufferSource();
-      noise.buffer = buffer;
+      var osc1 = ctx.createOscillator();
+      osc1.type = 'sine';
+      osc1.frequency.setValueAtTime(880, now);
+      osc1.frequency.exponentialRampToValueAtTime(660, now + dur);
 
-      var bandpass = ctx.createBiquadFilter();
-      bandpass.type = 'bandpass';
-      bandpass.frequency.value = 3400;
-      bandpass.Q.value = 0.9;
+      var osc2 = ctx.createOscillator();
+      osc2.type = 'sine';
+      osc2.frequency.setValueAtTime(1320, now);
+      osc2.frequency.exponentialRampToValueAtTime(990, now + dur);
 
-      var lowpass = ctx.createBiquadFilter();
-      lowpass.type = 'lowpass';
-      lowpass.frequency.value = 6000;
+      var g1 = ctx.createGain();
+      g1.gain.setValueAtTime(0.0001, now);
+      g1.gain.exponentialRampToValueAtTime(0.06, now + 0.03);
+      g1.gain.exponentialRampToValueAtTime(0.0001, now + dur);
 
-      var noiseGain = ctx.createGain();
-      noiseGain.gain.setValueAtTime(0.14, now);
-      noiseGain.gain.exponentialRampToValueAtTime(0.0005, now + dur);
+      var g2 = ctx.createGain();
+      g2.gain.setValueAtTime(0.0001, now);
+      g2.gain.exponentialRampToValueAtTime(0.018, now + 0.04);
+      g2.gain.exponentialRampToValueAtTime(0.0001, now + dur);
 
-      noise.connect(bandpass);
-      bandpass.connect(lowpass);
-      lowpass.connect(noiseGain);
-      noiseGain.connect(ctx.destination);
-      noise.start(now);
-      noise.stop(now + dur);
+      var lp = ctx.createBiquadFilter();
+      lp.type = 'lowpass';
+      lp.frequency.setValueAtTime(2600, now);
+      lp.frequency.exponentialRampToValueAtTime(1400, now + dur);
+      lp.Q.value = 0.3;
 
-      var osc = ctx.createOscillator();
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(1800, now);
-      osc.frequency.exponentialRampToValueAtTime(1400, now + 0.05);
+      osc1.connect(g1);
+      osc2.connect(g2);
+      g1.connect(lp);
+      g2.connect(lp);
+      lp.connect(ctx.destination);
 
-      var oGain = ctx.createGain();
-      oGain.gain.setValueAtTime(0.0001, now);
-      oGain.gain.exponentialRampToValueAtTime(0.05, now + 0.006);
-      oGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.07);
-
-      osc.connect(oGain);
-      oGain.connect(ctx.destination);
-      osc.start(now);
-      osc.stop(now + 0.08);
-    } catch (e) { /* audio not available, ignore */ }
+      osc1.start(now);
+      osc2.start(now);
+      osc1.stop(now + dur + 0.02);
+      osc2.stop(now + dur + 0.02);
+    } catch (e) { /* ignore */ }
   }
 
-  // ---- theme toggle ----
   var THEME_KEY = 'site-theme';
   function safeGet(key) { try { return localStorage.getItem(key); } catch (e) { return null; } }
   function safeSet(key, val) { try { localStorage.setItem(key, val); } catch (e) {} }
@@ -1290,34 +1579,47 @@
     });
   }
 
-  // ---- modals ----
   var modals = {
     lecture: document.getElementById('lectureModal'),
     exam: document.getElementById('examModal'),
-    interview: document.getElementById('interviewModal')
+    interview: document.getElementById('interviewModal'),
+    wave: document.getElementById('waveModal'),
+    laws: document.getElementById('lawsModal')
   };
+
   function openModal(modal) {
     if (!modal) return;
+    Object.keys(modals).forEach(function (k) {
+      if (modals[k] && modals[k] !== modal) modals[k].classList.remove('show');
+    });
     modal.classList.add('show');
-    document.body.style.overflow = 'hidden';
+    document.body.classList.add('modal-open');
   }
   function closeModal(modal) {
     if (!modal) return;
     modal.classList.remove('show');
-    var anyOpen = Object.keys(modals).some(function (k) { return modals[k].classList.contains('show'); });
-    if (!anyOpen) document.body.style.overflow = '';
+    var btn = modal.querySelector('.expand-all-btn');
+    if (btn) btn.textContent = 'Развернуть всё';
+    var anyOpen = Object.keys(modals).some(function (k) {
+      return modals[k] && modals[k].classList.contains('show');
+    });
+    if (!anyOpen) document.body.classList.remove('modal-open');
   }
   function closeAllModals() {
     Object.keys(modals).forEach(function (k) { closeModal(modals[k]); });
   }
 
-  var navLectureBtn = document.getElementById('navLectureBtn');
-  var navExamBtn = document.getElementById('navExamBtn');
-  var navInterviewBtn = document.getElementById('navInterviewBtn');
-
-  if (navLectureBtn) navLectureBtn.addEventListener('click', function () { openModal(modals.lecture); playClick(); });
-  if (navExamBtn) navExamBtn.addEventListener('click', function () { openModal(modals.exam); playClick(); });
-  if (navInterviewBtn) navInterviewBtn.addEventListener('click', function () { openModal(modals.interview); playClick(); });
+  var btnMap = {
+    navLectureBtn: 'lecture',
+    navExamBtn: 'exam',
+    navInterviewBtn: 'interview',
+    navWaveBtn: 'wave',
+    navLawsBtn: 'laws'
+  };
+  Object.keys(btnMap).forEach(function (id) {
+    var el = document.getElementById(id);
+    if (el) el.addEventListener('click', function () { openModal(modals[btnMap[id]]); playClick(); });
+  });
 
   document.querySelectorAll('.modal-close').forEach(function (btn) {
     btn.addEventListener('click', function () {
@@ -1338,47 +1640,36 @@
     if (e.key === 'Escape') closeAllModals();
   });
 
-  // ---- expand all: Лекция ----
-  var expandBtn = document.getElementById('expandAllBtn');
-  if (expandBtn && modals.lecture) {
-    expandBtn.addEventListener('click', function (e) {
+  function bindExpandAll(btnId, modalKey) {
+    var btn = document.getElementById(btnId);
+    var modal = modals[modalKey];
+    if (!btn || !modal) return;
+    btn.addEventListener('click', function (e) {
       e.preventDefault();
       e.stopPropagation();
-      var subs = modals.lecture.querySelectorAll('details.sub');
+      var subs = modal.querySelectorAll('details.sub');
       var allOpen = Array.prototype.every.call(subs, function (d) { return d.open; });
       var makeOpen = !allOpen;
       subs.forEach(function (d) { d.open = makeOpen; });
-      expandBtn.textContent = makeOpen ? 'Свернуть всё' : 'Развернуть всё';
+      btn.textContent = makeOpen ? 'Свернуть всё' : 'Развернуть всё';
       playClick();
     });
   }
 
-  // ---- expand all: Экзамен ----
-  var expandExamBtn = document.getElementById('expandAllExamBtn');
-  if (expandExamBtn && modals.exam) {
-    expandExamBtn.addEventListener('click', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      var subs = modals.exam.querySelectorAll('details.sub');
-      var allOpen = Array.prototype.every.call(subs, function (d) { return d.open; });
-      var makeOpen = !allOpen;
-      subs.forEach(function (d) { d.open = makeOpen; });
-      expandExamBtn.textContent = makeOpen ? 'Свернуть всё' : 'Развернуть всё';
-      playClick();
-    });
-  }
+  bindExpandAll('expandAllBtn', 'lecture');
+  bindExpandAll('expandAllExamBtn', 'exam');
+  bindExpandAll('expandAllInterviewBtn', 'interview');
+  bindExpandAll('expandAllWaveBtn', 'wave');
+  bindExpandAll('expandAllLawsBtn', 'laws');
 
-  // ---- expand all: Собеседование ----
-  var expandInterviewBtn = document.getElementById('expandAllInterviewBtn');
-  if (expandInterviewBtn && modals.interview) {
-    expandInterviewBtn.addEventListener('click', function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      var subs = modals.interview.querySelectorAll('details.sub');
-      var allOpen = Array.prototype.every.call(subs, function (d) { return d.open; });
-      var makeOpen = !allOpen;
-      subs.forEach(function (d) { d.open = makeOpen; });
-      expandInterviewBtn.textContent = makeOpen ? 'Свернуть всё' : 'Развернуть всё';
+  var toTop = document.getElementById('toTop');
+  if (toTop) {
+    window.addEventListener('scroll', function () {
+      if (window.scrollY > 400) toTop.classList.add('show');
+      else toTop.classList.remove('show');
+    }, { passive: true });
+    toTop.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       playClick();
     });
   }
