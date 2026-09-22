@@ -218,6 +218,173 @@
   #toTop:active { transform: translateY(-1px); }
 
   [contenteditable]:focus-visible, summary:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+
+  /* ---------- Dashboard ---------- */
+  .form-error { font-size: 12.5px; color: var(--red); text-align: center; min-height: 16px; }
+  .stat-grid {
+    max-width: 880px;
+    margin: 30px auto 0;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+  @media (max-width: 560px) { .stat-grid { grid-template-columns: 1fr; } }
+  .stat-card {
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .stat-icon {
+    flex: none;
+    width: 36px; height: 36px;
+    border-radius: 9px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .stat-icon svg { width: 18px; height: 18px; }
+  .stat-num { font-size: 20px; font-weight: 800; line-height: 1; }
+  .stat-label { font-size: 11.5px; color: var(--muted); margin-top: 3px; }
+
+  .tip-card {
+    max-width: 880px;
+    margin: 10px auto 0;
+    padding: 0 20px;
+  }
+  .tip-inner {
+    background: var(--accent-soft);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: var(--text);
+  }
+  .tip-inner svg { flex: none; width: 18px; height: 18px; color: var(--accent); margin-top: 1px; }
+  .tip-inner b { color: var(--accent); }
+
+  /* ---------- Big tiles ---------- */
+  .tile-grid {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 24px 20px 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+  }
+  @media (max-width: 560px) { .tile-grid { grid-template-columns: 1fr; } }
+  .nav-tile {
+    position: relative;
+    overflow: hidden;
+    text-align: left;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 20px 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    font-family: 'Manrope', sans-serif;
+    transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.3s ease;
+  }
+  .nav-tile:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 14px 30px rgba(226,163,61,0.18); }
+  .nav-tile:active { transform: translateY(-1px); }
+  .tile-icon {
+    flex: none;
+    width: 46px; height: 46px;
+    border-radius: 12px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .tile-icon svg { width: 22px; height: 22px; }
+  .tile-text { min-width: 0; }
+  .tile-title { font-size: 16.5px; font-weight: 800; color: var(--text); margin-bottom: 3px; }
+  .tile-sub { font-size: 12.5px; color: var(--muted); line-height: 1.4; }
+
+  /* ---------- Reports ---------- */
+  .report-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 18px 24px 6px;
+  }
+  @media (max-width: 560px) { .report-form { grid-template-columns: 1fr; } }
+  .report-form .rf-field { display: flex; flex-direction: column; gap: 6px; }
+  .report-form .rf-field.full { grid-column: 1 / -1; }
+  .report-form label { font-size: 12px; color: var(--muted); font-weight: 700; }
+  .report-form select, .report-form input {
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    color: var(--text);
+    font-family: 'Manrope', sans-serif;
+    font-size: 14px;
+    padding: 10px 12px;
+    border-radius: 9px;
+    outline: none;
+  }
+  .report-form select:focus, .report-form input:focus { border-color: var(--accent); }
+  .report-add-btn {
+    grid-column: 1 / -1;
+    background: var(--accent);
+    color: #1B140A;
+    border: none;
+    font-weight: 800;
+    font-size: 14px;
+    padding: 12px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-top: 4px;
+  }
+  .report-add-btn:hover { filter: brightness(1.08); }
+
+  .report-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; padding: 18px 24px 0; }
+  @media (max-width: 560px) { .report-stats { grid-template-columns: 1fr; } }
+  .report-stats .stat-card { background: var(--panel-2); }
+
+  .report-list { padding: 18px 24px 24px; }
+  .report-empty { color: var(--muted); font-size: 13.5px; text-align: center; padding: 20px 0; }
+  .report-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 9px;
+    background: var(--panel-2);
+    border: 1px solid var(--line);
+    margin-bottom: 8px;
+  }
+  .report-row .rr-type {
+    flex: none;
+    font-size: 11.5px;
+    font-weight: 800;
+    padding: 3px 8px;
+    border-radius: 6px;
+    background: var(--accent-soft);
+    color: var(--accent);
+  }
+  .report-row .rr-info { flex: 1; min-width: 0; font-size: 13.3px; }
+  .report-row .rr-info b { color: var(--text); }
+  .report-row .rr-meta { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+  .report-row .rr-del {
+    flex: none;
+    background: none;
+    border: none;
+    color: var(--muted);
+    font-size: 15px;
+    cursor: pointer;
+    padding: 2px 6px;
+  }
+  .report-row .rr-del:hover { color: var(--red); }
+
 </style>
 </head>
 <body>
@@ -255,13 +422,83 @@
   </div>
 </header>
 
-<div class="top-nav">
-  <button type="button" class="nav-btn" id="navLectureBtn">Лекция</button>
-  <button type="button" class="nav-btn" id="navExamBtn">Экзамен</button>
-  <button type="button" class="nav-btn" id="navInterviewBtn">Собеседование</button>
+<div class="stat-grid">
+  <div class="stat-card">
+    <div class="stat-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5V6a2 2 0 0 1 2-2h14v13H6.5a2.5 2.5 0 0 0-2.5 2.5Z"/></svg>
+    </div>
+    <div>
+      <div class="stat-num" id="statLectures">0</div>
+      <div class="stat-label">Лекций проведено</div>
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+    </div>
+    <div>
+      <div class="stat-num" id="statExams">0</div>
+      <div class="stat-label">Экзаменов проведено</div>
+    </div>
+  </div>
+  <div class="stat-card">
+    <div class="stat-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.97-4.03 9-9 9-1.5 0-2.9-.37-4.14-1.02L3 21l1.02-3.86A8.96 8.96 0 0 1 3 12c0-4.97 4.03-9 9-9s9 4.03 9 9Z"/></svg>
+    </div>
+    <div>
+      <div class="stat-num" id="statInterviews">0</div>
+      <div class="stat-label">Собеседований проведено</div>
+    </div>
+  </div>
 </div>
 
-<div class="top-nav" style="padding-top: 10px;">
+<div class="tip-card">
+  <div class="tip-inner">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4M12 8a4 4 0 0 0-4 4c0 1.7 1 2.5 1.5 3.2.4.5.5.8.5 1.3v.5h4v-.5c0-.5.1-.8.5-1.3.5-.7 1.5-1.5 1.5-3.2a4 4 0 0 0-4-4Z"/></svg>
+    <span><b>Совет дня:</b> <span id="tipText">Перед занятием гос.волны всегда сначала делайте запрос в /dep.</span></span>
+  </div>
+</div>
+
+<div class="tile-grid">
+  <button type="button" class="nav-tile" id="navLectureBtn">
+    <span class="tile-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5V6a2 2 0 0 1 2-2h14v13H6.5a2.5 2.5 0 0 0-2.5 2.5Z"/></svg>
+    </span>
+    <span class="tile-text">
+      <div class="tile-title">Лекция</div>
+      <div class="tile-sub">Режимы территорий, полномочия ФСО, управления</div>
+    </span>
+  </button>
+  <button type="button" class="nav-tile" id="navExamBtn">
+    <span class="tile-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+    </span>
+    <span class="tile-text">
+      <div class="tile-title">Экзамен</div>
+      <div class="tile-sub">Проверь себя по материалу лекции</div>
+    </span>
+  </button>
+  <button type="button" class="nav-tile" id="navInterviewBtn">
+    <span class="tile-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.97-4.03 9-9 9-1.5 0-2.9-.37-4.14-1.02L3 21l1.02-3.86A8.96 8.96 0 0 1 3 12c0-4.97 4.03-9 9-9s9 4.03 9 9Z"/></svg>
+    </span>
+    <span class="tile-text">
+      <div class="tile-title">Собеседование</div>
+      <div class="tile-sub">Порядок приёма кандидата во фракцию ФСО</div>
+    </span>
+  </button>
+  <button type="button" class="nav-tile" id="navReportsBtn">
+    <span class="tile-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 17v-6M12 17v-10M15 17v-3M4 21h16"/></svg>
+    </span>
+    <span class="tile-text">
+      <div class="tile-title">Отчёты</div>
+      <div class="tile-sub">Отметить проведённые лекции, экзамены и собеседования</div>
+    </span>
+  </button>
+</div>
+
+<div class="top-nav" style="padding-top: 16px;">
   <button type="button" class="nav-btn nav-btn-secondary" id="navWaveBtn">Гос. волна</button>
   <button type="button" class="nav-btn nav-btn-secondary" id="navLawsBtn">Основные статьи</button>
 </div>
@@ -1493,6 +1730,72 @@
   </div>
 </div>
 
+<!-- ===================== REPORTS ===================== -->
+<div class="modal-overlay" id="reportsModal">
+  <div class="modal-panel">
+    <div class="modal-header">
+      <span class="lec-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 17v-6M12 17v-10M15 17v-3M4 21h16"/></svg>
+      </span>
+      <span class="lec-heading">
+        <h2>Отчёты</h2>
+        <p>Проведённые лекции, экзамены и собеседования</p>
+      </span>
+      <button type="button" class="modal-close" data-modal-close aria-label="Закрыть">✕</button>
+    </div>
+
+    <div class="modal-body">
+      <form class="report-form" id="reportForm">
+        <div class="rf-field">
+          <label>Тип занятия</label>
+          <select id="reportType">
+            <option value="Лекция">Лекция</option>
+            <option value="Экзамен">Экзамен</option>
+            <option value="Собеседование">Собеседование</option>
+          </select>
+        </div>
+        <div class="rf-field">
+          <label>Количество</label>
+          <input type="number" id="reportCount" min="1" value="1">
+        </div>
+        <div class="rf-field full">
+          <label>Кому проведено (имя / статик кандидата)</label>
+          <input type="text" id="reportTarget" placeholder="Имя Фамилия | статик">
+        </div>
+        <div class="rf-field full">
+          <label>Ваше имя</label>
+          <input type="text" id="reportAuthor" placeholder="Имя Фамилия">
+        </div>
+        <div class="form-error" id="reportError" style="grid-column: 1 / -1;"></div>
+        <button type="submit" class="report-add-btn">Добавить запись</button>
+      </form>
+
+      <div class="report-stats">
+        <div class="stat-card">
+          <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5V6a2 2 0 0 1 2-2h14v13H6.5a2.5 2.5 0 0 0-2.5 2.5Z"/></svg></div>
+          <div><div class="stat-num" id="reportStatLectures">0</div><div class="stat-label">Лекций</div></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
+          <div><div class="stat-num" id="reportStatExams">0</div><div class="stat-label">Экзаменов</div></div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.97-4.03 9-9 9-1.5 0-2.9-.37-4.14-1.02L3 21l1.02-3.86A8.96 8.96 0 0 1 3 12c0-4.97 4.03-9 9-9s9 4.03 9 9Z"/></svg></div>
+          <div><div class="stat-num" id="reportStatInterviews">0</div><div class="stat-label">Собеседований</div></div>
+        </div>
+      </div>
+
+      <div class="report-list" id="reportList">
+        <div class="report-empty">Записей пока нет — добавьте первую выше.</div>
+      </div>
+
+      <div style="padding: 0 24px 22px;">
+        <div class="callout">Записи сохраняются в этом браузере/устройстве и привязаны к вашему имени. Общего свода отчётов по всем сотрудникам пока нет — для этого нужен общий сервер.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <footer class="site-footer">
   <div class="footer-inner">
     <div class="footer-brand">
@@ -1584,7 +1887,8 @@
     exam: document.getElementById('examModal'),
     interview: document.getElementById('interviewModal'),
     wave: document.getElementById('waveModal'),
-    laws: document.getElementById('lawsModal')
+    laws: document.getElementById('lawsModal'),
+    reports: document.getElementById('reportsModal')
   };
 
   function openModal(modal) {
@@ -1614,7 +1918,8 @@
     navExamBtn: 'exam',
     navInterviewBtn: 'interview',
     navWaveBtn: 'wave',
-    navLawsBtn: 'laws'
+    navLawsBtn: 'laws',
+    navReportsBtn: 'reports'
   };
   Object.keys(btnMap).forEach(function (id) {
     var el = document.getElementById(id);
@@ -1672,6 +1977,127 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
       playClick();
     });
+  }
+
+  // ==================== REPORTS ====================
+  var REPORTS_KEY = 'site_reports';
+  var reportsCache = null;
+  function loadReportsFromStorage() {
+    try { return JSON.parse(safeGet(REPORTS_KEY)) || []; } catch (e) { return []; }
+  }
+  function getReports() {
+    if (reportsCache === null) reportsCache = loadReportsFromStorage();
+    return reportsCache;
+  }
+  function saveReports(list) {
+    reportsCache = list;
+    safeSet(REPORTS_KEY, JSON.stringify(list));
+  }
+  function formatDate(ts) {
+    var d = new Date(ts);
+    var pad = function (n) { return String(n).padStart(2, '0'); };
+    return pad(d.getDate()) + '.' + pad(d.getMonth() + 1) + '.' + d.getFullYear() + ' ' + pad(d.getHours()) + ':' + pad(d.getMinutes());
+  }
+
+  var reportForm = document.getElementById('reportForm');
+  var reportList = document.getElementById('reportList');
+  var reportError = document.getElementById('reportError');
+
+  function renderReports() {
+    var reports = getReports();
+    var sums = { 'Лекция': 0, 'Экзамен': 0, 'Собеседование': 0 };
+    reports.forEach(function (r) { sums[r.type] = (sums[r.type] || 0) + r.count; });
+
+    var elLec = document.getElementById('statLectures');
+    var elExam = document.getElementById('statExams');
+    var elInt = document.getElementById('statInterviews');
+    if (elLec) elLec.textContent = sums['Лекция'];
+    if (elExam) elExam.textContent = sums['Экзамен'];
+    if (elInt) elInt.textContent = sums['Собеседование'];
+
+    var rLec = document.getElementById('reportStatLectures');
+    var rExam = document.getElementById('reportStatExams');
+    var rInt = document.getElementById('reportStatInterviews');
+    if (rLec) rLec.textContent = sums['Лекция'];
+    if (rExam) rExam.textContent = sums['Экзамен'];
+    if (rInt) rInt.textContent = sums['Собеседование'];
+
+    if (!reportList) return;
+    reportList.innerHTML = '';
+    if (!reports.length) {
+      reportList.innerHTML = '<div class="report-empty">Записей пока нет — добавьте первую выше.</div>';
+      return;
+    }
+    reports.slice().reverse().forEach(function (r) {
+      var row = document.createElement('div');
+      row.className = 'report-row';
+      row.innerHTML =
+        '<span class="rr-type">' + r.type + '</span>' +
+        '<span class="rr-info"><b>' + r.count + '×</b> — ' + r.target +
+        '<div class="rr-meta">' + formatDate(r.ts) + ' · ' + r.author + '</div></span>' +
+        '<button type="button" class="rr-del" aria-label="Удалить">✕</button>';
+      row.querySelector('.rr-del').addEventListener('click', function () {
+        var updated = getReports().filter(function (x) { return x.id !== r.id; });
+        saveReports(updated);
+        renderReports();
+        playClick();
+      });
+      reportList.appendChild(row);
+    });
+  }
+
+  var reportAuthorInput = document.getElementById('reportAuthor');
+  if (reportAuthorInput) {
+    var savedAuthor = safeGet('site_report_author');
+    if (savedAuthor) reportAuthorInput.value = savedAuthor;
+  }
+
+  if (reportForm) {
+    reportForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      if (reportError) reportError.textContent = '';
+      var type = document.getElementById('reportType').value;
+      var count = parseInt(document.getElementById('reportCount').value, 10) || 1;
+      var target = document.getElementById('reportTarget').value.trim();
+      var author = document.getElementById('reportAuthor').value.trim();
+      if (!target || !author) {
+        if (reportError) reportError.textContent = 'Заполните поля «Кому проведено» и «Ваше имя».';
+        return;
+      }
+      safeSet('site_report_author', author);
+      var reports = getReports().slice();
+      reports.push({
+        id: 'r' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6),
+        type: type,
+        count: Math.max(1, count),
+        target: target,
+        author: author,
+        ts: Date.now()
+      });
+      saveReports(reports);
+      document.getElementById('reportTarget').value = '';
+      document.getElementById('reportCount').value = '1';
+      renderReports();
+      playClick();
+    });
+  }
+
+  renderReports();
+
+  // ==================== TIP OF THE DAY ====================
+  var TIPS = [
+    'Перед занятием гос.волны всегда сначала делайте запрос в /dep.',
+    'Сотрудник УК не должен пытаться «завалить» кандидата на собеседовании.',
+    'На момент приёма во фракцию у кандидата не должно быть звёзд розыска и судимостей.',
+    'Задержание применяется только при наличии конкретного законного основания.',
+    'Служебный транспорт нельзя использовать в личных целях — только по разрешению.',
+    'Все спорные вопросы решаются по цепочке руководства, а не через конфликт.',
+    'Обычный проход на закрытую территорию сам по себе не даёт права на досмотр.'
+  ];
+  var tipEl = document.getElementById('tipText');
+  if (tipEl) {
+    var dayIndex = Math.floor(Date.now() / 86400000) % TIPS.length;
+    tipEl.textContent = TIPS[dayIndex];
   }
 })();
 </script>
