@@ -67,7 +67,7 @@ h1{font-size:22px;font-weight:800;margin:0;letter-spacing:-.01em;background:line
 .user-chip{display:none;align-items:center;gap:8px;padding:6px 12px;border-radius:10px;background:var(--panel-2);border:1px solid var(--line);font-size:12.5px;color:var(--muted);box-shadow:var(--shadow-1)}
 .user-chip.show{display:flex}
 .user-chip b{color:var(--text);font-weight:700}
-.user-chip button{background:none;border:none;color:var(--muted);cursor:pointer;font-size:11px;padding:2px 4px;border-radius:5px}
+.user-chip button{background:none;border:none;color:var(--muted);cursor:pointer;font-size:11px;padding:2px 4px;border-radius:5px;font-family:'Manrope',sans-serif}
 .user-chip button:hover{color:var(--red)}
 
 .hero{max-width:880px;margin:0 auto;padding:40px 20px 8px;text-align:center;position:relative}
@@ -136,8 +136,6 @@ h1{font-size:22px;font-weight:800;margin:0;letter-spacing:-.01em;background:line
 .lec-heading{flex:1;min-width:0}
 .lec-heading h2{font-size:19px;font-weight:800;margin:0 0 3px;letter-spacing:-.01em}
 .lec-heading p{margin:0;font-size:13px;color:var(--muted)}
-.expand-all-btn{flex:none;background:none;border:1px solid var(--line);color:var(--muted);font-family:'Manrope',sans-serif;font-size:12.5px;font-weight:700;padding:9px 15px;border-radius:9px;cursor:pointer;transition:border-color .2s ease,color .2s ease,background .25s ease}
-.expand-all-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
 .lecture-body{padding:6px 26px 28px}
 
 details.sub{border-bottom:1px solid var(--line);position:relative}
@@ -157,8 +155,6 @@ details.sub[open]>summary .sub-chev{transform:rotate(180deg);color:var(--accent)
 .sub-content li b,.sub-content p b{color:var(--text);font-weight:600}
 .sub-content h4{font-size:12px;color:var(--accent);margin:16px 0 7px;font-weight:800;text-transform:uppercase;letter-spacing:.08em}
 .tag{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:5px;margin-left:6px;border:1px solid rgba(226,163,61,.15)}
-.tag-green{background:rgba(111,169,122,.15);color:var(--green);border-color:rgba(111,169,122,.2)}
-.tag-warn{background:rgba(226,163,61,.15);color:var(--accent)}
 .callout{background:linear-gradient(135deg,var(--panel-2),rgba(226,163,61,.06));border-left:3px solid var(--accent);border-radius:10px;padding:12px 16px;font-size:13.5px;color:var(--text);margin:11px 0 15px;line-height:1.65;box-shadow:var(--shadow-1)}
 .callout b{color:var(--accent)}
 .chain{font-size:13.5px;color:var(--muted);line-height:2.2;background:var(--panel-2);border-radius:11px;padding:15px 19px;border:1px solid var(--line);word-break:break-word;box-shadow:var(--shadow-1)}
@@ -175,7 +171,7 @@ details.sub[open]>summary .sub-chev{transform:rotate(180deg);color:var(--accent)
 .mini-card b{color:var(--text);display:block;margin-bottom:4px;font-size:13px}
 .mini-card .mc-tag{display:inline-block;font-size:10.5px;font-weight:800;padding:2px 7px;border-radius:5px;background:var(--accent-soft);color:var(--accent);margin-bottom:6px;border:1px solid rgba(226,163,61,.15)}
 
-/* ===== FORM (report) ===== */
+/* ===== FORM ===== */
 .report-form{padding:8px 26px 28px}
 .report-form .field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
 .report-form label{font-size:12px;color:var(--muted);font-weight:700}
@@ -192,13 +188,11 @@ details.sub[open]>summary .sub-chev{transform:rotate(180deg);color:var(--accent)
 .form-msg.ok{color:var(--green)}
 .hint{font-size:12px;color:var(--muted);margin:6px 0 14px;line-height:1.55;text-align:center}
 
-/* ===== AUTH PANEL ===== */
 .auth-tabs{display:flex;gap:8px;padding:20px 26px 0}
 .auth-tab{padding:9px 16px;border-radius:10px;background:var(--panel-2);border:1px solid var(--line);color:var(--muted);font-weight:700;font-size:13px;cursor:pointer;font-family:'Manrope',sans-serif;transition:all .2s ease}
 .auth-tab:hover{border-color:var(--accent);color:var(--accent)}
 .auth-tab.active{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
 
-/* ===== WEEK SUMMARY ===== */
 .week-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:20px 26px 6px}
 @media(max-width:640px){.week-stats{grid-template-columns:repeat(2,1fr)}}
 .week-stat{background:linear-gradient(155deg,var(--panel-2),var(--panel));border:1px solid var(--line);border-radius:12px;padding:14px 16px}
@@ -211,7 +205,6 @@ details.sub[open]>summary .sub-chev{transform:rotate(180deg);color:var(--accent)
 .week-row .wk-nums{display:flex;flex-wrap:wrap;gap:8px;font-size:12px;color:var(--muted)}
 .week-row .wk-nums b{color:var(--text)}
 
-/* ===== TOAST ===== */
 .result-toast{position:fixed;left:50%;top:80px;transform:translate(-50%,-30px);padding:16px 28px;border-radius:14px;font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;z-index:200;opacity:0;pointer-events:none;transition:opacity .35s ease,transform .4s cubic-bezier(.2,.9,.3,1.2);box-shadow:var(--shadow-3)}
 .result-toast.show{opacity:1;transform:translate(-50%,0)}
 .result-toast.success{background:linear-gradient(135deg,rgba(111,169,122,.95),rgba(79,132,89,.95));color:#0E1A11;border:1px solid rgba(111,169,122,.5)}
@@ -382,22 +375,22 @@ details.sub[open]>summary .sub-chev{transform:rotate(180deg);color:var(--accent)
         <div class="sub-content">
           <p>Служба в ФСО — это система, где каждая территория имеет свой режим, каждое действие сотрудника — правовое основание, а каждое обращение — установленный порядок подчинения.</p>
           <div class="mini-grid">
-            <div class="mini-card"><span class="mc-tag">1</span><b>Режим территории</b>Какой порядок действует на объекте и что он разрешает.</div>
-            <div class="mini-card"><span class="mc-tag">2</span><b>Право доступа</b>Есть ли у гражданина законное основание находиться здесь.</div>
-            <div class="mini-card"><span class="mc-tag">3</span><b>Полномочия</b>Что сотрудник вправе сделать, а что — уже превышение.</div>
-            <div class="mini-card"><span class="mc-tag">4</span><b>Субординация</b>Кому докладывать и через кого решать вопросы.</div>
+            <div class="mini-card"><span class="mc-tag">1</span><b>Режим территории</b>Какой порядок действует на объекте.</div>
+            <div class="mini-card"><span class="mc-tag">2</span><b>Право доступа</b>Законное основание находиться здесь.</div>
+            <div class="mini-card"><span class="mc-tag">3</span><b>Полномочия</b>Что вправе сделать сотрудник.</div>
+            <div class="mini-card"><span class="mc-tag">4</span><b>Субординация</b>Кому докладывать и через кого решать.</div>
           </div>
-          <div class="callout"><b>Главная формула службы:</b> знать режим → соблюдать порядок → действовать в пределах полномочий → соблюдать субординацию.</div>
+          <div class="callout"><b>Главная формула:</b> знать режим → соблюдать порядок → действовать в пределах полномочий → соблюдать субординацию.</div>
         </div>
       </details>
       <details class="sub">
         <summary><span class="sub-num">2</span><span class="sub-title">Режимы территорий</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
         <div class="sub-content">
           <div class="mini-grid">
-            <div class="mini-card"><span class="mc-tag">⚪ Охраняемая</span><b>Основание нахождения</b>Проверяется законность пребывания гражданина.</div>
+            <div class="mini-card"><span class="mc-tag">⚪ Охраняемая</span><b>Основание нахождения</b>Проверяется законность пребывания.</div>
             <div class="mini-card"><span class="mc-tag">🟡 Закрытая</span><b>Право доступа</b>Только установленные категории лиц.</div>
-            <div class="mini-card"><span class="mc-tag">🔴 Режимная</span><b>Контроль + досмотр</b>Повышенный контроль, возможен личный досмотр.</div>
-            <div class="mini-card"><span class="mc-tag">⚫ Особого статуса</span><b>Строгий режим</b>Наиболее строгий порядок безопасности.</div>
+            <div class="mini-card"><span class="mc-tag">🔴 Режимная</span><b>Контроль + досмотр</b>Повышенный контроль.</div>
+            <div class="mini-card"><span class="mc-tag">⚫ Особого статуса</span><b>Строгий режим</b>Максимальный порядок безопасности.</div>
           </div>
         </div>
       </details>
@@ -421,18 +414,18 @@ details.sub[open]>summary .sub-chev{transform:rotate(180deg);color:var(--accent)
     </div>
     <div class="lecture-body">
       <details class="sub" open>
-        <summary><span class="sub-num">1</span><span class="sub-title">На какие категории делятся территории?</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <summary><span class="sub-num">1</span><span class="sub-title">Категории территорий</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
         <div class="sub-content">
           <ul>
-            <li><b>Охраняемая</b> — гражданин может находиться при наличии законного основания</li>
+            <li><b>Охраняемая</b> — гражданин может находиться при наличии основания</li>
             <li><b>Закрытая</b> — доступ только определённым категориям лиц</li>
-            <li><b>Режимный объект</b> — повышенный контроль доступа, включая досмотр</li>
-            <li><b>Объект особого статуса</b> — наиболее строгий режим безопасности</li>
+            <li><b>Режимный объект</b> — повышенный контроль, включая досмотр</li>
+            <li><b>Объект особого статуса</b> — строгий режим безопасности</li>
           </ul>
         </div>
       </details>
       <details class="sub">
-        <summary><span class="sub-num">2</span><span class="sub-title">Виды управлений в ФСО</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <summary><span class="sub-num">2</span><span class="sub-title">Управления ФСО</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
         <div class="sub-content">
           <ul>
             <li><b>УК</b> — Управление кадров</li>
@@ -443,19 +436,19 @@ details.sub[open]>summary .sub-chev{transform:rotate(180deg);color:var(--accent)
         </div>
       </details>
       <details class="sub">
-        <summary><span class="sub-num">3</span><span class="sub-title">Основные обязанности сотрудника</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <summary><span class="sub-num">3</span><span class="sub-title">Обязанности сотрудника</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
         <div class="sub-content">
           <ul>
             <li>Соблюдать Конституцию РО, законодательство, Устав и законные приказы</li>
             <li>Исполнять обязанности только в пределах компетенции</li>
             <li>Уважать права, свободы, честь и достоинство граждан</li>
-            <li>Отказаться от исполнения заведомо незаконного приказа</li>
-            <li>Соблюдать режим охраняемой законом тайны</li>
+            <li>Отказаться от заведомо незаконного приказа</li>
+            <li>Соблюдать режим охраняемой тайны</li>
             <li>Бережно обращаться с госимуществом</li>
-            <li>Поддерживать служебную подготовку</li>
-            <li>Незамедлительно докладывать руководителю об угрозе</li>
+            <li>Поддерживать подготовку, экипировку, связь</li>
+            <li>Докладывать об угрозе и нарушении режима</li>
             <li>Не использовать служебное в личных целях</li>
-            <li>Соблюдать субординацию и правила служебного общения</li>
+            <li>Соблюдать субординацию</li>
           </ul>
           <div class="callout">Ответ засчитывается при 7 и более названных вариантах.</div>
         </div>
@@ -499,7 +492,7 @@ details.sub[open]>summary .sub-chev{transform:rotate(180deg);color:var(--accent)
         </div>
       </details>
       <details class="sub">
-        <summary><span class="sub-num">4</span><span class="sub-title">Завершение и оформление</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <summary><span class="sub-num">4</span><span class="sub-title">Завершение</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
         <div class="sub-content">
           <ul>
             <li>Уточнить, есть ли вопросы у кандидата</li>
@@ -592,7 +585,7 @@ details.sub[open]>summary .sub-chev{transform:rotate(180deg);color:var(--accent)
   </div>
 </div>
 
-<!-- ==================== REPORT (DAY) ==================== -->
+<!-- ==================== REPORT ==================== -->
 <div class="modal-overlay" id="reportModal">
   <div class="modal-panel">
     <div class="modal-header">
@@ -601,20 +594,17 @@ details.sub[open]>summary .sub-chev{transform:rotate(180deg);color:var(--accent)
       <button type="button" class="modal-close" data-modal-close>✕</button>
     </div>
 
-    <!-- Экран входа/регистрации -->
     <div id="reportAuth">
       <div class="auth-tabs">
         <button type="button" class="auth-tab active" data-atab="login">Вход</button>
         <button type="button" class="auth-tab" data-atab="register">Регистрация</button>
       </div>
-
       <div id="reportLogin" class="report-form">
         <div class="field"><label>E-mail</label><input type="email" id="rLoginEmail"></div>
         <div class="field"><label>Пароль</label><input type="password" id="rLoginPassword"></div>
         <div class="form-msg err" id="rLoginErr"></div>
         <button type="button" class="btn-primary" id="rLoginBtn">Войти</button>
       </div>
-
       <div id="reportRegister" class="report-form hidden">
         <div class="field"><label>ФИО</label><input type="text" id="rRegName" placeholder="Иванов Иван"></div>
         <div class="field"><label>Звание / должность</label><input type="text" id="rRegRank" placeholder="Инструктор УК"></div>
@@ -627,12 +617,10 @@ details.sub[open]>summary .sub-chev{transform:rotate(180deg);color:var(--accent)
       </div>
     </div>
 
-    <!-- Экран ожидания -->
     <div id="reportPending" class="report-form hidden">
       <div class="callout" style="margin-top:14px">Ваш аккаунт ожидает подтверждения начальника УК. После одобрения вы сможете подавать отчёты.</div>
     </div>
 
-    <!-- Экран формы отчёта -->
     <div id="reportForm" class="report-form hidden">
       <p class="hint" style="text-align:left">Один отчёт на день. Повторная отправка обновит его.</p>
       <div class="field"><label>Дата</label><input type="date" id="rpDate" style="max-width:220px"></div>
@@ -653,7 +641,7 @@ details.sub[open]>summary .sub-chev{transform:rotate(180deg);color:var(--accent)
   </div>
 </div>
 
-<!-- ==================== WEEKLY SUMMARY ==================== -->
+<!-- ==================== WEEK ==================== -->
 <div class="modal-overlay" id="weekModal">
   <div class="modal-panel">
     <div class="modal-header">
@@ -738,8 +726,6 @@ function openModal(m){
   Object.values(modals).forEach(x=>{ if(x && x!==m) x.classList.remove('show'); });
   m.classList.add('show');
   document.body.classList.add('modal-open');
-  if(m===modals.report) renderReportScreen();
-  if(m===modals.week) renderWeek();
 }
 function closeModal(m){
   if(!m)return;
@@ -752,12 +738,15 @@ function closeAll(){ Object.values(modals).forEach(x=>x && closeModal(x)); }
 ['navLectureBtn','navExamBtn','navInterviewBtn','navWaveBtn','navLawsBtn','navWeekBtn','navReportBtn'].forEach(id=>{
   const el=$(id);
   if(!el)return;
-  el.addEventListener('click',()=>{
+  el.addEventListener('click', async ()=>{
     const map={
       navLectureBtn:'lecture', navExamBtn:'exam', navInterviewBtn:'interview',
       navWaveBtn:'wave', navLawsBtn:'laws', navWeekBtn:'week', navReportBtn:'report'
     };
-    openModal(modals[map[id]]);
+    const target = modals[map[id]];
+    openModal(target);
+    if (map[id] === 'report') await renderReportScreen();
+    if (map[id] === 'week')   await renderWeek();
   });
 });
 document.querySelectorAll('.modal-close').forEach(b=>{
@@ -769,7 +758,7 @@ Object.values(modals).forEach(m=>{
 });
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeAll(); });
 
-/* ==================== AUTH (внутри отчёта) ==================== */
+/* ==================== AUTH UI (в модалке отчёта) ==================== */
 document.querySelectorAll('[data-atab]').forEach(t=>{
   t.addEventListener('click',()=>{
     document.querySelectorAll('[data-atab]').forEach(x=>x.classList.remove('active'));
@@ -794,19 +783,31 @@ $('rRegBtn').addEventListener('click', async ()=>{
 
 $('rLoginBtn').addEventListener('click', async ()=>{
   $('rLoginErr').textContent='';
-  const email=$('rLoginEmail').value.trim();
-  const pass=$('rLoginPassword').value;
+  const email = $('rLoginEmail').value.trim();
+  const pass  = $('rLoginPassword').value;
   const { error } = await sb.auth.signInWithPassword({ email, password: pass });
-  if(error){ $('rLoginErr').textContent=error.message; return; }
+  if (error) { $('rLoginErr').textContent = error.message; return; }
+
   await loadSession();
-  renderReportScreen();
+
+  if (CURRENT.user && !CURRENT.profile) {
+    const { data: profile } = await sb.from('profiles').select('*')
+      .eq('id', CURRENT.user.id).maybeSingle();
+    if (profile) CURRENT.profile = profile;
+  }
+
+  await renderReportScreen();
+
+  if (CURRENT.profile && CURRENT.profile.approved) {
+    setTimeout(()=> { const f = $('rpLectures'); if (f) f.focus(); }, 150);
+  }
 });
 
 $('logoutBtn') && $('logoutBtn').addEventListener('click', async ()=>{
   await sb.auth.signOut();
   CURRENT={user:null,profile:null};
   updateUserChip();
-  renderReportScreen();
+  await renderReportScreen();
   showToast('Вы вышли из аккаунта','fail');
 });
 
@@ -814,9 +815,10 @@ $('logoutBtn') && $('logoutBtn').addEventListener('click', async ()=>{
 async function loadSession(){
   const { data: { session } } = await sb.auth.getSession();
   if(!session){ CURRENT={user:null,profile:null}; updateUserChip(); return; }
-  const { data: profile } = await sb.from('profiles').select('*').eq('id', session.user.id).single();
-  CURRENT.user=session.user;
-  CURRENT.profile=profile||null;
+  const { data: profile } = await sb.from('profiles').select('*')
+    .eq('id', session.user.id).maybeSingle();
+  CURRENT.user = session.user;
+  CURRENT.profile = profile || null;
   updateUserChip();
 }
 
@@ -825,27 +827,30 @@ function updateUserChip(){
   if(!chip)return;
   if(CURRENT.profile && CURRENT.profile.approved){
     chip.classList.add('show');
-    $('userName').textContent=CURRENT.profile.full_name || CURRENT.user.email;
+    $('userName').textContent=CURRENT.profile.full_name || (CURRENT.user && CURRENT.user.email) || '—';
   } else {
     chip.classList.remove('show');
   }
 }
 
 /* ==================== REPORT SCREEN ==================== */
-function renderReportScreen(){
-  // Показываем нужный экран внутри модалки
+async function renderReportScreen(){
+  if (CURRENT.user && !CURRENT.profile) {
+    const { data: profile } = await sb.from('profiles').select('*')
+      .eq('id', CURRENT.user.id).maybeSingle();
+    if (profile) CURRENT.profile = profile;
+  }
+
   const hasUser = !!CURRENT.user;
-  const hasProfile = !!CURRENT.profile;
-  const approved = hasProfile && CURRENT.profile.approved;
+  const approved = !!(CURRENT.profile && CURRENT.profile.approved);
 
   show('reportAuth', !hasUser);
   show('reportPending', hasUser && !approved);
   show('reportForm', hasUser && approved);
 
-  if(hasUser && approved){
-    if(!$('rpDate').value) $('rpDate').value=todayStr();
-    // подтянуть текущий отчёт за сегодня
-    loadTodayReport();
+  if (hasUser && approved) {
+    if (!$('rpDate').value) $('rpDate').value = todayStr();
+    await loadTodayReport();
   }
 }
 
@@ -882,7 +887,7 @@ $('rpSubmit').addEventListener('click', async ()=>{
   showToast('Отчёт отправлен начальству','success');
 });
 
-/* ==================== WEEK SUMMARY ==================== */
+/* ==================== WEEK ==================== */
 function startOfWeek(ts){
   const d=new Date(ts); const day=d.getDay();
   const diff=day===0?6:day-1;
@@ -901,7 +906,7 @@ async function renderWeek(){
   box.innerHTML='';
 
   if(!CURRENT.user || !CURRENT.profile || !CURRENT.profile.approved){
-    box.innerHTML='<div class="callout">Войдите в аккаунт через кнопку «📝 Отчёт за день», чтобы увидеть недельную сводку.</div>';
+    box.innerHTML='<div class="callout">Войдите в аккаунт через плитку «📝 Отчёт за день», чтобы увидеть недельную сводку.</div>';
     $('wkLec').textContent='0'; $('wkExa').textContent='0'; $('wkInt').textContent='0'; $('wkInc').textContent='0';
     return;
   }
