@@ -986,7 +986,7 @@ summary:focus-visible,button:focus-visible{outline:2px solid var(--accent);outli
   <div class="modal-panel">
     <div class="modal-header">
       <span class="lec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.97-4.03 9-9 9-1.5 0-2.9-.37-4.14-1.02L3 21l1.02-3.86A8.96 8.96 0 0 1 3 12c0-4.97 4.03-9 9-9s9 4.03 9 9Z"/></svg></span>
-      <span class="lec-heading"><h2>Собеседование</h2><p>Порядок приёма кандидата во фракцию ФСО</p></span>
+      <span class="lec-heading"><h2>Собеседование</h2><p>Проведение собеседования при приёме во фракцию ФСО</p></span>
       <button type="button" class="expand-all-btn" data-expand="interviewModal">Развернуть всё</button>
       <button type="button" class="modal-close" data-modal-close>✕</button>
     </div>
@@ -994,51 +994,125 @@ summary:focus-visible,button:focus-visible{outline:2px solid var(--accent);outli
       <details class="sub" open>
         <summary><span class="sub-num">1</span><span class="sub-title">Приветствие и представление</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
         <div class="sub-content">
-          <ul><li>Поздороваться с кандидатом</li><li>Представиться: имя, звание, должность</li><li>Предоставить удостоверение</li><li>Уточнить готовность</li></ul>
+          <ul>
+            <li>Поздороваться с кандидатом</li>
+            <li>Представиться: имя, звание, должность</li>
+            <li>Предоставить служебное удостоверение</li>
+            <li>Уточнить готовность кандидата пройти собеседование</li>
+          </ul>
+          <div class="callout"><b>Пример:</b> «Здравствуйте. Я [звание, имя, фамилия], сотрудник Управления кадров ФСО. Сегодня я проведу с вами собеседование для поступления на службу. Готовы начать?»</div>
         </div>
       </details>
+
       <details class="sub">
         <summary><span class="sub-num">2</span><span class="sub-title">Проверка документов</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
         <div class="sub-content">
-          <ul><li>Паспорт — более 18 лет</li><li>Лицензии, В/У кат. B</li><li>Мед. карта</li><li>G-фракционное, фоторобот</li><li>Отсутствие розыска и судимости</li></ul>
+          <ul>
+            <li><b>Паспорт</b> — более 18 лет</li>
+            <li><b>Лицензии</b> — В/У категории B</li>
+            <li><b>Мед. карта</b> — здоров по всем параметрам</li>
+            <li><b>G-фракционное</b> — фоторобот</li>
+            <li>Проверка на текущий уровень розыска</li>
+          </ul>
+          <div class="callout"><b>Важно:</b> на момент принятия кандидата во фракцию должны отсутствовать звёзды розыска и судимости!</div>
         </div>
       </details>
+
       <details class="sub">
         <summary><span class="sub-num">3</span><span class="sub-title">Общие вопросы</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
         <div class="sub-content">
-          <ul>
+          <ol class="step-list">
             <li>Что такое ФСО?</li>
-            <li>Чем занимается ФСО?</li>
-            <li>Почему именно ФСО?</li>
-            <li>Что должен делать сотрудник?</li>
-            <li>Какие качества важны?</li>
-            <li>Готовы ли соблюдать субординацию и приказы?</li>
-          </ul>
+            <li>Чем занимается Федеральная служба охраны?</li>
+            <li>Почему вы хотите вступить именно в ФСО?</li>
+            <li>Что, по вашему мнению, должен делать сотрудник ФСО?</li>
+            <li>Какие качества должны быть у сотрудника ФСО?</li>
+            <li>Готовы ли вы соблюдать субординацию?</li>
+            <li>Готовы ли вы выполнять законные приказы руководства?</li>
+            <li>Что будете делать, если не согласны с решением старшего по званию?</li>
+          </ol>
+          <div class="callout">Ожидается понимание того, что спорные вопросы необходимо решать корректно и в установленном порядке, а не устраивать конфликт.</div>
         </div>
       </details>
+
       <details class="sub">
-        <summary><span class="sub-num">4</span><span class="sub-title">Завершение и оформление</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <summary><span class="sub-num">4</span><span class="sub-title">Завершение собеседования</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
         <div class="sub-content">
+          <p>После завершения вопросов сотрудник УК должен:</p>
+          <ol class="step-list">
+            <li><b>Уточнить</b>, есть ли у кандидата вопросы</li>
+            <li><b>Сообщить</b> результат собеседования</li>
+            <li><b>При положительном результате</b> объяснить дальнейшие действия</li>
+          </ol>
+          <div class="callout"><b>Пример окончания:</b> «Спасибо за прохождение собеседования. На этом собеседование окончено. Ожидайте дальнейших указаний сотрудника Управления кадров.»</div>
+        </div>
+      </details>
+
+      <details class="sub">
+        <summary><span class="sub-num">5</span><span class="sub-title">Дальнейшие действия при положительном результате</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <div class="sub-content">
+          <h4>Сообщение кандидату (nonRp или шёпот)</h4>
+          <div class="cmd-block"><span class="cmd-key">/w ID игрока</span> — ссылка на канал Правительства
+<span class="cmd-key">/w ID игрока</span> — Курс ФСО | Имя Фамилия | Статик</div>
+          <p>Допускается формат: <b>Курс ФСО | И. Фамилия | Статик</b>. NonRp-чат — <b>/b</b>.</p>
+
+          <h4>Ожидание и выдача ролей</h4>
+          <p>Ожидаем «+» в выдаче ролей, после добавляем роли:</p>
           <ul>
-            <li>Уточнить, есть ли у кандидата вопросы</li>
-            <li>Сообщить результат</li>
-            <li>Объяснить дальнейшие действия</li>
-            <li>Роли: ФСО, Рядовой ФСО, Академия ФСО, Правительство</li>
+            <li>ФСО</li>
+            <li>Рядовой ФСО</li>
+            <li>Академия ФСО</li>
+            <li>Правительство</li>
           </ul>
-          <div class="callout">Передать контракт: G-фракционное → пригласить.</div>
+
+          <h4>Контракт и сопровождение</h4>
+          <ul>
+            <li>Передаём контракт: <b>G-фракционное → пригласить</b></li>
+            <li>Просим старший состав, если не позволяет ранг</li>
+            <li>Сопроводить до получения удостоверения и раздевалки, если кандидат не знает куда идти</li>
+          </ul>
         </div>
       </details>
+
       <details class="sub">
-        <summary><span class="sub-num">5</span><span class="sub-title">На что обращать внимание</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <summary><span class="sub-num">6</span><span class="sub-title">На что обращать внимание</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
         <div class="sub-content">
-          <p><b>Плюсы:</b> грамотная речь, адекватность, знание RP, субординация.</p>
-          <p><b>Минусы:</b> агрессия, неадекватные ответы, незнание RP, конфликтность.</p>
+          <h4>🟢 Положительные признаки</h4>
+          <ul>
+            <li>грамотная речь</li>
+            <li>адекватное поведение</li>
+            <li>знание RP-терминов</li>
+            <li>понимание игровой логики</li>
+            <li>соблюдение субординации</li>
+            <li>спокойная реакция на сложные вопросы</li>
+            <li>заинтересованность во вступлении</li>
+          </ul>
+
+          <h4>🔴 Причины обратить внимание</h4>
+          <ul>
+            <li>агрессивное поведение</li>
+            <li>неадекватные ответы</li>
+            <li>незнание базовых RP-терминов</li>
+            <li>отсутствие понимания субординации</li>
+            <li>конфликтность / неадекватное поведение с сотрудником</li>
+            <li>откровенное отношение к службе как к способу получить оружие/полномочия</li>
+          </ul>
         </div>
       </details>
+
       <details class="sub">
-        <summary><span class="sub-num">6</span><span class="sub-title">Главный принцип</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
+        <summary><span class="sub-num">7</span><span class="sub-title">Главный принцип собеседования</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
         <div class="sub-content">
-          <div class="callout">Сотрудник УК не должен пытаться «завалить» кандидата. Оценка — объективная.</div>
+          <div class="callout"><b>Сотрудник УК не должен пытаться «завалить» кандидата.</b></div>
+          <p>Цель собеседования — определить, способен ли человек:</p>
+          <ul>
+            <li>понимать RP</li>
+            <li>соблюдать правила</li>
+            <li>выполнять обязанности</li>
+            <li>работать в коллективе</li>
+            <li>соблюдать дисциплину</li>
+          </ul>
+          <div class="callout">Кандидат должен оцениваться <b>объективно</b>.</div>
         </div>
       </details>
     </div>
@@ -1373,7 +1447,6 @@ summary:focus-visible,button:focus-visible{outline:2px solid var(--accent);outli
   function ensureCtx(){try{ctx=ctx||new (window.AudioContext||window.webkitAudioContext)();if(ctx.state==='suspended')ctx.resume();}catch(e){}return ctx}
   function playClick(){try{var c=ensureCtx();if(!c)return;var n=c.currentTime,d=.14,o1=c.createOscillator(),o2=c.createOscillator(),g1=c.createGain(),g2=c.createGain(),lp=c.createBiquadFilter();o1.type='sine';o1.frequency.setValueAtTime(880,n);o1.frequency.exponentialRampToValueAtTime(660,n+d);o2.type='sine';o2.frequency.setValueAtTime(1320,n);o2.frequency.exponentialRampToValueAtTime(990,n+d);g1.gain.setValueAtTime(1e-4,n);g1.gain.exponentialRampToValueAtTime(.06,n+.03);g1.gain.exponentialRampToValueAtTime(1e-4,n+d);g2.gain.setValueAtTime(1e-4,n);g2.gain.exponentialRampToValueAtTime(.018,n+.04);g2.gain.exponentialRampToValueAtTime(1e-4,n+d);lp.type='lowpass';lp.frequency.setValueAtTime(2600,n);lp.frequency.exponentialRampToValueAtTime(1400,n+d);o1.connect(g1);o2.connect(g2);g1.connect(lp);g2.connect(lp);lp.connect(c.destination);o1.start(n);o2.start(n);o1.stop(n+d+.02);o2.stop(n+d+.02);}catch(e){}}
 
-  // Success: восходящее трезвучие C-E-G
   function playSuccess(){
     try{
       var c=ensureCtx();if(!c)return;
@@ -1392,7 +1465,6 @@ summary:focus-visible,button:focus-visible{outline:2px solid var(--accent);outli
     }catch(e){}
   }
 
-  // Fail: низкое падение
   function playFail(){
     try{
       var c=ensureCtx();if(!c)return;
@@ -1439,7 +1511,7 @@ summary:focus-visible,button:focus-visible{outline:2px solid var(--accent);outli
 
   var examErrVal=0;
   var examErrCountEl=document.getElementById('examErrCount');
-  var lastResultState=null; // для отслеживания переходов при нажатии +/-
+  var lastResultState=null;
 
   function checkExamResultChange(){
     var prev=lastResultState;
@@ -1538,7 +1610,6 @@ summary:focus-visible,button:focus-visible{outline:2px solid var(--accent);outli
     if(txtEl)txtEl.textContent=text;
     toastEl.classList.remove('success','fail');
     toastEl.classList.add(type);
-    // Меняем иконку
     var pathEl=toastEl.querySelector('.rt-path');
     if(pathEl){
       if(type==='success')pathEl.setAttribute('d','M20 6 9 17l-5-5');
@@ -1620,7 +1691,6 @@ summary:focus-visible,button:focus-visible{outline:2px solid var(--accent);outli
     }
     function tick(){
       ctx2.clearRect(0,0,W,H);
-      // линии между близкими частицами
       for(var i=0;i<particles.length;i++){
         for(var j=i+1;j<particles.length;j++){
           var dx=particles[i].x-particles[j].x;
@@ -1632,9 +1702,7 @@ summary:focus-visible,button:focus-visible{outline:2px solid var(--accent);outli
           }
         }
       }
-      // частицы
       particles.forEach(function(p){
-        // реагирование на мышь
         if(mouse.x!==null){
           var dx=p.x-mouse.x, dy=p.y-mouse.y;
           var dist=Math.sqrt(dx*dx+dy*dy);
@@ -1644,18 +1712,15 @@ summary:focus-visible,button:focus-visible{outline:2px solid var(--accent);outli
             p.vy+=dy/dist*force*0.08;
           }
         }
-        // обновление
         p.x+=p.vx;
         p.y+=p.vy;
         p.a+=p.va;
         p.vx*=0.985;
         p.vy*=0.985;
-        // границы
         if(p.y<-20){p.y=H+20;p.x=Math.random()*W;}
         if(p.y>H+20){p.y=-20;}
         if(p.x<-20)p.x=W+20;
         if(p.x>W+20)p.x=-20;
-        // отрисовка с мерцанием
         var flicker=0.7+Math.sin(p.a)*0.3;
         var rgb=color(p.hue);
         ctx2.beginPath();
@@ -1665,7 +1730,6 @@ summary:focus-visible,button:focus-visible{outline:2px solid var(--accent);outli
         ctx2.fillStyle=grad;
         ctx2.arc(p.x,p.y,p.r*4,0,Math.PI*2);
         ctx2.fill();
-        // центральная точка
         ctx2.beginPath();
         ctx2.fillStyle='rgba('+rgb+','+(p.alpha*flicker*0.9)+')';
         ctx2.arc(p.x,p.y,p.r,0,Math.PI*2);
@@ -1676,7 +1740,6 @@ summary:focus-visible,button:focus-visible{outline:2px solid var(--accent);outli
     window.addEventListener('resize',resize,{passive:true});
     window.addEventListener('mousemove',function(e){mouse.x=e.clientX;mouse.y=e.clientY},{passive:true});
     window.addEventListener('mouseleave',function(){mouse.x=null;mouse.y=null});
-    // для тача
     window.addEventListener('touchmove',function(e){
       if(e.touches&&e.touches[0]){mouse.x=e.touches[0].clientX;mouse.y=e.touches[0].clientY;}
     },{passive:true});
