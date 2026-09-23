@@ -60,6 +60,7 @@ h1{font-size:22px;font-weight:800;margin:0;letter-spacing:-.01em;background:line
 .header-tools{display:flex;align-items:center;gap:10px;flex:none}
 .theme-btn{width:42px;height:42px;border-radius:11px;background:var(--panel-2);border:1px solid var(--line);color:var(--text);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .2s ease,border-color .2s ease,box-shadow .25s ease,color .2s ease;box-shadow:var(--shadow-1)}
 .theme-btn:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px) rotate(-8deg);box-shadow:0 8px 22px rgba(226,163,61,.3)}
+.theme-btn:active{transform:scale(.9) rotate(-4deg);transition:transform .1s ease}
 .theme-btn svg{width:20px;height:20px}
 .theme-btn .icon-moon{display:block}.theme-btn .icon-sun{display:none}
 :root[data-theme="light"] .theme-btn .icon-moon{display:none}
@@ -94,6 +95,10 @@ h1{font-size:22px;font-weight:800;margin:0;letter-spacing:-.01em;background:line
 .nav-tile:hover::before{opacity:1}
 .nav-tile:hover::after{transform:scaleX(1)}
 .nav-tile:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:var(--shadow-3),0 0 30px rgba(226,163,61,.2)}
+.nav-tile:active{transform:translateY(-1px) scale(.98);transition:transform .1s ease}
+.nav-tile{background-size:220% 220%}
+.nav-tile.highlight{animation:highlightGlow 3.5s ease-in-out infinite}
+@keyframes highlightGlow{0%,100%{box-shadow:var(--shadow-2)}50%{box-shadow:var(--shadow-2),0 0 22px rgba(226,163,61,.28)}}
 .tile-icon{flex:none;width:50px;height:50px;border-radius:13px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;transition:transform .3s ease,box-shadow .3s ease;position:relative;z-index:1;border:1px solid rgba(226,163,61,.15)}
 .nav-tile:hover .tile-icon{transform:scale(1.1) rotate(-5deg);box-shadow:0 0 24px rgba(226,163,61,.3)}
 .tile-icon svg{width:24px;height:24px}
@@ -105,7 +110,10 @@ h1{font-size:22px;font-weight:800;margin:0;letter-spacing:-.01em;background:line
 
 .top-nav{max-width:880px;margin:0 auto;padding:0 20px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
 .nav-btn{position:relative;overflow:hidden;background:var(--panel);border:1px solid var(--line);color:var(--text);font-family:'Manrope',sans-serif;font-size:14px;font-weight:800;padding:12px 26px;border-radius:11px;cursor:pointer;transition:transform .22s ease,border-color .22s ease,color .22s ease,box-shadow .3s ease,background .3s ease;box-shadow:var(--shadow-2)}
+.nav-btn::before{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(115deg,transparent 0%,rgba(255,255,255,.16) 45%,rgba(255,255,255,.35) 50%,rgba(255,255,255,.16) 55%,transparent 100%);transform:skewX(-20deg);transition:left .55s ease;pointer-events:none}
+.nav-btn:hover::before{left:140%}
 .nav-btn:hover{transform:translateY(-3px);border-color:var(--accent);color:var(--accent);box-shadow:var(--shadow-3),0 0 24px rgba(226,163,61,.22);background:linear-gradient(180deg,var(--panel) 0%,var(--accent-soft) 100%)}
+.nav-btn:active{transform:translateY(-1px) scale(.96);transition:transform .1s ease}
 .nav-ornament{max-width:260px;margin:20px auto 0;display:flex;align-items:center;gap:10px;color:var(--accent);opacity:.65}
 .nav-ornament .orn-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--line))}
 .nav-ornament .orn-line:last-child{background:linear-gradient(90deg,var(--line),transparent)}
@@ -114,6 +122,7 @@ h1{font-size:22px;font-weight:800;margin:0;letter-spacing:-.01em;background:line
 .quick-ref{max-width:880px;margin:0 auto;padding:20px 20px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
 @media(max-width:720px){.quick-ref{grid-template-columns:1fr}}
 .qr-card{background:linear-gradient(155deg,var(--panel) 0%,var(--panel-2) 100%);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow-2);position:relative;overflow:hidden;transition:transform .25s ease,border-color .25s ease,box-shadow .3s ease}
+.qr-card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:var(--shadow-3),0 0 20px rgba(226,163,61,.15)}
 .qr-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-2),transparent)}
 .qr-title{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:7px}
 .qr-title svg{width:14px;height:14px}
@@ -131,6 +140,26 @@ h1{font-size:22px;font-weight:800;margin:0;letter-spacing:-.01em;background:line
 .modal-header{display:flex;align-items:center;gap:14px;padding:24px 26px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,var(--accent-soft) 0%,transparent 100%);position:relative}
 .modal-close{flex:none;width:38px;height:38px;border-radius:10px;background:var(--panel-2);border:1px solid var(--line);color:var(--muted);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .25s ease,border-color .2s ease,color .2s ease;box-shadow:var(--shadow-1)}
 .modal-close:hover{border-color:var(--red);color:var(--red);transform:rotate(90deg) scale(1.05)}
+.modal-close:active{transform:rotate(90deg) scale(.9);transition:transform .1s ease}
+
+.expand-all-btn{flex:none;position:relative;overflow:hidden;background:var(--panel-2);border:1px solid var(--line);color:var(--muted);font-family:'Manrope',sans-serif;font-size:12.5px;font-weight:700;padding:9px 16px;border-radius:9px;cursor:pointer;white-space:nowrap;transition:transform .2s ease,border-color .2s ease,color .2s ease,box-shadow .25s ease,background .25s ease;box-shadow:var(--shadow-1)}
+.expand-all-btn::before{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(115deg,transparent 0%,rgba(255,255,255,.14) 45%,rgba(255,255,255,.28) 50%,rgba(255,255,255,.14) 55%,transparent 100%);transform:skewX(-20deg);transition:left .5s ease;pointer-events:none}
+.expand-all-btn:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow-2),0 0 16px rgba(226,163,61,.18);background:linear-gradient(180deg,var(--panel-2) 0%,var(--accent-soft) 100%)}
+.expand-all-btn:hover::before{left:140%}
+.expand-all-btn:active{transform:translateY(0) scale(.95);transition:transform .1s ease}
+#examErrToReport{border-color:rgba(226,163,61,.35);color:var(--accent);background:linear-gradient(180deg,var(--panel-2) 0%,var(--accent-soft) 100%)}
+#examErrToReport:hover{box-shadow:var(--shadow-2),0 0 18px rgba(226,163,61,.3)}
+#examErrReset:hover{border-color:var(--red);color:var(--red);background:linear-gradient(180deg,var(--panel-2) 0%,rgba(201,125,110,.12) 100%);box-shadow:var(--shadow-2),0 0 16px rgba(201,125,110,.22)}
+
+.exam-errors{display:flex;align-items:center;flex-wrap:wrap;gap:12px;padding:14px 16px;margin-bottom:18px;border-radius:14px;background:linear-gradient(155deg,var(--panel) 0%,var(--panel-2) 100%);border:1px solid var(--line);box-shadow:var(--shadow-1)}
+.ee-label{font-size:13px;font-weight:700;color:var(--text)}
+.ee-hint{font-size:11.5px;color:var(--muted);margin-left:auto}
+.stepper{display:flex;align-items:center;gap:2px;background:var(--panel-2);border:1px solid var(--line);border-radius:11px;padding:3px;box-shadow:var(--shadow-1)}
+.stepper button{flex:none;width:32px;height:32px;border-radius:8px;background:transparent;border:none;color:var(--accent);font-family:'Manrope',sans-serif;font-size:17px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;transition:background .2s ease,color .2s ease,transform .15s ease}
+.stepper button:hover{background:var(--accent-soft);color:var(--accent-2)}
+.stepper button:active{transform:scale(.88)}
+.stepper-value{min-width:30px;text-align:center;font-size:15px;font-weight:800;color:var(--text);font-variant-numeric:tabular-nums}
+@media(max-width:560px){.exam-errors{gap:10px}.ee-hint{margin-left:0;width:100%}}
 .lec-icon{flex:none;width:44px;height:44px;border-radius:12px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;border:1px solid rgba(226,163,61,.2);box-shadow:var(--glow)}
 .lec-icon svg{width:22px;height:22px}
 .lec-heading{flex:1;min-width:0}
@@ -186,8 +215,11 @@ details.sub[open]>summary .sub-chev{transform:rotate(180deg);color:var(--accent)
 .report-form textarea{min-height:110px;resize:vertical;line-height:1.55}
 .report-form .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 @media(max-width:640px){.report-form .grid4{grid-template-columns:repeat(2,1fr)}}
-.btn-primary{background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#1B140A;border:none;font-family:'Manrope',sans-serif;font-weight:800;font-size:14px;padding:12px 22px;border-radius:11px;cursor:pointer;transition:filter .2s ease,transform .2s ease;box-shadow:0 6px 18px rgba(226,163,61,.25);width:100%}
-.btn-primary:hover{filter:brightness(1.08);transform:translateY(-2px)}
+.btn-primary{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--accent),var(--accent-2));background-size:180% 180%;color:#1B140A;border:none;font-family:'Manrope',sans-serif;font-weight:800;font-size:14px;padding:12px 22px;border-radius:11px;cursor:pointer;transition:filter .2s ease,transform .2s ease,background-position .4s ease;box-shadow:0 6px 18px rgba(226,163,61,.25);width:100%}
+.btn-primary::before{content:"";position:absolute;top:0;left:-130%;width:55%;height:100%;background:linear-gradient(115deg,transparent 0%,rgba(255,255,255,.5) 50%,transparent 100%);transform:skewX(-20deg);transition:left .5s ease;pointer-events:none}
+.btn-primary:hover{filter:brightness(1.08);transform:translateY(-2px);background-position:100% 50%;box-shadow:0 10px 26px rgba(226,163,61,.35)}
+.btn-primary:hover::before{left:140%}
+.btn-primary:active{transform:translateY(0) scale(.98);filter:brightness(1);transition:transform .1s ease}
 .form-msg{font-size:12.5px;min-height:16px;margin-bottom:8px;text-align:center}
 .form-msg.err{color:var(--red)}
 .form-msg.ok{color:var(--green)}
@@ -311,7 +343,6 @@ details.sub[open]>summary .sub-chev{transform:rotate(180deg);color:var(--accent)
 
 <div class="top-nav">
   <button type="button" class="nav-btn" id="navWaveBtn">Гос. волна</button>
-  <button type="button" class="nav-btn" id="navLawsBtn">Основные статьи</button>
   <button type="button" class="nav-btn" id="navWeekBtn">📊 Недельный отчёт</button>
 </div>
 
@@ -1101,156 +1132,6 @@ details.sub[open]>summary .sub-chev{transform:rotate(180deg);color:var(--accent)
   </div>
 </div>
 
-<!-- LAWS -->
-<div class="modal-overlay" id="lawsModal">
-  <div class="modal-panel">
-    <div class="modal-header">
-      <span class="lec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3v18"/><path d="M5 7h14"/><path d="M5 7l-3 6a3 3 0 0 0 6 0Z"/><path d="M19 7l-3 6a3 3 0 0 0 6 0Z"/><path d="M8 21h8"/></svg></span>
-      <span class="lec-heading"><h2>Основные статьи</h2><p>Общее положение государственных структур</p></span>
-      <button type="button" class="expand-all-btn" data-expand="lawsModal">Развернуть всё</button>
-      <button type="button" class="modal-close" data-modal-close>✕</button>
-    </div>
-    <div class="lecture-body">
-      <details class="sub" open>
-        <summary><span class="sub-num">1</span><span class="sub-title">Общее положение</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
-        <div class="sub-content">
-          <ul>
-            <li>Криминальные действия сотрудников госструктур без одобренной РП-ситуации запрещены</li>
-            <li>Продажа/слив госимущества и казны запрещены</li>
-            <li>Изъятие лицензий без IC-причины запрещено</li>
-            <li>Принимать во фракцию с активным ЧС госорганизаций запрещено</li>
-            <li>Повышение более чем на 1 ранг в сутки запрещено</li>
-            <li>Удостоверение — обязательно к предъявлению по запросу</li>
-          </ul>
-        </div>
-      </details>
-      <details class="sub">
-        <summary><span class="sub-num">2</span><span class="sub-title">Взаимодействие госорганизаций</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
-        <div class="sub-content">
-          <ul>
-            <li>СК руководит предварительным расследованием</li>
-            <li>МВД обеспечивает порядок, содействует СК и ФСБ</li>
-            <li>ГИБДД контролирует БДД</li>
-            <li>ФСБ — федеральные нарушения и госбезопасность</li>
-            <li>Армия — по решению Правительства</li>
-            <li>Правительство — общее руководство</li>
-          </ul>
-        </div>
-      </details>
-      <details class="sub">
-        <summary><span class="sub-num">3</span><span class="sub-title">Правительство</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
-        <div class="sub-content">
-          <ul>
-            <li>Проверки госорганизаций — не чаще 1 в неделю на организацию</li>
-            <li>Бюджет казны — только в интересах государства</li>
-            <li>Постановления и указы — публикуются на форум</li>
-          </ul>
-        </div>
-      </details>
-      <details class="sub">
-        <summary><span class="sub-num">4</span><span class="sub-title">ФСБ</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
-        <div class="sub-content">
-          <p>Слежка за вызовами МВД/ГИБДД, кейс-файлы, федеральные нарушения, выявление коррупции, спецоперации.</p>
-        </div>
-      </details>
-      <details class="sub">
-        <summary><span class="sub-num">5</span><span class="sub-title">МВД</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
-        <div class="sub-content">
-          <p>Охрана порядка, патрулирование, вызовы, задержание, ОРМ, поручения СК, конвоирование. Обращения граждан — не позднее 48 часов.</p>
-        </div>
-      </details>
-      <details class="sub">
-        <summary><span class="sub-num">6</span><span class="sub-title">Армия</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
-        <div class="sub-content">
-          <p>Защита военных объектов, охрана складов, военная подготовка, задачи в ЧС и по решению Правительства.</p>
-        </div>
-      </details>
-      <details class="sub">
-        <summary><span class="sub-num">7</span><span class="sub-title">Силовые структуры</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
-        <div class="sub-content">
-          <ul>
-            <li>Задержание после больницы запрещено</li>
-            <li>Патрулирование — только на фракционном транспорте</li>
-            <li>Видеофиксация процессов — обязательно, хранить 48 часов</li>
-          </ul>
-        </div>
-      </details>
-      <details class="sub">
-        <summary><span class="sub-num">8</span><span class="sub-title">Судебная власть</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
-        <div class="sub-content">
-          <ul>
-            <li>Председатель ВС — главный судебный орган, до 3 верховных судей</li>
-            <li>Обжалование — через IC-иск</li>
-            <li>За неверные решения — штрафной балл, 5 баллов — снятие</li>
-            <li>Все процессы — в здании Правительства</li>
-          </ul>
-        </div>
-      </details>
-      <details class="sub">
-        <summary><span class="sub-num">9</span><span class="sub-title">Следственный комитет</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
-        <div class="sub-content">
-          <ul>
-            <li>Расследование уголовных преступлений, возбуждение дел</li>
-            <li>Только при законных основаниях и достаточных доказательствах</li>
-            <li>Приём документов — 24 часа</li>
-          </ul>
-        </div>
-      </details>
-      <details class="sub">
-        <summary><span class="sub-num">10</span><span class="sub-title">ГИБДД</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
-        <div class="sub-content">
-          <ul>
-            <li>Контроль ПДД, ДТП, регулирование движения</li>
-            <li>Проверка документов, розыск ТС, сопровождение колонн</li>
-            <li>Запрещено использовать транспорт и полномочия в личных целях</li>
-          </ul>
-        </div>
-      </details>
-      <details class="sub">
-        <summary><span class="sub-num">11</span><span class="sub-title">Вести Москвы</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
-        <div class="sub-content">
-          <ul>
-            <li>Подчиняется Правительству и министерству культуры</li>
-            <li>Подача новостей — только через функционал проекта</li>
-            <li>Задержание — только в зелёной зоне для передачи силовой структуре</li>
-          </ul>
-        </div>
-      </details>
-      <details class="sub">
-        <summary><span class="sub-num">12</span><span class="sub-title">ФСО</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
-        <div class="sub-content">
-          <ul>
-            <li>Охрана высших должностных лиц и объектов особой важности</li>
-            <li>Сопровождение: 2–10 машин</li>
-            <li>Игнорировать запросы на сопровождение запрещено</li>
-            <li>Руководству Правительства выезжать без ФСО запрещено</li>
-          </ul>
-        </div>
-      </details>
-      <details class="sub">
-        <summary><span class="sub-num">13</span><span class="sub-title">РП допрос</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
-        <div class="sub-content">
-          <ul>
-            <li>Только при веских IC-основаниях и в присутствии следователя</li>
-            <li>Без силы — в допросной; с силой — вне зелёных зон и вне интерьера допрашиваемого</li>
-            <li>Не более 60 минут, без затягивания</li>
-          </ul>
-        </div>
-      </details>
-      <details class="sub">
-        <summary><span class="sub-num">14</span><span class="sub-title">Обыск багажников ТС</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
-        <div class="sub-content">
-          <ul>
-            <li>Ордер — от лидера фракции по установленным основаниям</li>
-            <li>При обычном патрулировании — только за нарушение УК</li>
-            <li>При ограблении — осмотр близстоящих ТС</li>
-            <li>Видеофиксация обязательна, хранить 48 часов</li>
-          </ul>
-        </div>
-      </details>
-    </div>
-  </div>
-</div>
 <!-- REPORT -->
 <div class="modal-overlay" id="reportModal">
   <div class="modal-panel">
@@ -1355,6 +1236,41 @@ const todayStr = () => new Date().toISOString().slice(0,10);
 
 let CURRENT = { user: null, profile: null };
 
+/* ==== Приятный звук клика ==== */
+let __ac=null;
+function __getAc(){
+  if(!__ac){
+    try{ __ac = new (window.AudioContext||window.webkitAudioContext)(); }catch(e){ return null; }
+  }
+  if(__ac.state==='suspended'){ __ac.resume().catch(()=>{}); }
+  return __ac;
+}
+function playClickSound(){
+  const ac=__getAc();
+  if(!ac)return;
+  const now=ac.currentTime;
+  const filter=ac.createBiquadFilter();
+  filter.type='lowpass';
+  filter.frequency.setValueAtTime(1800,now);
+  filter.Q.value=0.3;
+  filter.connect(ac.destination);
+  const master=ac.createGain();
+  master.gain.setValueAtTime(0,now);
+  master.gain.linearRampToValueAtTime(.05,now+.02);
+  master.gain.exponentialRampToValueAtTime(.0001,now+.22);
+  master.connect(filter);
+  const osc=ac.createOscillator();
+  osc.type='sine';
+  osc.frequency.setValueAtTime(740,now);
+  osc.frequency.exponentialRampToValueAtTime(660,now+.16);
+  osc.connect(master);
+  osc.start(now); osc.stop(now+.24);
+}
+document.addEventListener('click',e=>{
+  const el=e.target.closest('.nav-tile,.nav-btn,.btn-primary,.theme-btn,.modal-close,.expand-all-btn,#toTop,#examErrPlus,#examErrMinus,#examErrReset,#examErrToReport');
+  if(el) playClickSound();
+},true);
+
 (function(){
   const KEY='site-theme';
   const saved=(()=>{try{return localStorage.getItem(KEY)}catch(e){return null}})();
@@ -1381,7 +1297,7 @@ function showToast(text,type='success'){
 
 const modals={
   lecture:$('lectureModal'), exam:$('examModal'), interview:$('interviewModal'),
-  wave:$('waveModal'), laws:$('lawsModal'), report:$('reportModal'), week:$('weekModal')
+  wave:$('waveModal'), report:$('reportModal'), week:$('weekModal')
 };
 function openModal(m){
   if(!m)return;
@@ -1397,13 +1313,13 @@ function closeModal(m){
 }
 function closeAll(){ Object.values(modals).forEach(x=>x && closeModal(x)); }
 
-['navLectureBtn','navExamBtn','navInterviewBtn','navWaveBtn','navLawsBtn','navWeekBtn','navReportBtn'].forEach(id=>{
+['navLectureBtn','navExamBtn','navInterviewBtn','navWaveBtn','navWeekBtn','navReportBtn'].forEach(id=>{
   const el=$(id);
   if(!el)return;
   el.addEventListener('click', async ()=>{
     const map={
       navLectureBtn:'lecture', navExamBtn:'exam', navInterviewBtn:'interview',
-      navWaveBtn:'wave', navLawsBtn:'laws', navWeekBtn:'week', navReportBtn:'report'
+      navWaveBtn:'wave', navWeekBtn:'week', navReportBtn:'report'
     };
     openModal(modals[map[id]]);
     if (map[id] === 'report') await renderReportScreen();
