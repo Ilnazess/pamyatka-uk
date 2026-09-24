@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Памятка Сотрудника УК — ФСО</title>
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2314161B'/%3E%3Cpath d='M32 6 L54 15 V33 C54 47 44 56 32 60 C20 56 10 47 10 33 V15 Z' fill='%23E2A33D'/%3E%3Cpath d='M32 12 L48 19 V33 C48 43 41 50 32 54 C23 50 16 43 16 33 V19 Z' fill='%2314161B'/%3E%3Ctext x='32' y='42' font-size='24' text-anchor='middle' fill='%23E2A33D' font-family='Arial, sans-serif' font-weight='bold'%3E%D0%A4%3C/text%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2314161B'/%3E%3Cpath d='M32 6 L54 15 V33 C54 47 44 56 32 60 C20 56 10 47 10 33 V15 Z' fill='%23E2A33D'/%3E%3Cpath d='M32 12 L48 19 V33 C48 43 41 50 32 54 C23 50 16 43 16 33 V19 Z' fill='%2314161B'/%3E%3Ctext x='32' y='42' font-size='24' text-anchor='middle' fill='%23E2A33D' font-family='Arial, sans-serif' font-weight='bold'%3EФ%3C/text%3E%3C/svg%3E">
 <meta name="theme-color" content="#14161B">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,9 +65,12 @@ h1{font-size:22px;font-weight:800;margin:0;letter-spacing:-.01em;background:line
 .theme-btn .icon-moon{display:block}.theme-btn .icon-sun{display:none}
 :root[data-theme="light"] .theme-btn .icon-moon{display:none}
 :root[data-theme="light"] .theme-btn .icon-sun{display:block}
-.user-chip{display:none;align-items:center;gap:8px;padding:6px 12px;border-radius:10px;background:var(--panel-2);border:1px solid var(--line);font-size:12.5px;color:var(--muted);box-shadow:var(--shadow-1)}
+.user-chip{display:none;align-items:center;gap:8px;padding:6px 12px;border-radius:10px;background:var(--panel-2);border:1px solid var(--line);font-size:12.5px;color:var(--muted);box-shadow:var(--shadow-1);flex-wrap:wrap}
 .user-chip.show{display:flex}
 .user-chip b{color:var(--text);font-weight:700}
+.user-chip .role-tag{font-size:10.5px;font-weight:800;padding:2px 7px;border-radius:6px;background:var(--accent-soft);color:var(--accent);border:1px solid rgba(226,163,61,.3);text-transform:uppercase;letter-spacing:.04em}
+.user-chip .role-tag.chief{background:rgba(154,126,201,.15);color:var(--violet);border-color:rgba(154,126,201,.3)}
+.user-chip .role-tag.deputy{background:rgba(110,154,201,.15);color:var(--blue);border-color:rgba(110,154,201,.3)}
 .user-chip button{background:none;border:none;color:var(--muted);cursor:pointer;font-size:11px;padding:2px 4px;border-radius:5px;font-family:'Manrope',sans-serif}
 .user-chip button:hover{color:var(--red)}
 
@@ -96,9 +99,6 @@ h1{font-size:22px;font-weight:800;margin:0;letter-spacing:-.01em;background:line
 .nav-tile:hover::after{transform:scaleX(1)}
 .nav-tile:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:var(--shadow-3),0 0 30px rgba(226,163,61,.2)}
 .nav-tile:active{transform:translateY(-1px) scale(.98);transition:transform .1s ease}
-.nav-tile{background-size:220% 220%}
-.nav-tile.highlight{animation:highlightGlow 3.5s ease-in-out infinite}
-@keyframes highlightGlow{0%,100%{box-shadow:var(--shadow-2)}50%{box-shadow:var(--shadow-2),0 0 22px rgba(226,163,61,.28)}}
 .tile-icon{flex:none;width:50px;height:50px;border-radius:13px;background:var(--accent-soft);color:var(--accent);display:flex;align-items:center;justify-content:center;transition:transform .3s ease,box-shadow .3s ease;position:relative;z-index:1;border:1px solid rgba(226,163,61,.15)}
 .nav-tile:hover .tile-icon{transform:scale(1.1) rotate(-5deg);box-shadow:0 0 24px rgba(226,163,61,.3)}
 .tile-icon svg{width:24px;height:24px}
@@ -119,18 +119,6 @@ h1{font-size:22px;font-weight:800;margin:0;letter-spacing:-.01em;background:line
 .nav-ornament .orn-line:last-child{background:linear-gradient(90deg,var(--line),transparent)}
 .nav-ornament svg{animation:spinSlow 18s linear infinite}
 
-.quick-ref{max-width:880px;margin:0 auto;padding:20px 20px 0;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-@media(max-width:720px){.quick-ref{grid-template-columns:1fr}}
-.qr-card{background:linear-gradient(155deg,var(--panel) 0%,var(--panel-2) 100%);border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow-2);position:relative;overflow:hidden;transition:transform .25s ease,border-color .25s ease,box-shadow .3s ease}
-.qr-card:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:var(--shadow-3),0 0 20px rgba(226,163,61,.15)}
-.qr-card::before{content:"";position:absolute;top:0;left:0;width:100%;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent-2),transparent)}
-.qr-title{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:10px;display:flex;align-items:center;gap:7px}
-.qr-title svg{width:14px;height:14px}
-.qr-list{list-style:none;padding:0;margin:0;font-size:12.8px;color:var(--muted);line-height:1.7}
-.qr-list li{display:flex;align-items:flex-start;gap:7px;margin-bottom:4px}
-.qr-list li::before{content:"›";color:var(--accent);font-weight:800;flex:none}
-.qr-list li b{color:var(--text);font-weight:600}
-
 .modal-overlay{display:none;position:fixed;inset:0;background:rgba(8,8,10,.72);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);z-index:100;padding:60px 20px 40px;align-items:flex-start;justify-content:center;overflow-y:auto}
 .modal-overlay.show{display:flex;animation:overlayIn .2s ease}
 @keyframes overlayIn{from{opacity:0}to{opacity:1}}
@@ -143,18 +131,15 @@ h1{font-size:22px;font-weight:800;margin:0;letter-spacing:-.01em;background:line
 .modal-close:active{transform:rotate(90deg) scale(.9);transition:transform .1s ease}
 
 .expand-all-btn{flex:none;position:relative;overflow:hidden;background:var(--panel-2);border:1px solid var(--line);color:var(--muted);font-family:'Manrope',sans-serif;font-size:12.5px;font-weight:700;padding:9px 16px;border-radius:9px;cursor:pointer;white-space:nowrap;transition:transform .2s ease,border-color .2s ease,color .2s ease,box-shadow .25s ease,background .25s ease;box-shadow:var(--shadow-1)}
-.expand-all-btn::before{content:"";position:absolute;top:0;left:-120%;width:60%;height:100%;background:linear-gradient(115deg,transparent 0%,rgba(255,255,255,.14) 45%,rgba(255,255,255,.28) 50%,rgba(255,255,255,.14) 55%,transparent 100%);transform:skewX(-20deg);transition:left .5s ease;pointer-events:none}
 .expand-all-btn:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow-2),0 0 16px rgba(226,163,61,.18);background:linear-gradient(180deg,var(--panel-2) 0%,var(--accent-soft) 100%)}
-.expand-all-btn:hover::before{left:140%}
 .expand-all-btn:active{transform:translateY(0) scale(.95);transition:transform .1s ease}
 #examErrToReport{border-color:rgba(226,163,61,.35);color:var(--accent);background:linear-gradient(180deg,var(--panel-2) 0%,var(--accent-soft) 100%)}
-#examErrToReport:hover{box-shadow:var(--shadow-2),0 0 18px rgba(226,163,61,.3)}
-#examErrReset:hover{border-color:var(--red);color:var(--red);background:linear-gradient(180deg,var(--panel-2) 0%,rgba(201,125,110,.12) 100%);box-shadow:var(--shadow-2),0 0 16px rgba(201,125,110,.22)}
+#examErrReset:hover{border-color:var(--red);color:var(--red)}
 
 .exam-errors{display:flex;align-items:center;flex-wrap:wrap;gap:12px;padding:14px 16px;margin-bottom:18px;border-radius:14px;background:linear-gradient(155deg,var(--panel) 0%,var(--panel-2) 100%);border:1px solid var(--line);box-shadow:var(--shadow-1)}
 .ee-label{font-size:13px;font-weight:700;color:var(--text)}
 .ee-hint{font-size:11.5px;color:var(--muted);margin-left:auto}
-.stepper{display:flex;align-items:center;gap:2px;background:var(--panel-2);border:1px solid var(--line);border-radius:11px;padding:3px;box-shadow:var(--shadow-1)}
+.stepper{display:flex;align-items:center;gap:2px;background:var(--panel-2);border:1px solid var(--line);border-radius:11px;padding:3px}
 .stepper button{flex:none;width:32px;height:32px;border-radius:8px;background:transparent;border:none;color:var(--accent);font-family:'Manrope',sans-serif;font-size:17px;font-weight:800;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1;transition:background .2s ease,color .2s ease,transform .15s ease}
 .stepper button:hover{background:var(--accent-soft);color:var(--accent-2)}
 .stepper button:active{transform:scale(.88)}
@@ -186,10 +171,6 @@ details.sub[open]>summary .sub-chev{transform:rotate(180deg);color:var(--accent)
 .sub-content h5{font-size:13px;color:var(--text);font-weight:700;margin:14px 0 6px;display:flex;align-items:center;gap:7px}
 .sub-content h5::before{content:"";width:3px;height:13px;background:var(--accent);border-radius:2px}
 .tag{display:inline-block;background:var(--accent-soft);color:var(--accent);font-size:11.5px;font-weight:700;padding:2px 8px;border-radius:5px;margin-left:6px;border:1px solid rgba(226,163,61,.15)}
-.tag-green{background:rgba(111,169,122,.15);color:var(--green);border-color:rgba(111,169,122,.2)}
-.tag-warn{background:rgba(226,163,61,.15);color:var(--accent)}
-.tag-blue{background:rgba(110,154,201,.15);color:var(--blue);border-color:rgba(110,154,201,.2)}
-.tag-red{background:rgba(201,125,110,.15);color:var(--red);border-color:rgba(201,125,110,.2)}
 .callout{background:linear-gradient(135deg,var(--panel-2),rgba(226,163,61,.06));border-left:3px solid var(--accent);border-radius:10px;padding:12px 16px;font-size:13.5px;color:var(--text);margin:11px 0 15px;line-height:1.65;box-shadow:var(--shadow-1)}
 .callout b{color:var(--accent)}
 .chain{font-size:13.5px;color:var(--muted);line-height:2.2;background:var(--panel-2);border-radius:11px;padding:15px 19px;border:1px solid var(--line);word-break:break-word;box-shadow:var(--shadow-1)}
@@ -202,24 +183,45 @@ details.sub[open]>summary .sub-chev{transform:rotate(180deg);color:var(--accent)
 .step-list li b{color:var(--text)}
 .mini-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin:12px 0 16px}
 @media(max-width:560px){.mini-grid{grid-template-columns:1fr}}
-.mini-card{background:linear-gradient(155deg,var(--panel-2),var(--panel));border:1px solid var(--line);border-radius:11px;padding:12px 14px;font-size:12.8px;color:var(--muted);line-height:1.55;transition:border-color .2s ease,transform .2s ease,box-shadow .25s ease;box-shadow:var(--shadow-1)}
-.mini-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow-2)}
+.mini-card{background:linear-gradient(155deg,var(--panel-2),var(--panel));border:1px solid var(--line);border-radius:11px;padding:12px 14px;font-size:12.8px;color:var(--muted);line-height:1.55;box-shadow:var(--shadow-1)}
 .mini-card b{color:var(--text);display:block;margin-bottom:4px;font-size:13px}
 .mini-card .mc-tag{display:inline-block;font-size:10.5px;font-weight:800;padding:2px 7px;border-radius:5px;background:var(--accent-soft);color:var(--accent);margin-bottom:6px;border:1px solid rgba(226,163,61,.15)}
 
+/* ===== Красивый блок "время занято" ===== */
+.busy-card{position:relative;overflow:hidden;background:linear-gradient(155deg,var(--panel) 0%,var(--panel-2) 100%);border:1px solid var(--line);border-radius:16px;padding:22px 22px 20px;box-shadow:var(--shadow-2);margin:6px 0 4px}
+.busy-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--red),var(--accent),var(--accent-2),transparent)}
+.busy-card::after{content:"";position:absolute;top:-40px;right:-40px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,rgba(201,125,110,.18) 0%,transparent 70%);pointer-events:none}
+.busy-head{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.busy-ico{flex:none;width:46px;height:46px;border-radius:13px;background:linear-gradient(135deg,rgba(201,125,110,.25),rgba(201,125,110,.1));color:var(--red);display:flex;align-items:center;justify-content:center;border:1px solid rgba(201,125,110,.35);box-shadow:0 0 22px rgba(201,125,110,.2)}
+.busy-ico svg{width:24px;height:24px}
+.busy-head-text b{display:block;font-size:15px;font-weight:800;color:var(--text);letter-spacing:-.01em}
+.busy-head-text span{font-size:12.5px;color:var(--muted)}
+.busy-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+@media(max-width:640px){.busy-steps{grid-template-columns:1fr}}
+.busy-step{position:relative;background:var(--panel-2);border:1px solid var(--line);border-radius:12px;padding:14px 14px 14px 46px;font-size:12.8px;color:var(--muted);line-height:1.5;transition:transform .2s ease,border-color .2s ease,box-shadow .25s ease}
+.busy-step:hover{transform:translateY(-3px);border-color:var(--red);box-shadow:var(--shadow-2)}
+.busy-step .bs-num{position:absolute;left:12px;top:13px;width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,rgba(201,125,110,.25),rgba(201,125,110,.1));color:var(--red);font-weight:800;font-size:12px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(201,125,110,.3)}
+.busy-step b{color:var(--text);display:block;margin-bottom:3px;font-size:13px}
+.busy-note{display:flex;align-items:flex-start;gap:9px;background:linear-gradient(135deg,rgba(201,125,110,.12),rgba(226,163,61,.06));border-left:3px solid var(--red);border-radius:10px;padding:11px 14px;font-size:13px;color:var(--text);line-height:1.6}
+.busy-note svg{flex:none;width:17px;height:17px;color:var(--red);margin-top:2px}
+.busy-note b{color:var(--red)}
+
+/* ===== REPORT PANEL ===== */
 .report-form{padding:8px 26px 28px}
 .report-form .field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
 .report-form label{font-size:12px;color:var(--muted);font-weight:700}
-.report-form input,.report-form textarea{background:var(--panel-2);border:1px solid var(--line);color:var(--text);font-family:'Manrope',sans-serif;font-size:14px;padding:11px 13px;border-radius:10px;outline:none;transition:border-color .2s ease,box-shadow .2s ease;width:100%}
+.report-form input,.report-form textarea,.report-form select{background:var(--panel-2);border:1px solid var(--line);color:var(--text);font-family:'Manrope',sans-serif;font-size:14px;padding:11px 13px;border-radius:10px;outline:none;transition:border-color .2s ease,box-shadow .2s ease;width:100%}
 .report-form input:focus,.report-form textarea:focus{border-color:var(--accent);box-shadow:0 0 0 3px rgba(226,163,61,.14)}
 .report-form textarea{min-height:110px;resize:vertical;line-height:1.55}
 .report-form .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
 @media(max-width:640px){.report-form .grid4{grid-template-columns:repeat(2,1fr)}}
-.btn-primary{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--accent),var(--accent-2));background-size:180% 180%;color:#1B140A;border:none;font-family:'Manrope',sans-serif;font-weight:800;font-size:14px;padding:12px 22px;border-radius:11px;cursor:pointer;transition:filter .2s ease,transform .2s ease,background-position .4s ease;box-shadow:0 6px 18px rgba(226,163,61,.25);width:100%}
-.btn-primary::before{content:"";position:absolute;top:0;left:-130%;width:55%;height:100%;background:linear-gradient(115deg,transparent 0%,rgba(255,255,255,.5) 50%,transparent 100%);transform:skewX(-20deg);transition:left .5s ease;pointer-events:none}
-.btn-primary:hover{filter:brightness(1.08);transform:translateY(-2px);background-position:100% 50%;box-shadow:0 10px 26px rgba(226,163,61,.35)}
-.btn-primary:hover::before{left:140%}
-.btn-primary:active{transform:translateY(0) scale(.98);filter:brightness(1);transition:transform .1s ease}
+.btn-primary{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#1B140A;border:none;font-family:'Manrope',sans-serif;font-weight:800;font-size:14px;padding:12px 22px;border-radius:11px;cursor:pointer;transition:filter .2s ease,transform .2s ease;box-shadow:0 6px 18px rgba(226,163,61,.25);width:100%}
+.btn-primary:hover{filter:brightness(1.08);transform:translateY(-2px)}
+.btn-primary:active{transform:translateY(0) scale(.98)}
+.btn-secondary{background:var(--panel-2);color:var(--text);border:1px solid var(--line);font-family:'Manrope',sans-serif;font-weight:700;font-size:13px;padding:9px 16px;border-radius:10px;cursor:pointer;transition:all .2s ease}
+.btn-secondary:hover{border-color:var(--accent);color:var(--accent)}
+.btn-danger{background:rgba(201,125,110,.15);color:var(--red);border:1px solid rgba(201,125,110,.35);font-family:'Manrope',sans-serif;font-weight:700;font-size:13px;padding:9px 16px;border-radius:10px;cursor:pointer;transition:all .2s ease}
+.btn-danger:hover{background:rgba(201,125,110,.25);border-color:var(--red)}
 .form-msg{font-size:12.5px;min-height:16px;margin-bottom:8px;text-align:center}
 .form-msg.err{color:var(--red)}
 .form-msg.ok{color:var(--green)}
@@ -228,21 +230,38 @@ details.sub[open]>summary .sub-chev{transform:rotate(180deg);color:var(--accent)
 .auth-tab{padding:9px 16px;border-radius:10px;background:var(--panel-2);border:1px solid var(--line);color:var(--muted);font-weight:700;font-size:13px;cursor:pointer;font-family:'Manrope',sans-serif;transition:all .2s ease}
 .auth-tab:hover{border-color:var(--accent);color:var(--accent)}
 .auth-tab.active{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
-.week-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:20px 26px 6px}
-@media(max-width:640px){.week-stats{grid-template-columns:repeat(2,1fr)}}
-.week-stat{background:linear-gradient(155deg,var(--panel-2),var(--panel));border:1px solid var(--line);border-radius:12px;padding:14px 16px}
-.week-stat-num{font-size:22px;font-weight:800;line-height:1}
-.week-stat-label{font-size:11.5px;color:var(--muted);margin-top:5px}
-.week-list{padding:16px 26px 28px}
-.week-row{display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:11px;background:linear-gradient(155deg,var(--panel-2),var(--panel));border:1px solid var(--line);margin-bottom:8px;font-size:13px}
-.week-row .wk-date{flex:none;font-size:12px;font-weight:800;padding:5px 11px;border-radius:7px;background:var(--accent-soft);color:var(--accent);border:1px solid rgba(226,163,61,.25);min-width:76px;text-align:center}
-.week-row .wk-body{flex:1;min-width:0}
-.week-row .wk-nums{display:flex;flex-wrap:wrap;gap:8px;font-size:12px;color:var(--muted)}
-.week-row .wk-nums b{color:var(--text)}
-.result-toast{position:fixed;left:50%;top:80px;transform:translate(-50%,-30px);padding:16px 28px;border-radius:14px;font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;z-index:200;opacity:0;pointer-events:none;transition:opacity .35s ease,transform .4s cubic-bezier(.2,.9,.3,1.2);box-shadow:var(--shadow-3)}
-.result-toast.show{opacity:1;transform:translate(-50%,0)}
-.result-toast.success{background:linear-gradient(135deg,rgba(111,169,122,.95),rgba(79,132,89,.95));color:#0E1A11;border:1px solid rgba(111,169,122,.5)}
-.result-toast.fail{background:linear-gradient(135deg,rgba(201,125,110,.95),rgba(178,90,71,.95));color:#1A0E0B;border:1px solid rgba(201,125,110,.5)}
+.hidden{display:none!important}
+
+.report-tabs{display:flex;gap:8px;flex-wrap:wrap;padding:16px 26px 0}
+.report-tab{padding:8px 14px;border-radius:9px;background:var(--panel-2);border:1px solid var(--line);color:var(--muted);font-weight:700;font-size:12.5px;cursor:pointer;font-family:'Manrope',sans-serif;transition:all .2s ease}
+.report-tab:hover{border-color:var(--accent);color:var(--accent)}
+.report-tab.active{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px}
+@media(max-width:640px){.stat-grid{grid-template-columns:1fr}}
+.stat{background:linear-gradient(155deg,var(--panel-2),var(--panel));border:1px solid var(--line);border-radius:12px;padding:14px 16px}
+.stat-num{font-size:20px;font-weight:800;line-height:1}
+.stat-label{font-size:11px;color:var(--muted);margin-top:5px}
+
+.report-row{display:flex;align-items:flex-start;gap:12px;padding:13px 14px;border-radius:12px;background:linear-gradient(155deg,var(--panel-2),var(--panel));border:1px solid var(--line);margin-bottom:9px;transition:border-color .2s ease}
+.report-row:hover{border-color:var(--accent)}
+.report-row .rr-type{flex:none;font-size:11.5px;font-weight:800;padding:3px 10px;border-radius:7px;background:var(--accent-soft);color:var(--accent);border:1px solid rgba(226,163,61,.15);white-space:nowrap}
+.report-row .rr-body{flex:1;min-width:0;font-size:13.5px}
+.report-row .rr-body b{color:var(--text)}
+.report-row .rr-meta{font-size:11.5px;color:var(--muted);margin-top:5px}
+.badge{display:inline-block;font-size:11px;font-weight:800;padding:2px 8px;border-radius:6px;margin-left:6px;border:1px solid}
+.badge.g{background:rgba(111,169,122,.15);color:var(--green);border-color:rgba(111,169,122,.3)}
+.badge.r{background:rgba(201,125,110,.15);color:var(--red);border-color:rgba(201,125,110,.3)}
+.badge.y{background:rgba(226,163,61,.15);color:var(--accent);border-color:rgba(226,163,61,.3)}
+.empty{color:var(--muted);font-size:13.5px;text-align:center;padding:26px 0}
+.btn-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+
+.lock-box{display:flex;flex-direction:column;align-items:center;gap:12px;padding:34px 24px;text-align:center}
+.lock-ico{width:64px;height:64px;border-radius:18px;background:linear-gradient(135deg,rgba(154,126,201,.2),rgba(154,126,201,.08));color:var(--violet);display:flex;align-items:center;justify-content:center;border:1px solid rgba(154,126,201,.3);box-shadow:0 0 30px rgba(154,126,201,.2)}
+.lock-ico svg{width:30px;height:30px}
+.lock-box b{font-size:16px;color:var(--text)}
+.lock-box p{font-size:13.5px;color:var(--muted);line-height:1.6;margin:0;max-width:420px}
+
 #toTop{position:fixed;right:22px;bottom:26px;width:46px;height:46px;border-radius:13px;background:var(--panel);border:1px solid var(--line);color:var(--accent);font-size:20px;font-weight:800;cursor:pointer;display:none;z-index:90;align-items:center;justify-content:center;box-shadow:var(--shadow-2)}
 #toTop.show{display:flex}
 .site-footer{margin-top:70px;padding:26px 20px 44px;border-top:1px solid var(--line);position:relative}
@@ -251,6 +270,10 @@ details.sub[open]>summary .sub-chev{transform:rotate(180deg);color:var(--accent)
 .footer-brand{display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center;font-size:11.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:600}
 .footer-brand .sep{color:var(--accent);opacity:.7;font-size:9px}
 .footer-brand .brand-accent{color:var(--accent)}
+.result-toast{position:fixed;left:50%;top:80px;transform:translate(-50%,-30px);padding:16px 28px;border-radius:14px;font-family:'Manrope',sans-serif;font-weight:800;font-size:15px;z-index:200;opacity:0;pointer-events:none;transition:opacity .35s ease,transform .4s cubic-bezier(.2,.9,.3,1.2);box-shadow:var(--shadow-3)}
+.result-toast.show{opacity:1;transform:translate(-50%,0)}
+.result-toast.success{background:linear-gradient(135deg,rgba(111,169,122,.95),rgba(79,132,89,.95));color:#0E1A11;border:1px solid rgba(111,169,122,.5)}
+.result-toast.fail{background:linear-gradient(135deg,rgba(201,125,110,.95),rgba(178,90,71,.95));color:#1A0E0B;border:1px solid rgba(201,125,110,.5)}
 </style>
 </head>
 <body>
@@ -287,6 +310,7 @@ details.sub[open]>summary .sub-chev{transform:rotate(180deg);color:var(--accent)
     <div class="header-tools">
       <div class="user-chip" id="userChip">
         <b id="userName">—</b>
+        <span class="role-tag" id="userRoleTag">—</span>
         <button type="button" id="logoutBtn">Выйти</button>
       </div>
       <button type="button" class="theme-btn" id="themeBtn" title="Сменить тему" aria-label="Сменить тему">
@@ -328,7 +352,7 @@ details.sub[open]>summary .sub-chev{transform:rotate(180deg);color:var(--accent)
   </button>
   <button type="button" class="nav-tile highlight" id="navReportBtn">
     <span class="tile-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 17v-6M12 17v-10M15 17v-3M4 21h16"/></svg></span>
-    <span class="tile-text"><div class="tile-title">📝 Отчёт за день</div><div class="tile-sub">Подать ежедневный отчёт начальству (только для зарегистрированных)</div></span>
+    <span class="tile-text"><div class="tile-title">📝 Отчёты</div><div class="tile-sub">Панель Начальника УК — доступ только для руководителя</div></span>
   </button>
 </div>
 
@@ -352,48 +376,8 @@ details.sub[open]>summary .sub-chev{transform:rotate(180deg);color:var(--accent)
   <span class="orn-line"></span>
 </div>
 
-<div class="section-title">
-  <span class="st-line"></span>
-  <span class="st-text">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6Z"/></svg>
-    Быстрая шпаргалка
-  </span>
-  <span class="st-line"></span>
-</div>
-
-<div class="quick-ref">
-  <div class="qr-card">
-    <div class="qr-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Режимы</div>
-    <ul class="qr-list">
-      <li><b>Охраняемая</b> — основание</li>
-      <li><b>Закрытая</b> — право доступа</li>
-      <li><b>Режимная</b> — контроль + досмотр</li>
-      <li><b>Особого статуса</b> — строгий режим</li>
-    </ul>
-  </div>
-  <div class="qr-card">
-    <div class="qr-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>Управления</div>
-    <ul class="qr-list">
-      <li><b>УК</b> — кадры</li>
-      <li><b>УСН</b> — спецназначение</li>
-      <li><b>УЛО</b> — личная охрана</li>
-      <li><b>УВК</b> — внутренний контроль</li>
-    </ul>
-  </div>
-  <div class="qr-card">
-    <div class="qr-title"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>Субординация</div>
-    <ul class="qr-list">
-      <li>Курсант</li>
-      <li>Рядовой УК</li>
-      <li>Инструктор</li>
-      <li>Зам. начальника отдела</li>
-      <li>Начальник отдела</li>
-    </ul>
-  </div>
-</div>
-
 <!-- LECTURE -->
-  <div class="modal-overlay" id="lectureModal">
+<div class="modal-overlay" id="lectureModal">
   <div class="modal-panel">
     <div class="modal-header">
       <span class="lec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20M4 19.5V6a2 2 0 0 1 2-2h14v13H6.5a2.5 2.5 0 0 0-2.5 2.5Z"/></svg></span>
@@ -670,8 +654,8 @@ details.sub[open]>summary .sub-chev{transform:rotate(180deg);color:var(--accent)
           <span class="stepper-value" id="examErrCount">0</span>
           <button type="button" id="examErrPlus">+</button>
         </div>
-        <button type="button" class="expand-all-btn always" id="examErrReset">Сброс</button>
-        <button type="button" class="expand-all-btn always" id="examErrToReport">В отчёт</button>
+        <button type="button" class="expand-all-btn" id="examErrReset">Сброс</button>
+        <button type="button" class="expand-all-btn" id="examErrToReport">В отчёт</button>
         <span class="ee-hint">0 ошибок — Сдал · больше 2 — Пересдача</span>
       </div>
 
@@ -1102,12 +1086,48 @@ details.sub[open]>summary .sub-chev{transform:rotate(180deg);color:var(--accent)
           <div class="callout"><b>Важно:</b> не занимайте волну молча — сначала запрос в /dep.</div>
         </div>
       </details>
+
+      <!-- КРАСИВЫЙ ПУНКТ 3 -->
       <details class="sub">
         <summary><span class="sub-num">3</span><span class="sub-title">Если время уже занято</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
         <div class="sub-content">
-          <p>Выбрать другое время и повторить запрос в /dep. Без согласования проводить собеседование на занятой волне нельзя.</p>
+          <div class="busy-card">
+            <div class="busy-head">
+              <div class="busy-ico">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+              </div>
+              <div class="busy-head-text">
+                <b>Время уже занято другой организацией</b>
+                <span>Нельзя проводить собеседование на чужой волне</span>
+              </div>
+            </div>
+
+            <div class="busy-steps">
+              <div class="busy-step">
+                <span class="bs-num">1</span>
+                <b>Освободите слот</b>
+                Откажитесь от выбранного времени и не занимайте его.
+              </div>
+              <div class="busy-step">
+                <span class="bs-num">2</span>
+                <b>Выберите новое</b>
+                Подберите другое свободное время для набора.
+              </div>
+              <div class="busy-step">
+                <span class="bs-num">3</span>
+                <b>Повторите запрос</b>
+                Снова напишите в /dep и дождитесь подтверждения.
+              </div>
+            </div>
+
+            <div class="busy-note">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01"/><circle cx="12" cy="12" r="9"/></svg>
+              <span><b>Запрещено</b> занимать волну, которая уже кем-то занята. Без согласования проводить собеседование нельзя.</span>
+            </div>
+          </div>
         </div>
       </details>
+
       <details class="sub">
         <summary><span class="sub-num">4</span><span class="sub-title">Полная последовательность</span><svg class="sub-chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg></summary>
         <div class="sub-content">
@@ -1132,15 +1152,16 @@ details.sub[open]>summary .sub-chev{transform:rotate(180deg);color:var(--accent)
   </div>
 </div>
 
-<!-- REPORT -->
+<!-- ===== REPORTS (только для Начальника УК) ===== -->
 <div class="modal-overlay" id="reportModal">
   <div class="modal-panel">
     <div class="modal-header">
       <span class="lec-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 17v-6M12 17v-10M15 17v-3M4 21h16"/></svg></span>
-      <span class="lec-heading"><h2>📝 Отчёт за день</h2><p>Подача ежедневного отчёта начальству</p></span>
+      <span class="lec-heading"><h2>📝 Отчёты УК</h2><p id="reportModalSub">Панель Начальника УК</p></span>
       <button type="button" class="modal-close" data-modal-close>✕</button>
     </div>
 
+    <!-- AUTH -->
     <div id="reportAuth">
       <div class="auth-tabs">
         <button type="button" class="auth-tab active" data-atab="login">Вход</button>
@@ -1154,36 +1175,70 @@ details.sub[open]>summary .sub-chev{transform:rotate(180deg);color:var(--accent)
       </div>
       <div id="reportRegister" class="report-form hidden">
         <div class="field"><label>ФИО</label><input type="text" id="rRegName" placeholder="Иванов Иван"></div>
-        <div class="field"><label>Звание / должность</label><input type="text" id="rRegRank" placeholder="Инструктор УК"></div>
+        <div class="field"><label>Звание / должность</label><input type="text" id="rRegRank" placeholder="Начальник УК"></div>
         <div class="field"><label>E-mail</label><input type="email" id="rRegEmail"></div>
         <div class="field"><label>Пароль (мин. 6 символов)</label><input type="password" id="rRegPassword"></div>
         <div class="form-msg err" id="rRegErr"></div>
         <div class="form-msg ok" id="rRegOk"></div>
         <button type="button" class="btn-primary" id="rRegBtn">Зарегистрироваться</button>
-        <p class="hint">После регистрации аккаунт ожидает подтверждения начальника УК.</p>
+        <p class="hint">После регистрации аккаунт ожидает подтверждения Начальника УК.</p>
       </div>
     </div>
 
+    <!-- LOCK: доступ только у Начальника УК -->
+    <div id="reportLocked" class="hidden">
+      <div class="lock-box">
+        <div class="lock-ico">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="10" width="16" height="11" rx="2.5"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/><path d="M12 15v2"/></svg>
+        </div>
+        <b>Доступ только у Начальника УК</b>
+        <p>Раздел «Отчёты» доступен исключительно руководителю Управления кадров. Если вы считаете, что это ошибка — свяжитесь с Начальником УК.</p>
+        <button type="button" class="btn-secondary" id="logoutFromLocked" style="margin-top:6px">Выйти из аккаунта</button>
+      </div>
+    </div>
+
+    <!-- PENDING -->
     <div id="reportPending" class="report-form hidden">
-      <div class="callout" style="margin-top:14px">Ваш аккаунт ожидает подтверждения начальника УК. После одобрения вы сможете подавать отчёты.</div>
+      <div class="callout" style="margin-top:14px">Ваш аккаунт ожидает подтверждения Начальника УК. После одобрения доступ к панели откроется.</div>
+      <button type="button" class="btn-secondary" id="logoutFromPending" style="margin-top:12px">Выйти</button>
     </div>
 
-    <div id="reportForm" class="report-form hidden">
-      <p class="hint" style="text-align:left">Один отчёт на день. Повторная отправка обновит его.</p>
-      <div class="field"><label>Дата</label><input type="date" id="rpDate" style="max-width:220px"></div>
-      <div class="grid4">
-        <div class="field"><label>Лекций</label><input type="number" id="rpLectures" min="0" value="0"></div>
-        <div class="field"><label>Экзаменов</label><input type="number" id="rpExams" min="0" value="0"></div>
-        <div class="field"><label>Собеседований</label><input type="number" id="rpInterviews" min="0" value="0"></div>
-        <div class="field"><label>Происшествий</label><input type="number" id="rpIncidents" min="0" value="0"></div>
+    <!-- APP (только chief) -->
+    <div id="reportApp" class="hidden">
+      <div class="report-tabs" id="reportTabs">
+        <button type="button" class="report-tab active" data-rtab="all">Все отчёты</button>
+        <button type="button" class="report-tab" data-rtab="users">Сотрудники</button>
       </div>
-      <div class="field">
-        <label>Комментарий за день (ФИО, темы, ЧП, меры)</label>
-        <textarea id="rpComment" placeholder="Лекция по режимам — 15 курсантов. Экзамен сдал 8, 2 на пересдачу. Собеседование — принято 3. ЧП: ..."></textarea>
+
+      <!-- ALL REPORTS -->
+      <div id="rtab-all" class="report-form">
+        <div class="grid2" style="grid-template-columns:1fr 1fr;gap:12px">
+          <div class="field"><label>Дата (пусто = все)</label><input type="date" id="fDate"></div>
+          <div class="field"><label>Статус</label>
+            <select id="fStatus">
+              <option value="">Все</option>
+              <option value="pending">На проверке</option>
+              <option value="approved">Принято</option>
+              <option value="rejected">Отклонено</option>
+            </select>
+          </div>
+        </div>
+        <div class="btn-row" style="margin-bottom:14px">
+          <button type="button" class="btn-secondary" id="fApply">Применить</button>
+          <button type="button" class="btn-secondary" id="fClear">Сбросить</button>
+          <button type="button" class="btn-secondary" id="fExport">Экспорт CSV</button>
+          <button type="button" class="btn-danger hidden" id="fDeleteAll" style="margin-left:auto">Удалить все отчёты</button>
+        </div>
+        <div id="allList"><div class="empty">Нет данных.</div></div>
       </div>
-      <div class="form-msg err" id="rpErr"></div>
-      <div class="form-msg ok" id="rpOk"></div>
-      <button type="button" class="btn-primary" id="rpSubmit">Сохранить отчёт</button>
+
+      <!-- USERS -->
+      <div id="rtab-users" class="report-form hidden">
+        <h4>Заявки на регистрацию</h4>
+        <div id="pendingUsers"><div class="empty">Заявок нет.</div></div>
+        <h4 style="margin-top:18px">Сотрудники</h4>
+        <div id="allUsers"><div class="empty">Нет данных.</div></div>
+      </div>
     </div>
   </div>
 </div>
@@ -1196,14 +1251,13 @@ details.sub[open]>summary .sub-chev{transform:rotate(180deg);color:var(--accent)
       <span class="lec-heading"><h2>📊 Недельный отчёт</h2><p id="weekRangeLabel">С понедельника текущей недели</p></span>
       <button type="button" class="modal-close" data-modal-close>✕</button>
     </div>
-    <div class="week-stats">
-      <div class="week-stat"><div class="week-stat-num" id="wkLec">0</div><div class="week-stat-label">Лекций</div></div>
-      <div class="week-stat"><div class="week-stat-num" id="wkExa">0</div><div class="week-stat-label">Экзаменов</div></div>
-      <div class="week-stat"><div class="week-stat-num" id="wkInt">0</div><div class="week-stat-label">Собеседований</div></div>
-      <div class="week-stat"><div class="week-stat-num" id="wkInc">0</div><div class="week-stat-label">Происшествий</div></div>
-    </div>
-    <div class="week-list" id="weekList">
-      <div class="callout">Войдите, чтобы увидеть свою недельную сводку.</div>
+    <div class="report-form">
+      <div class="stat-grid">
+        <div class="stat"><div class="stat-num" id="wkLec">0</div><div class="stat-label">Лекций</div></div>
+        <div class="stat"><div class="stat-num" id="wkExa">0</div><div class="stat-label">Экзаменов</div></div>
+        <div class="stat"><div class="stat-num" id="wkInt">0</div><div class="stat-label">Собеседований</div></div>
+      </div>
+      <div id="weekList"><div class="callout">Войдите как Начальник УК через плитку «📝 Отчёты», чтобы увидеть недельную сводку.</div></div>
     </div>
   </div>
 </div>
@@ -1226,182 +1280,119 @@ details.sub[open]>summary .sub-chev{transform:rotate(180deg);color:var(--accent)
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+/* ==================== SUPABASE ==================== */
 const SUPABASE_URL = 'https://btqjoqkbmnoksnheciej.supabase.co';
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImJ0cWpvcWtibW5va3NuaGVjaWVqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTAwOTc1MjYsImV4cCI6MjEwNTY3MzUyNn0.FZtD69t3jTALtnip_JiWh7vzw89U91-OvmCjEhZv5Jc';
+const DELETE_USER_FN = SUPABASE_URL + '/functions/v1/delete_user';
 
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 const $ = id => document.getElementById(id);
-const show = (id, on=true) => { const el = $(id); if (el) el.classList.toggle('hidden', !on); };
+const show = (id, on=true) => { const el=$(id); if(el) el.classList.toggle('hidden', !on); };
 const todayStr = () => new Date().toISOString().slice(0,10);
+const fmt = ts => {
+  const d = new Date(ts); const p = n => String(n).padStart(2,'0');
+  return `${p(d.getDate())}.${p(d.getMonth()+1)}.${d.getFullYear()} ${p(d.getHours())}:${p(d.getMinutes())}`;
+};
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 let CURRENT = { user: null, profile: null };
+let allCache = [];
 
-/* ==== Приятный звук клика ==== */
+const isChief = () => !!(CURRENT.profile && CURRENT.profile.approved && CURRENT.profile.role === 'chief');
+
+/* ==================== SOUND ==================== */
 let __ac=null;
-function __getAc(){
-  if(!__ac){
-    try{ __ac = new (window.AudioContext||window.webkitAudioContext)(); }catch(e){ return null; }
-  }
-  if(__ac.state==='suspended'){ __ac.resume().catch(()=>{}); }
-  return __ac;
-}
-function playClickSound(){
-  const ac=__getAc();
-  if(!ac)return;
-  const now=ac.currentTime;
-  const filter=ac.createBiquadFilter();
-  filter.type='lowpass';
-  filter.frequency.setValueAtTime(1800,now);
-  filter.Q.value=0.3;
-  filter.connect(ac.destination);
-  const master=ac.createGain();
-  master.gain.setValueAtTime(0,now);
-  master.gain.linearRampToValueAtTime(.05,now+.02);
-  master.gain.exponentialRampToValueAtTime(.0001,now+.22);
-  master.connect(filter);
-  const osc=ac.createOscillator();
-  osc.type='sine';
-  osc.frequency.setValueAtTime(740,now);
-  osc.frequency.exponentialRampToValueAtTime(660,now+.16);
-  osc.connect(master);
-  osc.start(now); osc.stop(now+.24);
-}
-document.addEventListener('click',e=>{
-  const el=e.target.closest('.nav-tile,.nav-btn,.btn-primary,.theme-btn,.modal-close,.expand-all-btn,#toTop,#examErrPlus,#examErrMinus,#examErrReset,#examErrToReport');
-  if(el) playClickSound();
-},true);
+function __getAc(){ if(!__ac){ try{ __ac=new (window.AudioContext||window.webkitAudioContext)(); }catch(e){ return null; } } if(__ac.state==='suspended'){ __ac.resume().catch(()=>{}); } return __ac; }
+function playClickSound(){ const ac=__getAc(); if(!ac)return; const now=ac.currentTime; const f=ac.createBiquadFilter(); f.type='lowpass'; f.frequency.setValueAtTime(1800,now); f.Q.value=0.3; f.connect(ac.destination); const g=ac.createGain(); g.gain.setValueAtTime(0,now); g.gain.linearRampToValueAtTime(.05,now+.02); g.gain.exponentialRampToValueAtTime(.0001,now+.22); g.connect(f); const o=ac.createOscillator(); o.type='sine'; o.frequency.setValueAtTime(740,now); o.frequency.exponentialRampToValueAtTime(660,now+.16); o.connect(g); o.start(now); o.stop(now+.24); }
+document.addEventListener('click',e=>{ const el=e.target.closest('.nav-tile,.nav-btn,.btn-primary,.theme-btn,.modal-close,.expand-all-btn,#toTop,.stepper button,.report-tab,.btn-secondary,.btn-danger,.auth-tab'); if(el) playClickSound(); },true);
 
-(function(){
-  const KEY='site-theme';
-  const saved=(()=>{try{return localStorage.getItem(KEY)}catch(e){return null}})();
-  if(saved==='light'||saved==='dark')document.documentElement.setAttribute('data-theme',saved);
-  const btn=$('themeBtn');
-  if(btn)btn.addEventListener('click',()=>{
-    const cur=document.documentElement.getAttribute('data-theme');
-    const next=cur==='light'?'dark':'light';
-    document.documentElement.setAttribute('data-theme',next);
-    try{localStorage.setItem(KEY,next)}catch(e){}
-  });
-})();
+/* ==================== THEME ==================== */
+(function(){ const KEY='site-theme'; const saved=(()=>{try{return localStorage.getItem(KEY)}catch(e){return null}})(); if(saved==='light'||saved==='dark')document.documentElement.setAttribute('data-theme',saved); const btn=$('themeBtn'); if(btn)btn.addEventListener('click',()=>{ const cur=document.documentElement.getAttribute('data-theme'); const next=cur==='light'?'dark':'light'; document.documentElement.setAttribute('data-theme',next); try{localStorage.setItem(KEY,next)}catch(e){} }); })();
 
+/* ==================== TOAST ==================== */
 let toastTimer=null;
-function showToast(text,type='success'){
-  const t=$('resultToast');
-  if(!t)return;
-  t.textContent=text;
-  t.classList.remove('success','fail');
-  t.classList.add(type,'show');
-  if(toastTimer)clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>t.classList.remove('show'),2600);
-}
+function showToast(text,type='success'){ const t=$('resultToast'); if(!t)return; t.textContent=text; t.classList.remove('success','fail'); t.classList.add(type,'show'); if(toastTimer)clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('show'),2600); }
 
-const modals={
-  lecture:$('lectureModal'), exam:$('examModal'), interview:$('interviewModal'),
-  wave:$('waveModal'), report:$('reportModal'), week:$('weekModal')
-};
-function openModal(m){
-  if(!m)return;
-  Object.values(modals).forEach(x=>{ if(x && x!==m) x.classList.remove('show'); });
-  m.classList.add('show');
-  document.body.classList.add('modal-open');
-}
-function closeModal(m){
-  if(!m)return;
-  m.classList.remove('show');
-  const any=Object.values(modals).some(x=>x && x.classList.contains('show'));
-  if(!any) document.body.classList.remove('modal-open');
-}
+/* ==================== MODALS ==================== */
+const modals={ lecture:$('lectureModal'), exam:$('examModal'), interview:$('interviewModal'), wave:$('waveModal'), report:$('reportModal'), week:$('weekModal') };
+function openModal(m){ if(!m)return; Object.values(modals).forEach(x=>{ if(x && x!==m) x.classList.remove('show'); }); m.classList.add('show'); document.body.classList.add('modal-open'); }
+function closeModal(m){ if(!m)return; m.classList.remove('show'); const any=Object.values(modals).some(x=>x && x.classList.contains('show')); if(!any) document.body.classList.remove('modal-open'); }
 function closeAll(){ Object.values(modals).forEach(x=>x && closeModal(x)); }
 
 ['navLectureBtn','navExamBtn','navInterviewBtn','navWaveBtn','navWeekBtn','navReportBtn'].forEach(id=>{
-  const el=$(id);
-  if(!el)return;
+  const el=$(id); if(!el)return;
   el.addEventListener('click', async ()=>{
-    const map={
-      navLectureBtn:'lecture', navExamBtn:'exam', navInterviewBtn:'interview',
-      navWaveBtn:'wave', navWeekBtn:'week', navReportBtn:'report'
-    };
+    const map={ navLectureBtn:'lecture', navExamBtn:'exam', navInterviewBtn:'interview', navWaveBtn:'wave', navWeekBtn:'week', navReportBtn:'report' };
     openModal(modals[map[id]]);
     if (map[id] === 'report') await renderReportScreen();
     if (map[id] === 'week')   await renderWeek();
   });
 });
-document.querySelectorAll('.modal-close').forEach(b=>{
-  b.addEventListener('click',()=>closeModal(b.closest('.modal-overlay')));
-});
-Object.values(modals).forEach(m=>{
-  if(!m)return;
-  m.addEventListener('click',e=>{ if(e.target===m) closeModal(m); });
-});
+document.querySelectorAll('.modal-close').forEach(b=> b.addEventListener('click',()=>closeModal(b.closest('.modal-overlay'))) );
+Object.values(modals).forEach(m=>{ if(!m)return; m.addEventListener('click',e=>{ if(e.target===m) closeModal(m); }); });
 document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeAll(); });
 
+/* ==================== AUTH UI ==================== */
 document.querySelectorAll('[data-atab]').forEach(t=>{
   t.addEventListener('click',()=>{
     document.querySelectorAll('[data-atab]').forEach(x=>x.classList.remove('active'));
     t.classList.add('active');
     const isLogin=t.dataset.atab==='login';
-    show('reportLogin',isLogin);
-    show('reportRegister',!isLogin);
+    show('reportLogin',isLogin); show('reportRegister',!isLogin);
   });
 });
 
-$('rRegBtn').addEventListener('click', async ()=>{
+$('rRegBtn') && $('rRegBtn').addEventListener('click', async ()=>{
   $('rRegErr').textContent=''; $('rRegOk').textContent='';
-  const name=$('rRegName').value.trim();
-  const rank=$('rRegRank').value.trim();
-  const email=$('rRegEmail').value.trim();
-  const pass=$('rRegPassword').value;
+  const name=$('rRegName').value.trim(); const rank=$('rRegRank').value.trim();
+  const email=$('rRegEmail').value.trim(); const pass=$('rRegPassword').value;
   if(!name||!email||pass.length<6){ $('rRegErr').textContent='Заполните ФИО, e-mail и пароль от 6 символов.'; return; }
   const { error } = await sb.auth.signUp({ email, password: pass, options: { data: { full_name: name, rank } } });
   if(error){ $('rRegErr').textContent=error.message; return; }
-  $('rRegOk').textContent='Заявка отправлена. Ожидайте подтверждения начальника УК.';
+  $('rRegOk').textContent='Заявка отправлена. Ожидайте подтверждения Начальника УК.';
 });
 
-$('rLoginBtn').addEventListener('click', async ()=>{
+$('rLoginBtn') && $('rLoginBtn').addEventListener('click', async ()=>{
   $('rLoginErr').textContent='';
-  const email = $('rLoginEmail').value.trim();
-  const pass  = $('rLoginPassword').value;
+  const email=$('rLoginEmail').value.trim(); const pass=$('rLoginPassword').value;
   const { error } = await sb.auth.signInWithPassword({ email, password: pass });
   if (error) { $('rLoginErr').textContent = error.message; return; }
-  await loadSession();
-  if (CURRENT.user && !CURRENT.profile) {
-    const { data: profile } = await sb.from('profiles').select('*').eq('id', CURRENT.user.id).maybeSingle();
-    if (profile) CURRENT.profile = profile;
-  }
-  await renderReportScreen();
-  if (CURRENT.profile && CURRENT.profile.approved) {
-    setTimeout(()=> { const f = $('rpLectures'); if (f) f.focus(); }, 150);
-  }
+  await loadSession(); await renderReportScreen();
 });
 
 $('logoutBtn') && $('logoutBtn').addEventListener('click', async ()=>{
-  await sb.auth.signOut();
-  CURRENT={user:null,profile:null};
-  updateUserChip();
+  await sb.auth.signOut(); CURRENT={user:null,profile:null}; updateUserChip();
+  await renderReportScreen(); showToast('Вы вышли из аккаунта','fail');
+});
+$('logoutFromPending') && $('logoutFromPending').addEventListener('click', async ()=>{
+  await sb.auth.signOut(); CURRENT={user:null,profile:null}; updateUserChip();
   await renderReportScreen();
-  showToast('Вы вышли из аккаунта','fail');
+});
+$('logoutFromLocked') && $('logoutFromLocked').addEventListener('click', async ()=>{
+  await sb.auth.signOut(); CURRENT={user:null,profile:null}; updateUserChip();
+  await renderReportScreen();
 });
 
+/* ==================== SESSION ==================== */
 async function loadSession(){
   const { data: { session } } = await sb.auth.getSession();
   if(!session){ CURRENT={user:null,profile:null}; updateUserChip(); return; }
   const { data: profile } = await sb.from('profiles').select('*').eq('id', session.user.id).maybeSingle();
-  CURRENT.user = session.user;
-  CURRENT.profile = profile || null;
-  updateUserChip();
+  CURRENT.user = session.user; CURRENT.profile = profile || null; updateUserChip();
 }
-
 function updateUserChip(){
-  const chip=$('userChip');
-  if(!chip)return;
+  const chip=$('userChip'); if(!chip)return;
   if(CURRENT.profile && CURRENT.profile.approved){
     chip.classList.add('show');
-    $('userName').textContent=CURRENT.profile.full_name || (CURRENT.user && CURRENT.user.email) || '—';
-  } else {
-    chip.classList.remove('show');
-  }
+    $('userName').textContent = CURRENT.profile.full_name || (CURRENT.user && CURRENT.user.email) || '—';
+    const roleLabels = { chief:'Начальник УК', deputy:'Зам. начальника', instructor:'Инструктор' };
+    const tag=$('userRoleTag');
+    tag.textContent = roleLabels[CURRENT.profile.role] || 'Сотрудник';
+    tag.className = 'role-tag ' + (CURRENT.profile.role || '');
+  } else { chip.classList.remove('show'); }
 }
 
+/* ==================== REPORT SCREEN ==================== */
 async function renderReportScreen(){
   if (CURRENT.user && !CURRENT.profile) {
     const { data: profile } = await sb.from('profiles').select('*').eq('id', CURRENT.user.id).maybeSingle();
@@ -1409,65 +1400,184 @@ async function renderReportScreen(){
   }
   const hasUser = !!CURRENT.user;
   const approved = !!(CURRENT.profile && CURRENT.profile.approved);
+  const chief = approved && CURRENT.profile.role === 'chief';
+
   show('reportAuth', !hasUser);
   show('reportPending', hasUser && !approved);
-  show('reportForm', hasUser && approved);
-  if (hasUser && approved) {
-    if (!$('rpDate').value) $('rpDate').value = todayStr();
-    await loadTodayReport();
+  show('reportLocked', hasUser && approved && !chief); // ← заходим, но доступ закрыт
+  show('reportApp', hasUser && approved && chief);
+
+  if (hasUser && approved && chief) {
+    show('fDeleteAll', true);
+    switchReportTab('all');
+    await refreshAll();
   }
 }
 
-async function loadTodayReport(){
-  if(!CURRENT.user) return;
-  const { data } = await sb.from('reports').select('*')
-    .eq('author_id', CURRENT.user.id).eq('report_date', todayStr()).maybeSingle();
-  if(data){
-    $('rpLectures').value=data.lectures;
-    $('rpExams').value=data.exams;
-    $('rpInterviews').value=data.interviews;
-    $('rpIncidents').value=data.incidents;
-    $('rpComment').value=data.comment||'';
-  }
+function switchReportTab(name){
+  document.querySelectorAll('[data-rtab]').forEach(t=>t.classList.toggle('active', t.dataset.rtab===name));
+  ['all','users'].forEach(t=> show('rtab-'+t, t===name));
+  if (name==='all') refreshAll();
+  if (name==='users') refreshUsers();
+}
+document.querySelectorAll('[data-rtab]').forEach(t=> t.addEventListener('click', ()=> switchReportTab(t.dataset.rtab)) );
+
+/* ==================== ALL ==================== */
+async function refreshAll(){
+  if(!isChief()) return;
+  let q = sb.from('reports').select('*, profiles:author_id (full_name)').order('report_date',{ascending:false}).limit(500);
+  const date=$('fDate').value; const status=$('fStatus').value;
+  if(date) q=q.eq('report_date',date);
+  if(status) q=q.eq('status',status);
+  const { data, error } = await q;
+  if(error){ console.error(error); return; }
+  allCache=data;
+  $('allList').innerHTML = data.length ? data.map(r=>reportRow(r,true)).join('') : '<div class="empty">Нет данных.</div>';
+  document.querySelectorAll('[data-action]').forEach(btn=>{
+    btn.addEventListener('click', async ()=>{
+      const id=btn.dataset.id; const status=btn.dataset.action==='approve'?'approved':'rejected';
+      const { error } = await sb.from('reports').update({ status, reviewed_by: CURRENT.user.id, reviewed_at: new Date().toISOString() }).eq('id', id);
+      if(error){ alert(error.message); return; }
+      refreshAll();
+    });
+  });
+}
+$('fApply') && $('fApply').addEventListener('click', refreshAll);
+$('fClear') && $('fClear').addEventListener('click', ()=>{ $('fDate').value=''; $('fStatus').value=''; refreshAll(); });
+$('fExport') && $('fExport').addEventListener('click', exportCSV);
+$('fDeleteAll') && $('fDeleteAll').addEventListener('click', deleteAllReports);
+
+async function deleteAllReports(){
+  if(!isChief()){ alert('Только Начальник УК может удалять все отчёты.'); return; }
+  const total=allCache.length; if(total===0){ alert('Отчётов нет — удалять нечего.'); return; }
+  if(!confirm(`ВНИМАНИЕ!\n\nБудут удалены ВСЕ отчёты (${total} шт.).\n\nПродолжить?`)) return;
+  const word=prompt('Для подтверждения введите слово УДАЛИТЬ (заглавными):');
+  if(word!=='УДАЛИТЬ'){ alert('Отменено.'); return; }
+  const { error } = await sb.from('reports').delete().neq('id','00000000-0000-0000-0000-000000000000');
+  if(error){ alert('Ошибка удаления: '+error.message); return; }
+  alert('Все отчёты удалены.'); refreshAll();
 }
 
-$('rpSubmit').addEventListener('click', async ()=>{
-  if(!CURRENT.user){ showToast('Сначала войдите','fail'); return; }
-  $('rpErr').textContent=''; $('rpOk').textContent='';
-  const payload={
-    author_id: CURRENT.user.id,
-    report_date: $('rpDate').value || todayStr(),
-    lectures: Math.max(0, parseInt($('rpLectures').value||0,10)),
-    exams: Math.max(0, parseInt($('rpExams').value||0,10)),
-    interviews: Math.max(0, parseInt($('rpInterviews').value||0,10)),
-    incidents: Math.max(0, parseInt($('rpIncidents').value||0,10)),
-    comment: $('rpComment').value.trim()||null,
-    status: 'pending',
-    updated_at: new Date().toISOString()
-  };
-  const { error } = await sb.from('reports').upsert(payload, { onConflict: 'author_id,report_date' });
-  if(error){ $('rpErr').textContent=error.message; return; }
-  $('rpOk').textContent='Отчёт сохранён.';
-  showToast('Отчёт отправлен начальству','success');
-});
+function exportCSV(){
+  if(!allCache.length){ alert('Нет данных для экспорта.'); return; }
+  const rows=allCache.map(r=>({ 'Дата':r.report_date, 'Автор':r.profiles?.full_name||'', 'Лекции':r.lectures, 'Экзамены':r.exams, 'Собеседования':r.interviews, 'Происшествия':r.incidents, 'Комментарий':(r.comment||'').replace(/\n/g,' ').replace(/"/g,'""'), 'Статус': r.status==='approved'?'Принято':(r.status==='rejected'?'Отклонено':'На проверке'), 'Создан':fmt(r.created_at) }));
+  const headers=Object.keys(rows[0]);
+  const csv=[headers.join(';'), ...rows.map(o=>headers.map(h=>`"${o[h]}"`).join(';'))].join('\n');
+  const blob=new Blob(['\uFEFF'+csv], {type:'text/csv;charset=utf-8;'});
+  const url=URL.createObjectURL(blob); const a=document.createElement('a'); a.href=url; a.download='otchet_uk_'+todayStr()+'.csv'; a.click(); URL.revokeObjectURL(url);
+}
 
-/* ==== Экзамен: счётчик ошибок ==== */
+function reportRow(r, withActions){
+  const statusBadge={ pending:'<span class="badge y">На проверке</span>', approved:'<span class="badge g">Принято</span>', rejected:'<span class="badge r">Отклонено</span>' }[r.status]||'';
+  const author=r.profiles?.full_name?` · <b>${esc(r.profiles.full_name)}</b>`:'';
+  const actions=withActions && r.status==='pending'
+    ? `<div class="btn-row"><button class="btn-secondary" data-action="approve" data-id="${r.id}" style="padding:6px 12px;font-size:12px">Принять</button><button class="btn-danger" data-action="reject" data-id="${r.id}" style="padding:6px 12px;font-size:12px">Отклонить</button></div>` : '';
+  return `
+    <div class="report-row">
+      <span class="rr-type">${r.report_date}</span>
+      <div class="rr-body">
+        <div style="display:flex;flex-wrap:wrap;gap:8px;font-size:12.5px;color:var(--muted);margin-bottom:6px">
+          <span>Лекций: <b style="color:var(--text)">${r.lectures}</b></span>
+          <span>Экзаменов: <b style="color:var(--text)">${r.exams}</b></span>
+          <span>Собес: <b style="color:var(--text)">${r.interviews}</b></span>
+          <span>ЧП: <b style="color:var(--text)">${r.incidents}</b></span>
+          ${statusBadge}
+        </div>
+        ${r.comment?`<div style="margin-top:6px;padding:10px 12px;background:var(--panel);border:1px solid var(--line);border-radius:9px;font-size:13px;white-space:pre-wrap;line-height:1.55">${esc(r.comment)}</div>`:''}
+        <div class="rr-meta">${fmt(r.created_at)}${author}</div>
+        ${actions}
+      </div>
+    </div>`;
+}
+
+/* ==================== USERS ==================== */
+async function refreshUsers(){
+  if(!isChief()) return;
+  const { data: pending } = await sb.from('profiles').select('*').eq('approved', false).order('created_at',{ascending:false});
+  $('pendingUsers').innerHTML = (pending && pending.length) ? pending.map(p=>`
+    <div class="report-row">
+      <span class="rr-type">Заявка</span>
+      <div class="rr-body">
+        <b>${esc(p.full_name)}</b> ${p.rank?`· ${esc(p.rank)}`:''}
+        <div class="rr-meta">${fmt(p.created_at)}</div>
+        <div class="btn-row">
+          <button class="btn-secondary" data-approve="${p.id}" style="padding:6px 12px;font-size:12px">Одобрить</button>
+          <button class="btn-danger" data-reject="${p.id}" style="padding:6px 12px;font-size:12px">Отклонить</button>
+        </div>
+      </div>
+    </div>`).join('') : '<div class="empty">Заявок нет.</div>';
+
+  document.querySelectorAll('[data-approve]').forEach(b=>b.addEventListener('click', async ()=>{
+    const id=b.dataset.approve; b.disabled=true; b.textContent='Одобряем...';
+    const { data, error } = await sb.from('profiles').update({ approved: true }).eq('id', id).select();
+    if(error){ alert('Ошибка: '+error.message); b.disabled=false; b.textContent='Одобрить'; return; }
+    if(!data || !data.length){ alert('Профиль не обновился. Проверь RLS-политики.'); b.disabled=false; b.textContent='Одобрить'; return; }
+    refreshUsers();
+  }));
+  document.querySelectorAll('[data-reject]').forEach(b=>b.addEventListener('click', async ()=>{
+    if(!confirm('Отклонить заявку? Аккаунт и профиль будут удалены.')) return;
+    await deleteUserById(b.dataset.reject, b);
+  }));
+
+  const { data: all } = await sb.from('profiles').select('*').eq('approved', true).order('created_at',{ascending:true});
+  $('allUsers').innerHTML = (all && all.length) ? all.map(p=>`
+    <div class="report-row">
+      <span class="rr-type">${p.role||'—'}</span>
+      <div class="rr-body">
+        <b>${esc(p.full_name)}</b> ${p.rank?`· ${esc(p.rank)}`:''}
+        <div class="rr-meta">с ${fmt(p.created_at)}</div>
+        <div class="btn-row">
+          <select data-role="${p.id}" style="width:auto;padding:6px 10px;font-size:12px">
+            <option value="instructor" ${p.role==='instructor'?'selected':''}>Инструктор</option>
+            <option value="deputy" ${p.role==='deputy'?'selected':''}>Зам. начальника</option>
+            <option value="chief" ${p.role==='chief'?'selected':''}>Начальник УК</option>
+          </select>
+          <button class="btn-danger" data-del="${p.id}" style="padding:6px 12px;font-size:12px">Удалить</button>
+        </div>
+      </div>
+    </div>`).join('') : '<div class="empty">Нет данных.</div>';
+
+  document.querySelectorAll('[data-role]').forEach(sel=>sel.addEventListener('change', async ()=>{
+    const { error } = await sb.from('profiles').update({ role: sel.value }).eq('id', sel.dataset.role);
+    if(error) alert('Ошибка: '+error.message);
+  }));
+  document.querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click', async ()=>{
+    if(!confirm('Удалить сотрудника вместе с аккаунтом?')) return;
+    await deleteUserById(b.dataset.del, b);
+  }));
+}
+
+async function deleteUserById(userId, btn){
+  btn.disabled=true; const prev=btn.textContent; btn.textContent='Удаление...';
+  const { data: { session } } = await sb.auth.getSession();
+  if(!session){ alert('Сессия истекла. Войдите заново.'); btn.disabled=false; btn.textContent=prev; return; }
+  try{
+    const resp=await fetch(DELETE_USER_FN,{ method:'POST', headers:{ 'Content-Type':'application/json', 'Authorization':'Bearer '+session.access_token, 'apikey':SUPABASE_ANON_KEY }, body:JSON.stringify({ user_id: userId }) });
+    const result=await resp.json().catch(()=>({}));
+    if(!resp.ok){ alert('Ошибка удаления: '+(result.error||resp.status)); btn.disabled=false; btn.textContent=prev; return; }
+    alert('Пользователь удалён.'); refreshUsers();
+  }catch(e){ alert('Ошибка сети: '+e.message); btn.disabled=false; btn.textContent=prev; }
+}
+
+/* ==================== EXAM ERR ==================== */
 let examErrVal=0;
-const examErrCountEl=$('examErrCount');
-function renderExamErr(){ if(examErrCountEl) examErrCountEl.textContent=examErrVal; }
+function renderExamErr(){ $('examErrCount') && ($('examErrCount').textContent=examErrVal); }
 $('examErrPlus') && $('examErrPlus').addEventListener('click',()=>{ examErrVal++; renderExamErr(); });
-$('examErrMinus') && $('examErrMinus').addEventListener('click',()=>{ examErrVal=Math.max(0, examErrVal-1); renderExamErr(); });
+$('examErrMinus') && $('examErrMinus').addEventListener('click',()=>{ examErrVal=Math.max(0,examErrVal-1); renderExamErr(); });
 $('examErrReset') && $('examErrReset').addEventListener('click',()=>{ examErrVal=0; renderExamErr(); });
 $('examErrToReport') && $('examErrToReport').addEventListener('click', async ()=>{
-  closeAll();
-  openModal(modals.report);
-  await renderReportScreen();
+  closeAll(); openModal(modals.report); await renderReportScreen();
+  if (isChief()) {
+    $('fDate').value = ''; $('fStatus').value = ''; refreshAll();
+    showToast('Открыта панель отчётов','success');
+  } else {
+    showToast('Ошибки экзамена доступны только Начальнику УК','fail');
+  }
 });
 
-/* ==== Экспанд-кнопки ==== */
+/* ==================== EXPAND ==================== */
 document.querySelectorAll('[data-expand]').forEach(btn=>{
-  const modal=document.getElementById(btn.getAttribute('data-expand'));
-  if(!modal)return;
+  const modal=document.getElementById(btn.getAttribute('data-expand')); if(!modal)return;
   btn.addEventListener('click',(e)=>{
     e.preventDefault();
     const subs=modal.querySelectorAll('details.sub');
@@ -1477,59 +1587,46 @@ document.querySelectorAll('[data-expand]').forEach(btn=>{
   });
 });
 
-function startOfWeek(ts){
-  const d=new Date(ts); const day=d.getDay();
-  const diff=day===0?6:day-1;
-  d.setHours(0,0,0,0); d.setDate(d.getDate()-diff);
-  return d.getTime();
-}
+/* ==================== WEEK ==================== */
+function startOfWeek(ts){ const d=new Date(ts); const day=d.getDay(); const diff=day===0?6:day-1; d.setHours(0,0,0,0); d.setDate(d.getDate()-diff); return d.getTime(); }
 async function renderWeek(){
-  const ws=startOfWeek(Date.now());
-  const now=Date.now();
+  const ws=startOfWeek(Date.now()); const now=Date.now();
   const p=n=>String(n).padStart(2,'0');
   const fmtShort=ts=>{ const d=new Date(ts); return `${p(d.getDate())}.${p(d.getMonth()+1)}.${d.getFullYear()}`; };
-  const lbl=$('weekRangeLabel');
-  if(lbl) lbl.textContent=`С ${fmtShort(ws)} по ${fmtShort(now)}`;
-  const box=$('weekList');
-  box.innerHTML='';
-  if(!CURRENT.user || !CURRENT.profile || !CURRENT.profile.approved){
-    box.innerHTML='<div class="callout">Войдите в аккаунт через плитку «📝 Отчёт за день», чтобы увидеть недельную сводку.</div>';
-    $('wkLec').textContent='0'; $('wkExa').textContent='0'; $('wkInt').textContent='0'; $('wkInc').textContent='0';
-    return;
+  const lbl=$('weekRangeLabel'); if(lbl) lbl.textContent=`С ${fmtShort(ws)} по ${fmtShort(now)}`;
+  const box=$('weekList'); box.innerHTML='';
+  if(!isChief()){
+    box.innerHTML='<div class="callout">Недельная сводка доступна только Начальнику УК.</div>';
+    $('wkLec').textContent='0'; $('wkExa').textContent='0'; $('wkInt').textContent='0'; return;
   }
-  const { data, error } = await sb.from('reports').select('*')
-    .eq('author_id', CURRENT.user.id)
-    .gte('report_date', new Date(ws).toISOString().slice(0,10))
-    .order('report_date', { ascending: false });
+  const { data, error } = await sb.from('reports').select('*').gte('report_date', new Date(ws).toISOString().slice(0,10)).order('report_date',{ascending:false});
   if(error){ box.innerHTML='<div class="callout">Ошибка загрузки: '+error.message+'</div>'; return; }
-  let L=0,E=0,I=0,C=0;
-  (data||[]).forEach(r=>{ L+=r.lectures; E+=r.exams; I+=r.interviews; C+=r.incidents; });
-  $('wkLec').textContent=L; $('wkExa').textContent=E; $('wkInt').textContent=I; $('wkInc').textContent=C;
+  let L=0,E=0,I=0; (data||[]).forEach(r=>{ L+=r.lectures; E+=r.exams; I+=r.interviews; });
+  $('wkLec').textContent=L; $('wkExa').textContent=E; $('wkInt').textContent=I;
   if(!data || !data.length){ box.innerHTML='<div class="callout">За эту неделю отчётов пока нет.</div>'; return; }
-  data.forEach(r=>{
-    const el=document.createElement('div');
-    el.className='week-row';
-    el.innerHTML=`
-      <span class="wk-date">${r.report_date}</span>
-      <div class="wk-body">
-        <div class="wk-nums">
-          <span>Лекций: <b>${r.lectures}</b></span>
-          <span>Экзаменов: <b>${r.exams}</b></span>
-          <span>Собес: <b>${r.interviews}</b></span>
-          <span>ЧП: <b>${r.incidents}</b></span>
-        </div>
-      </div>`;
+  data.forEach(r=>{ const el=document.createElement('div'); el.style.cssText='display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:11px;background:linear-gradient(155deg,var(--panel-2),var(--panel));border:1px solid var(--line);margin-bottom:8px;font-size:13px';
+    el.innerHTML=`<span style="flex:none;font-size:12px;font-weight:800;padding:5px 11px;border-radius:7px;background:var(--accent-soft);color:var(--accent);border:1px solid rgba(226,163,61,.25);min-width:76px;text-align:center">${r.report_date}</span><div style="flex:1;min-width:0"><div style="display:flex;flex-wrap:wrap;gap:8px;font-size:12px;color:var(--muted)"><span>Лекций: <b style="color:var(--text)">${r.lectures}</b></span><span>Экзаменов: <b style="color:var(--text)">${r.exams}</b></span><span>Собес: <b style="color:var(--text)">${r.interviews}</b></span><span>ЧП: <b style="color:var(--text)">${r.incidents}</b></span></div></div>`;
     box.appendChild(el);
   });
 }
 
+/* ==================== TO TOP ==================== */
 const toTop=$('toTop');
 window.addEventListener('scroll',()=>toTop.classList.toggle('show',window.scrollY>400),{passive:true});
 toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
 
-(async ()=>{
-  await loadSession();
+/* ==================== PARTICLES ==================== */
+(function(){
+  const c=document.getElementById('particleCanvas'); if(!c)return;
+  const ctx=c.getContext('2d'); let W,H,parts=[];
+  function resize(){ W=c.width=innerWidth; H=c.height=innerHeight; }
+  function init(){ parts=[]; const n=Math.min(60, Math.floor(W/26)); for(let i=0;i<n;i++){ parts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.6+.4,vx:(Math.random()-.5)*.25,vy:(Math.random()-.5)*.25,a:Math.random()*.4+.15}); } }
+  function tick(){ ctx.clearRect(0,0,W,H); ctx.fillStyle='#E2A33D'; parts.forEach(p=>{ p.x+=p.vx; p.y+=p.vy; if(p.x<0||p.x>W)p.vx*=-1; if(p.y<0||p.y>H)p.vy*=-1; ctx.globalAlpha=p.a; ctx.beginPath(); ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill(); }); ctx.globalAlpha=1; requestAnimationFrame(tick); }
+  resize(); init(); tick(); addEventListener('resize',()=>{ resize(); init(); });
 })();
+
+/* ==================== START ==================== */
+(async ()=>{ await loadSession(); })();
 </script>
 </body>
 </html>
